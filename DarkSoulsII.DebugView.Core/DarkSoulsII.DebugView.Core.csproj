@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B86932EF-4F6A-4612-A804-336C5C58DA0A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DarkSoulsII.DebugView.Core</RootNamespace>
+    <AssemblyName>DarkSoulsII.DebugView.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DarkSoulsII\Controllers\MapTextureResolutionCtrl.cs" />
+    <Compile Include="DarkSoulsII\Controllers\SignKeyGuideCtrl.cs" />
+    <Compile Include="DarkSoulsII\Controllers\SignPreviewCtrl.cs" />
+    <Compile Include="DarkSoulsII\Drawing\MdlTexture.cs" />
+    <Compile Include="DarkSoulsII\Events\MapObjectBonfire.cs" />
+    <Compile Include="DarkSoulsII\GameObjects\GameEntities\SignKeyGuideEntity.cs" />
+    <Compile Include="DarkSoulsII\Managers\Ai\AiManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\App\AppDecalManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\App\AppResourceManager.cs" />
+    <Compile Include="DarkSoulsII\App\Graphics\Filters\AppBlackOutFilter.cs" />
+    <Compile Include="DarkSoulsII\App\Graphics\Filters\AppFogFilter.cs" />
+    <Compile Include="DarkSoulsII\App\Graphics\Filters\AppLightFilter.cs" />
+    <Compile Include="DarkSoulsII\App\Graphics\Filters\AppVignettingFilter.cs" />
+    <Compile Include="DarkSoulsII\App\Graphics\Filters\AppVolumeFogFilter.cs" />
+    <Compile Include="DarkSoulsII\App\Graphics\DrawDevice.cs" />
+    <Compile Include="DarkSoulsII\App\Graphics\Filters\GxLensFlareFilter.cs" />
+    <Compile Include="DarkSoulsII\App\Graphics\Filters\GxLensSimulationFilter.cs" />
+    <Compile Include="DarkSoulsII\App\Graphics\Filters\GxToneMapFilter.cs" />
+    <Compile Include="DarkSoulsII\App\Graphics\KatanaDrawDeviceContainer.cs" />
+    <Compile Include="DarkSoulsII\App\Graphics\KatanaDrawSystem.cs" />
+    <Compile Include="DarkSoulsII\App\Graphics\Surface.cs" />
+    <Compile Include="DarkSoulsII\App\MainApp.cs" />
+    <Compile Include="DarkSoulsII\Camera\CameraOperator.cs" />
+    <Compile Include="DarkSoulsII\Camera\Operators\ActionCameraOperator.cs" />
+    <Compile Include="DarkSoulsII\Camera\Operators\DefaultCameraOperator.cs" />
+    <Compile Include="DarkSoulsII\Camera\Operators\DemoCameraOperator.cs" />
+    <Compile Include="DarkSoulsII\Camera\Operators\EventCameraOperator.cs" />
+    <Compile Include="DarkSoulsII\Camera\Operators\ExFollowCameraOperator.cs" />
+    <Compile Include="DarkSoulsII\Camera\Operators\FallDeadCameraOperator.cs" />
+    <Compile Include="DarkSoulsII\Camera\Operators\FreeCameraOperator.cs" />
+    <Compile Include="DarkSoulsII\Camera\Operators\FreeOrthoCameraOperator.cs" />
+    <Compile Include="DarkSoulsII\Camera\Operators\GrapplerCameraOperator.cs" />
+    <Compile Include="DarkSoulsII\Camera\Operators\IngameCameraOperator.cs" />
+    <Compile Include="DarkSoulsII\Camera\Operators\MenuCameraOperator.cs" />
+    <Compile Include="DarkSoulsII\Camera\Operators\NormalCameraOperator.cs" />
+    <Compile Include="DarkSoulsII\Camera\Operators\OrthoCameraOperator.cs" />
+    <Compile Include="DarkSoulsII\Camera\Operators\PerspectiveCameraOperator.cs" />
+    <Compile Include="DarkSoulsII\Camera\Operators\PlayerCameraOperator.cs" />
+    <Compile Include="DarkSoulsII\Camera\Operators\SubjectiveCameraOperator.cs" />
+    <Compile Include="DarkSoulsII\Camera\Operators\TransitionCameraOperator.cs" />
+    <Compile Include="DarkSoulsII\Camera\CameraOperatorType.cs" />
+    <Compile Include="DarkSoulsII\Managers\Bullet\BulletManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Character\ChrTextureManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Demo\DemoManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Event\EventBonfireManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Event\EventFlagManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Event\EventManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\FaceGenManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Input\RumbleManager.cs" />
+    <Compile Include="DarkSoulsII\GameData\SaveSlotData.cs" />
+    <Compile Include="DarkSoulsII\Controllers\ActiveSignCtrl.cs" />
+    <Compile Include="DarkSoulsII\Drawing\MapTexture.cs" />
+    <Compile Include="DarkSoulsII\Managers\Sign\ActiveSignManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Sign\SignEventAreaManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Sign\SignManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Sign\SignSetCtrlManager.cs" />
+    <Compile Include="DarkSoulsII\Map\Item\MapItemListType.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\ArmorHandsUpFParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\ArmorParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\ArmorReinforceParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\ArrowParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\BehaviorParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\BossEnemyGenerateParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\BossParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\BossPartsModelParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\BossPartsParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\ChrColorParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\ChrCommonParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\ChrCullingParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\ChrEditParamBodyPreset.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\ChrEquipLoadParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\ChrEquipWeaponParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\ChrFullbodySfxParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\ChrGrowthParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\ChrLevelUpSoulsParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\ChrModelParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\ChrMoveParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\ChrMultiplayParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\ChrNetPhantomSoulRateParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\ChrNetworkPhantomParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\ChrParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\ChrPointWindParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\ChrRoundDamageParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\ChrRoundDropSoulParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\ChrWetParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\ComboBehaviorParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\CriminalAndDeceasedParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\CustomAttrCostParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\CustomAttrSpecParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\DeadTypeParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\DualWieldPermissionParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\EnemyAttackMoveParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\EnemyShotSfxParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\EquipmentCullingTargetParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\EquipmentInterfereParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\FallingParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\FootEffectSfxParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\FootEffectWaterSfxParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\GrabParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\GroundMaterialParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\GuardLevelMotionParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\HitBackMatrixParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\HitBackParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\HollowLevelStatsParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\LackOfStatsParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\LockOnCameraOffsetParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\LockOnParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\LockTargetParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\MaterialParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\MenuStatsParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\NpcGenerateParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\NpcPlayerSkinParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\NpcPlayerStatusParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\PhysStatsPerLevelStatParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\PlayerCommonParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\PlayerLightParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\PlayerStatusItemParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\PlayerStatusNormal.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\ReinforceCostParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\RelatePhysStatToLevelStat.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\RingParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\SpellParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\SpellSoulConsumeParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\TorchCtrlParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\TorchOffCtrlParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\VowParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\WeaponActionCategoryParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\WeaponAttackMotionParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\WeaponParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\WeaponReinforceParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\WeaponStaminaCostParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\WeaponStatsAffectParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Character\WeaponTypeParam.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Containers\AiParamContainer.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Containers\BulletParamContainer.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Containers\CameraParamContainer.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Containers\CharacterParamContainer.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Containers\DamageParamContainer.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Containers\DemoParamContainer.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Containers\EventParamContainer.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Containers\FaceGenParamContainer.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Containers\Item2ParamContainer.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Containers\MapBonfireParamContainer.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Containers\NetParamContainer.cs" />
+    <Compile Include="DarkSoulsII\Resources\FileResourceObject.cs" />
+    <Compile Include="DarkSoulsII\Resources\Memory.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Containers\RumbleParamContainer.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Param.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\ParamFileResourceObject.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\ParamFileResourceObjectForRegulation.cs" />
+    <Compile Include="DarkSoulsII\Resources\ResourceObject.cs" />
+    <Compile Include="DarkSoulsII\Resources\Text\TextLookupTableType.cs" />
+    <Compile Include="DarkSoulsII\App\KatanaMainApp.cs" />
+    <Compile Include="DarkSoulsII\GameObjects\GameEntities\MapEntity.cs" />
+    <Compile Include="DarkSoulsII\Managers\CameraManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Map\MapAreaManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Map\MapManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Map\MapChameleonAreaManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Map\MapItemPackManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Map\MapTextureManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Map\MapTextureResolutionManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Map\MapWindManager.cs" />
+    <Compile Include="DarkSoulsII\Map\Area\MapAreaCtrlOwner.cs" />
+    <Compile Include="DarkSoulsII\Map\Area\MapChameleonArea.cs" />
+    <Compile Include="DarkSoulsII\Map\Item\MapItem.cs" />
+    <Compile Include="DarkSoulsII\Map\Item\MapItemPack.cs" />
+    <Compile Include="DarkSoulsII\Map\Item\MapItemPackTable.cs" />
+    <Compile Include="DarkSoulsII\Map\Area\MapChameleonAreaData.cs" />
+    <Compile Include="DarkSoulsII\Map\Wind\MapModelWindReactor.cs" />
+    <Compile Include="DarkSoulsII\Map\Wind\MapPointWind.cs" />
+    <Compile Include="DarkSoulsII\Map\MapWorldList.cs" />
+    <Compile Include="DarkSoulsII\Map\Wind\MapTargetDirectionalWind.cs" />
+    <Compile Include="DarkSoulsII\Map\Wind\MapWind.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Containers\MapParamContainer.cs" />
+    <Compile Include="DarkSoulsII\Rtti\CameraOperatorHelper.cs" />
+    <Compile Include="DarkSoulsII\Rtti\GameEntityComponentHelper.cs" />
+    <Compile Include="DarkSoulsII\Savegame\SaveLoadSystem.cs" />
+    <Compile Include="DarkSoulsII\Savegame\SaveReason.cs" />
+    <Compile Include="GenericPointer.cs" />
+    <Compile Include="DarkSoulsII\Character\ChrAsmCtrl.cs" />
+    <Compile Include="DarkSoulsII\Character\ChrAsmCtrlEquipment.cs" />
+    <Compile Include="DarkSoulsII\Character\Equipment\ChrAsmCtrlEquipmentAmmo.cs" />
+    <Compile Include="DarkSoulsII\Character\Equipment\ChrAsmCtrlEquipmentArmor.cs" />
+    <Compile Include="DarkSoulsII\Character\Equipment\ChrAsmCtrlEquipmentRing.cs" />
+    <Compile Include="DarkSoulsII\Character\Equipment\ChrAsmCtrlEquipmentWeapon.cs" />
+    <Compile Include="DarkSoulsII\Character\CharacterType.cs" />
+    <Compile Include="DarkSoulsII\Managers\GameManagerState.cs" />
+    <Compile Include="DarkSoulsII\GameObjects\GameEntities\CharacterGlowEffectType.cs" />
+    <Compile Include="DarkSoulsII\GameData\PlayerClass.cs" />
+    <Compile Include="DarkSoulsII\Character\Equipment\WeaponInfusion.cs" />
+    <Compile Include="DarkSoulsII\GameData\UserData000.cs" />
+    <Compile Include="DarkSoulsII\GameObjects\GameEntities\CharacterCtrl.cs" />
+    <Compile Include="DarkSoulsII\GameObjects\GameEntities\CharacterCtrlBase.cs" />
+    <Compile Include="DarkSoulsII\GameObjects\GameEntities\CharacterVisualState.cs" />
+    <Compile Include="DarkSoulsII\GameObjects\GameEntities\DemoCharacterCtrl.cs" />
+    <Compile Include="DarkSoulsII\Managers\Character\CharacterManager.cs" />
+    <Compile Include="DarkSoulsII\GameObjects\GameEntities\GameEntity.cs" />
+    <Compile Include="DarkSoulsII\GameObjects\GameEntities\Components\GameEntityComponent.cs" />
+    <Compile Include="DarkSoulsII\GameData\CharacterSlotData.cs" />
+    <Compile Include="DarkSoulsII\Managers\GameDataManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\GameManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\GameManagerImpl.cs" />
+    <Compile Include="DarkSoulsII\GameObjects\GameObject.cs" />
+    <Compile Include="DarkSoulsII\GameObjects\GameEntities\PlayerCtrl.cs" />
+    <Compile Include="DarkSoulsII\Managers\Network\NetEnemyManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Network\NetParamContainer.cs" />
+    <Compile Include="DarkSoulsII\Managers\Network\NetPlayerWatcher.cs" />
+    <Compile Include="DarkSoulsII\Managers\Network\NetSessionManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Network\NetSummonSlotAreaManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Network\NetSummonSlotManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Network\NetSvrBloodMessageManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Network\NetSvrBloodstainManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Network\NetSvrBreakInManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Network\NetSvrDuelManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Network\NetSvrGhostManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Network\NetSvrLoginManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Network\NetSvrManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Network\NetSvrPlayerManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Network\NetSvrPreviewChrManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Network\NetSvrStateChartManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Network\NetSvrSummonSignManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Network\NetSvrVisitorManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Network\NetSyncDataManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Network\NetworkManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\Network\NetLatencyManager.cs" />
+    <Compile Include="DarkSoulsII\Network\NetSummonSlot.cs" />
+    <Compile Include="DarkSoulsII\Network\NetSummonSlotCtrl.cs" />
+    <Compile Include="DarkSoulsII\Network\NetSvrClientInterface.cs" />
+    <Compile Include="DarkSoulsII\Network\NetSvrJobRunner.cs" />
+    <Compile Include="DarkSoulsII\Network\NetSvrMemory.cs" />
+    <Compile Include="DarkSoulsII\Network\NetSvrProperties.cs" />
+    <Compile Include="DarkSoulsII\Network\ServerInfo.cs" />
+    <Compile Include="DarkSoulsII\Character\PlayerData.cs" />
+    <Compile Include="DarkSoulsII\Network\NetPlayerSyncObject.cs" />
+    <Compile Include="DarkSoulsII\Resources\Text\TextLookUpTable.cs" />
+    <Compile Include="DarkSoulsII\Resources\Text\TextLookUpTableCache.cs" />
+    <Compile Include="DarkSoulsII\Resources\Text\TextLookUpTableCacheEntry.cs" />
+    <Compile Include="IPointer.cs" />
+    <Compile Include="DarkSoulsII\Rtti\CharacterCtrlBaseHelper.cs" />
+    <Compile Include="Standard\Matrix4.cs" />
+    <Compile Include="Standard\Quaternion.cs" />
+    <Compile Include="Rtti\IRttiHelper.cs" />
+    <Compile Include="Standard\Templates\StdString.cs" />
+    <Compile Include="IReader.cs" />
+    <Compile Include="IReadable.cs" />
+    <Compile Include="MemoryReader.cs" />
+    <Compile Include="Exceptions\MemoryInaccessibleException.cs" />
+    <Compile Include="NativeMethods.cs" />
+    <Compile Include="Exceptions\ProcessAccessDeniedException.cs" />
+    <Compile Include="Exceptions\ProcessNotFoundException.cs" />
+    <Compile Include="Pointer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Standard\Vector3.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

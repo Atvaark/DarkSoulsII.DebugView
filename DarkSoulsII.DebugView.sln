@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarkSoulsII.DebugView.Core", "DarkSoulsII.DebugView.Core\DarkSoulsII.DebugView.Core.csproj", "{B86932EF-4F6A-4612-A804-336C5C58DA0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarkSoulsII.DebugView.Test", "DarkSoulsII.DebugView.Test\DarkSoulsII.DebugView.Test.csproj", "{A2B4D045-8E55-497D-8A6F-408DDADD0445}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B86932EF-4F6A-4612-A804-336C5C58DA0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B86932EF-4F6A-4612-A804-336C5C58DA0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B86932EF-4F6A-4612-A804-336C5C58DA0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B86932EF-4F6A-4612-A804-336C5C58DA0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2B4D045-8E55-497D-8A6F-408DDADD0445}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2B4D045-8E55-497D-8A6F-408DDADD0445}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2B4D045-8E55-497D-8A6F-408DDADD0445}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2B4D045-8E55-497D-8A6F-408DDADD0445}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
