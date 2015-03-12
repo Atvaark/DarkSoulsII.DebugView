@@ -164,7 +164,12 @@ namespace DarkSoulsII.DebugView.Core
             return encoding.GetString(data);
         }
 
-        public string ReadNullTerminatedString(int address, bool relative, Encoding encoding = null, int charSize = 1)
+        public string ReadNullTerminatedString(int address, bool relative)
+        {
+            return ReadNullTerminatedString(Encoding.ASCII, 1, address, relative);
+        }
+
+        public string ReadNullTerminatedString(Encoding encoding, int charSize, int address, bool relative)
         {
             StringBuilder builder = new StringBuilder();
             char nextChar;
@@ -176,11 +181,21 @@ namespace DarkSoulsII.DebugView.Core
             return builder.ToString();
         }
 
-        public string ReadNullTerminatedStringChunked(int address, bool relative, int lookaheadCharCount = 16,
-            Encoding encoding = null, int charSize = 1)
+        public string ReadNullTerminatedStringChunked(int address, bool relative)
+        {
+            return ReadNullTerminatedStringChunked(Encoding.ASCII, 1, 16, address, relative);
+        }
+
+        public string ReadNullTerminatedStringChunked(int lookaheadCharCount, int address, bool relative)
+        {
+            return ReadNullTerminatedStringChunked(Encoding.ASCII, 1, lookaheadCharCount, address, relative);
+        }
+
+        public string ReadNullTerminatedStringChunked(Encoding encoding, int charSize, int lookaheadCharCount,
+            int address, bool relative)
         {
             if (lookaheadCharCount == 0)
-                return ReadNullTerminatedString(address, relative, encoding, charSize);
+                return ReadNullTerminatedString(encoding, charSize, address, relative);
 
             StringBuilder builder = new StringBuilder();
 

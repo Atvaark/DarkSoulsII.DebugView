@@ -4,14 +4,14 @@
     {
         Unknown0 = 0,
         Warrior,
-        Unknown2,
+        Knight,
         Unknown3,
-        Unknown4,
+        Bandit,
         Unknown5,
-        Unknown6,
-        Unknown7,
-        Unknown8,
-        Unknown9,
-        Unknown10
+        Cleric,
+        Sourcerer,
+        Explorer,
+        Swordman,
+        Deprived
     }
 }

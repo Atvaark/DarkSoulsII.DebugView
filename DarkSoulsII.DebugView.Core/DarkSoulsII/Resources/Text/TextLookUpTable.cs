@@ -27,7 +27,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Resources.Text
             for (int i = 0; i < stringCount; i++)
             {
                 var address1 = address + offsets[i];
-                strings[i] = reader.ReadNullTerminatedStringChunked(address1, relative, 16, Encoding.Unicode, 2);
+                strings[i] = reader.ReadNullTerminatedStringChunked(Encoding.Unicode, 2, 16, address1, relative);
             }
 
             int itemAddress = address + 0x001C;

@@ -40,11 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DarkSoulsII\Character\Gestures\ChrAsmCtrlGesture.cs" />
+    <Compile Include="DarkSoulsII\Character\Gestures\ChrAsmCtrlGestures.cs" />
+    <Compile Include="DarkSoulsII\Character\Gestures\GestureType.cs" />
     <Compile Include="DarkSoulsII\Controllers\MapTextureResolutionCtrl.cs" />
     <Compile Include="DarkSoulsII\Controllers\SignKeyGuideCtrl.cs" />
     <Compile Include="DarkSoulsII\Controllers\SignPreviewCtrl.cs" />
     <Compile Include="DarkSoulsII\Drawing\MdlTexture.cs" />
     <Compile Include="DarkSoulsII\Events\MapObjectBonfire.cs" />
+    <Compile Include="DarkSoulsII\GameData\Items\ItemInventory2BagList.cs" />
+    <Compile Include="DarkSoulsII\GameData\Items\ItemInventory2CofferList.cs" />
+    <Compile Include="DarkSoulsII\GameData\Items\ItemInventory2ListBase.cs" />
+    <Compile Include="DarkSoulsII\GameData\Items\ItemInventory2ShopList.cs" />
+    <Compile Include="DarkSoulsII\GameData\UserItemInventoryData.cs" />
     <Compile Include="DarkSoulsII\GameObjects\GameEntities\SignKeyGuideEntity.cs" />
     <Compile Include="DarkSoulsII\Managers\Ai\AiManager.cs" />
     <Compile Include="DarkSoulsII\Managers\App\AppDecalManager.cs" />
@@ -92,6 +100,7 @@
     <Compile Include="DarkSoulsII\GameData\SaveSlotData.cs" />
     <Compile Include="DarkSoulsII\Controllers\ActiveSignCtrl.cs" />
     <Compile Include="DarkSoulsII\Drawing\MapTexture.cs" />
+    <Compile Include="DarkSoulsII\GameData\ItemInventoryData.cs" />
     <Compile Include="DarkSoulsII\Managers\Sign\ActiveSignManager.cs" />
     <Compile Include="DarkSoulsII\Managers\Sign\SignEventAreaManager.cs" />
     <Compile Include="DarkSoulsII\Managers\Sign\SignManager.cs" />

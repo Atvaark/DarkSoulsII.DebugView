@@ -24,9 +24,12 @@ namespace DarkSoulsII.DebugView.Core
         char ReadChar(int charSize, Encoding encoding, int address, bool relative = false);
         string ReadString(int length, int address, bool relative = false);
         string ReadString(int length, int charSize, Encoding encoding, int address, bool relative = false);
-        string ReadNullTerminatedString(int address, bool relative, Encoding encoding = null, int charSize = 1);
+        string ReadNullTerminatedString(int address, bool relative);
+        string ReadNullTerminatedString(Encoding encoding, int charSize, int address, bool relative);
+        string ReadNullTerminatedStringChunked(int address, bool relative);
+        string ReadNullTerminatedStringChunked(int lookaheadCharCount, int address, bool relative);
 
-        string ReadNullTerminatedStringChunked(int address, bool relative, int lookaheadCharCount = 16,
-            Encoding encoding = null, int charSize = 1);
+        string ReadNullTerminatedStringChunked(Encoding encoding, int charSize, int lookaheadCharCount, int address,
+            bool relative);
     }
 }

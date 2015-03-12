@@ -13,6 +13,8 @@
         public MapObjectBonfire Read(IReader reader, int address, bool relative = false)
         {
             Id = reader.ReadInt16(address + 0x0000, relative);
+
+            // TODO: Split in a boolean Kindled property and an AscentionLevel property
             AscentionLevel = reader.ReadByte(address + 0x0002, relative);
             // 0004 ParamEntry
 

@@ -9,6 +9,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.GameObjects.GameEntities
     {
         public double AngleY { get; set; }
         public Vector3 Position { get; set; }
+        public CharacterVisualState VisualState { get; set; }
         public int Health { get; set; }
         public int HealthMaxHuman { get; set; }
         public int HealthMaxHollow { get; set; }
@@ -18,6 +19,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.GameObjects.GameEntities
         public float PetrificationMax { get; set; }
         public float Poison { get; set; }
         public float PoisonMax { get; set; }
+        public float SpeedFactor { get; set; }
         public ChrAsmCtrl AsmControl { get; set; }
 
         public new CharacterCtrl Read(IReader reader, int address, bool relative = false)
@@ -32,6 +34,8 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.GameObjects.GameEntities
 
             Position = Pointer<Vector3>.Create(address + 0x0070).Unbox(reader);
 
+            VisualState = Pointer<CharacterVisualState>.CreateAndUnbox(reader, address + 0x0090, relative);
+
             Name = Pointer<StdString>.Create(address + 0x00C8).Unbox(reader).Value;
 
             Health = reader.ReadInt32(address + 0x00FC);
@@ -44,7 +48,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.GameObjects.GameEntities
             PetrificationMax = reader.ReadSingle(address + 0x01A8);
             Poison = reader.ReadSingle(address + 0x01AC);
             PoisonMax = reader.ReadSingle(address + 0x01B4);
-
+            SpeedFactor = reader.ReadSingle(address + 0x0208, relative);
 
             AsmControl = Pointer<ChrAsmCtrl>.CreateAndUnbox(reader, address + 0x2D4);
 
