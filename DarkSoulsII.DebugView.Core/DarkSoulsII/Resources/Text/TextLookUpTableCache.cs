@@ -16,7 +16,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Resources.Text
             int offset = 0x00D8;
             for (int i = 0; i < 26; i++, offset += TextLookUpTableCacheEntry.Size)
             {
-                var entry = Pointer<TextLookUpTableCacheEntry>.Create(address + offset).Unbox(reader);
+                var entry = Pointer<TextLookUpTableCacheEntry>.Create(address + offset, relative).Unbox(reader);
                 Entries.Add((TextLookupTableType) i, entry);
             }
             return this;

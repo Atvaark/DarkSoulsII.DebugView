@@ -31,7 +31,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Character
 
             var playerControlPointers =
                 reader.ReadInt32(4, address + 0x0168)
-                    .Select(Pointer<PlayerCtrl>.Create)
+                    .Select(a => Pointer<PlayerCtrl>.Create(a))
                     .Where(pointer => pointer.IsNull == false);
             foreach (var pointer in playerControlPointers)
             {

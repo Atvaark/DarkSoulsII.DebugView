@@ -12,8 +12,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers
         public GameDataManager Read(IReader reader, int address, bool relative = false)
         {
             ItemInventoryData = Pointer<ItemInventoryData>.CreateAndUnbox(reader, address + 0x0008, relative);
-            CharacterSlotData =
-                Pointer<CharacterSlotData>.Create().Read(reader, address + 0x0060, relative).Unbox(reader);
+            CharacterSlotData = Pointer<CharacterSlotData>.CreateAndUnbox(reader, address + 0x0060, relative);
             UserData000 = Pointer<UserData000>.CreateAndUnbox(reader, address + 0x0064, relative);
             SaveSlotData = Pointer<SaveSlotData>.CreateAndUnbox(reader, address + 0x006C, relative);
             return this;

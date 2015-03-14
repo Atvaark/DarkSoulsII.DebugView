@@ -288,6 +288,7 @@
     <Compile Include="DarkSoulsII\Resources\Text\TextLookUpTableCacheEntry.cs" />
     <Compile Include="IPointer.cs" />
     <Compile Include="DarkSoulsII\Rtti\CharacterCtrlBaseHelper.cs" />
+    <Compile Include="PointerFactory.cs" />
     <Compile Include="Standard\Matrix4.cs" />
     <Compile Include="Standard\Quaternion.cs" />
     <Compile Include="Rtti\IRttiHelper.cs" />

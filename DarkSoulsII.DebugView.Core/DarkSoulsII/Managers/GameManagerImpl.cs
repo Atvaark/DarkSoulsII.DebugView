@@ -35,7 +35,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers
         public new GameManagerImpl Read(IReader reader, int address, bool relative = false)
         {
             base.Read(reader, address, relative);
-            
+
             CharacterManager = Pointer<CharacterManager>.CreateAndUnbox(reader, address + 0x0018, relative);
             CameraManager = Pointer<CameraManager>.CreateAndUnbox(reader, address + 0x001C, relative);
             AiManager = Pointer<AiManager>.CreateAndUnbox(reader, address + 0x0020, relative);

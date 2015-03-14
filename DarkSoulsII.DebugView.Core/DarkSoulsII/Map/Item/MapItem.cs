@@ -24,7 +24,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Map.Item
             // TODO: Check if this works with multiple items
             // or Matrix4 at 0x00D0-0x010C
 
-            Position = Pointer<Vector3>.Create(address + 0x0100).Unbox(reader);
+            Position = Pointer<Vector3>.Create(address + 0x0100, relative).Unbox(reader);
             return this;
         }
     }

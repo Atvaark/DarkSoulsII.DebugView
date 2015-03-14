@@ -11,7 +11,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.GameObjects.GameEntities
             base.Read(reader, address, relative);
             // ActionCtrl 0x0370
             // 0x0374
-            Data = Pointer<PlayerData>.Create().Read(reader, address + 0x0378).Unbox(reader);
+            Data = Pointer<PlayerData>.CreateAndUnbox(reader, address + 0x0378, relative);
             // 0x037C
 
             return this;

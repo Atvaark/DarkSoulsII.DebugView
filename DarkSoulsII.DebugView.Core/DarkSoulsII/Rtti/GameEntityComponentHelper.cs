@@ -28,7 +28,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Rtti
             switch (vtable)
             {
                 case 0x00000000:
-                    pointer = Pointer<GameEntityComponent>.Create(address);
+                    pointer = Pointer<GameEntityComponent>.Create(address, relative);
                     break;
                 default:
                     pointer = null;

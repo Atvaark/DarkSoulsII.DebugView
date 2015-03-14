@@ -1,18 +1,11 @@
-﻿using System;
-using DarkSoulsII.DebugView.Core.Exceptions;
+﻿using DarkSoulsII.DebugView.Core.Exceptions;
 
 namespace DarkSoulsII.DebugView.Core
 {
-    // TODO: Add a PointerArray<T> class
     public class Pointer<T> : IReadable<Pointer<T>>, IPointer<T> where T : class, IReadable<T>, new()
     {
         public Pointer()
         {
-        }
-
-        private Pointer(int address)
-        {
-            Address = address;
         }
 
         private Pointer(int address, bool relative)
@@ -31,7 +24,7 @@ namespace DarkSoulsII.DebugView.Core
 
         public T Unbox(IReader reader)
         {
-            if (Address == 0)
+            if (IsNull)
                 return null;
             T obj = new T();
             return obj.Read(reader, Address, Relative);
@@ -61,58 +54,26 @@ namespace DarkSoulsII.DebugView.Core
             return this;
         }
 
-        public static Pointer<T> Create()
-        {
-            return new Pointer<T>();
-        }
-
-        public static Pointer<T> Create(int address)
-        {
-            return new Pointer<T>(address);
-        }
-
-        public static Pointer<T> Create(int address, bool relative)
+        public static Pointer<T> Create(int address, bool relative = false)
         {
             return new Pointer<T>(address, relative);
         }
 
-        public static Pointer<T> Create(IReader reader, int address, bool relative = false)
-        {
-            return new Pointer<T>(address).Read(reader, address, relative);
-        }
-
         public static T CreateAndUnbox(IReader reader, int address, bool relative = false)
         {
-            Pointer<T> pointer = Create();
+            Pointer<T> pointer = new Pointer<T>();
             pointer.Read(reader, address, relative);
             return pointer.Unbox(reader);
         }
+
         public static T CreateAndTryUnbox(IReader reader, int address, bool relative = false)
         {
-            Pointer<T> pointer = Create();
+            Pointer<T> pointer = new Pointer<T>();
             pointer.Read(reader, address, relative);
             return pointer.TryUnbox(reader);
         }
 
-        public static T CreateAndUnbox(IReader reader, int address, bool relative,
-            Action<T, IReader, int, bool> readAction)
-        {
-            if (readAction == null) throw new ArgumentNullException("readAction");
-            Pointer<T> pointer = Create();
-            pointer.Read(reader, address, relative);
-            return pointer.Unbox(reader, readAction);
-        }
-
-        public T Unbox(IReader reader, Action<T, IReader, int, bool> readAction)
-        {
-            if (Address == 0)
-                return null;
-            T obj = new T().Read(reader, Address);
-            readAction(obj, reader, Address, Relative);
-            return obj;
-        }
-
-        protected bool Equals(Pointer<T> other)
+        private bool Equals(Pointer<T> other)
         {
             return Address == other.Address;
         }

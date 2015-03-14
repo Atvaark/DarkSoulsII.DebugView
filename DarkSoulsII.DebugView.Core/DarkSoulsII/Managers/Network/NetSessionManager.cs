@@ -9,8 +9,8 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Network
 
         public NetSessionManager Read(IReader reader, int address, bool relative = false)
         {
-            ServerInfo = Pointer<ServerInfo>.Create(address + 0x002C).Unbox(reader);
-            LatencyManager = Pointer<NetLatencyManager>.CreateAndUnbox(reader, address + 0x005C);
+            ServerInfo = Pointer<ServerInfo>.Create(address + 0x002C, relative).Unbox(reader);
+            LatencyManager = Pointer<NetLatencyManager>.CreateAndUnbox(reader, address + 0x005C, relative);
             return this;
         }
     }

@@ -16,7 +16,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Network
         {
             for (int i = 0; i < 3; i++)
             {
-                var slot = Pointer<NetSummonSlot>.Create(address + 0x0108 + i*0xB0).Unbox(reader);
+                var slot = Pointer<NetSummonSlot>.Create(address + 0x0108 + i*0xB0, relative).Unbox(reader);
                 Slots.Add(slot);
             }
             return this;

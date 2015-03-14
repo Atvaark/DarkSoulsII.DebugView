@@ -45,15 +45,16 @@ namespace DarkSoulsII.DebugView.Test
                     ingameTicksPerSecond = currentIngameTick;
                     startIngameTick = currentTotalIngameTick;
                 }
-                
+
                 var gameManagerImpl = gameManagerImplPointer.Unbox(reader);
                 var networkManager = networkManagerPointer.Unbox(reader);
                 var katanaMainApp = katanaMainAppPointer.Unbox(reader);
-                
+
                 currentTotalIngameTick = gameManagerImpl.Tick;
                 Console.WriteLine("State     | Samples/s|    Sample|   Tick/s|       Tick");
                 Console.WriteLine("------------------------------------------------------");
-                Console.WriteLine("{0, -10}|{1, 10}|{2, 10}|{3, 10}|{4, 10}", gameManagerImpl.ManagerState, samplesPerSecond, currentSamples, ingameTicksPerSecond, currentIngameTick);
+                Console.WriteLine("{0, -10}|{1, 10}|{2, 10}|{3, 10}|{4, 10}", gameManagerImpl.ManagerState,
+                    samplesPerSecond, currentSamples, ingameTicksPerSecond, currentIngameTick);
                 Console.WriteLine("");
 
                 var playerCtrl = gameManagerImpl.PlayerControl;

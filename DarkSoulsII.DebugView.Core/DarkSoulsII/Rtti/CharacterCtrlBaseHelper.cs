@@ -36,16 +36,16 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Rtti
             switch (vtable)
             {
                 case 0x012D2054:
-                    pointer = Pointer<PlayerCtrl>.Create(address);
+                    pointer = Pointer<PlayerCtrl>.Create(address, relative);
                     break;
                 case 0x012CE454:
-                    pointer = Pointer<CharacterCtrl>.Create(address);
+                    pointer = Pointer<CharacterCtrl>.Create(address, relative);
                     break;
                 case 0x012CEB44:
-                    pointer = Pointer<DemoCharacterCtrl>.Create(address);
+                    pointer = Pointer<DemoCharacterCtrl>.Create(address, relative);
                     break;
                 case 0x012CE5EC:
-                    pointer = Pointer<CharacterCtrlBase>.Create(address);
+                    pointer = Pointer<CharacterCtrlBase>.Create(address, relative);
                     break;
                 default:
                     pointer = null;

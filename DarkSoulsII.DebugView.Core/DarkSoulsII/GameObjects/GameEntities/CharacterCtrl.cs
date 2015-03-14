@@ -32,25 +32,25 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.GameObjects.GameEntities
             var angleY = Math.Acos(cosineY)*180.0/Math.PI;
             AngleY = (angleYFlag & 0x80000000) > 0 ? 360 - angleY : angleY;
 
-            Position = Pointer<Vector3>.Create(address + 0x0070).Unbox(reader);
+            Position = Pointer<Vector3>.Create(address + 0x0070, relative).Unbox(reader);
 
             VisualState = Pointer<CharacterVisualState>.CreateAndUnbox(reader, address + 0x0090, relative);
 
-            Name = Pointer<StdString>.Create(address + 0x00C8).Unbox(reader).Value;
+            Name = Pointer<StdString>.Create(address + 0x00C8, relative).Unbox(reader).Value;
 
-            Health = reader.ReadInt32(address + 0x00FC);
-            HealthMaxHuman = reader.ReadInt32(address + 0x0104);
-            HealthMaxHollow = reader.ReadInt32(address + 0x0108);
-            Stamina = reader.ReadSingle(address + 0x0140);
-            StaminaMax = reader.ReadSingle(address + 0x0148);
+            Health = reader.ReadInt32(address + 0x00FC, relative);
+            HealthMaxHuman = reader.ReadInt32(address + 0x0104, relative);
+            HealthMaxHollow = reader.ReadInt32(address + 0x0108, relative);
+            Stamina = reader.ReadSingle(address + 0x0140, relative);
+            StaminaMax = reader.ReadSingle(address + 0x0148, relative);
 
-            Petrification = reader.ReadSingle(address + 0x014A);
-            PetrificationMax = reader.ReadSingle(address + 0x01A8);
-            Poison = reader.ReadSingle(address + 0x01AC);
-            PoisonMax = reader.ReadSingle(address + 0x01B4);
+            Petrification = reader.ReadSingle(address + 0x014A, relative);
+            PetrificationMax = reader.ReadSingle(address + 0x01A8, relative);
+            Poison = reader.ReadSingle(address + 0x01AC, relative);
+            PoisonMax = reader.ReadSingle(address + 0x01B4, relative);
             SpeedFactor = reader.ReadSingle(address + 0x0208, relative);
 
-            AsmControl = Pointer<ChrAsmCtrl>.CreateAndUnbox(reader, address + 0x2D4);
+            AsmControl = Pointer<ChrAsmCtrl>.CreateAndUnbox(reader, address + 0x2D4, relative);
 
             return this;
         }
