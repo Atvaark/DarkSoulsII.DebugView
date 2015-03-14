@@ -10,17 +10,17 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Controllers
         public SignKeyGuideEntity SignKeyGuideEntity { get; set; }
         public SignKeyGuideCtrl SignKeyGuideCtrl { get; set; }
 
-        public ActiveSignCtrl Read(IReader reader, int address, bool relative = false)
+        public ActiveSignCtrl Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             int coordinateType = reader.ReadInt32(address + 0x0004, relative);
             // coordinateType = 0 => 000C points to another ActiveSignCtrl
             Position = coordinateType == 3
-                ? Pointer<Vector3>.Create(address + 0x0008, relative).Unbox(reader)
+                ? pointerFactory.Create<Vector3>(address + 0x0008, relative, true).Unbox(pointerFactory, reader)
                 : new Vector3();
             // GlowEffect 001C 
 
-            SignKeyGuideEntity = Pointer<SignKeyGuideEntity>.CreateAndUnbox(reader, address + 0x0034, relative);
-            SignKeyGuideCtrl = Pointer<SignKeyGuideCtrl>.CreateAndUnbox(reader, address + 0x0038, relative);
+            SignKeyGuideEntity = pointerFactory.Create<SignKeyGuideEntity>(address + 0x0034, relative).Unbox(pointerFactory, reader);
+            SignKeyGuideCtrl = pointerFactory.Create<SignKeyGuideCtrl>(address + 0x0038, relative).Unbox(pointerFactory, reader);
 
             return this;
         }

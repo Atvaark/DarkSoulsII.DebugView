@@ -54,7 +54,7 @@
             M44 = m44;
         }
 
-        public Matrix4 Read(IReader reader, int address, bool relative = false)
+        public Matrix4 Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             float[] data = reader.ReadSingle(16, address, relative);
 

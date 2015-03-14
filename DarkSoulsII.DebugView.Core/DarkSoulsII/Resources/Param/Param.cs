@@ -4,7 +4,7 @@
     {
         public string Name { get; set; }
 
-        public Param Read(IReader reader, int address, bool relative = false)
+        public Param Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             // TODO: Implement generic param structure reading
             return this;

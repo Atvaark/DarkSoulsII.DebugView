@@ -24,6 +24,7 @@ namespace DarkSoulsII.DebugView.Core
 
         public static GenericPointer Create(IReader reader, int address, bool relative)
         {
+            // TODO: Add a method to create a GenericPointer to the IPointerFactory interface.
             var pointer = new GenericPointer {Address = reader.ReadInt32(address, relative)};
             return pointer;
         }

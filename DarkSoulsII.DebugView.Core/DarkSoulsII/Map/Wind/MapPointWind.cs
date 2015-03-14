@@ -7,10 +7,10 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Map.Wind
         public Vector3 Position { get; set; }
         public float AliveTime { get; set; }
 
-        public new MapPointWind Read(IReader reader, int address, bool relative = false)
+        public new MapPointWind Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
-            base.Read(reader, address, relative);
-            Position = Pointer<Vector3>.Create(address + 0x0020, relative).Unbox(reader);
+            base.Read(pointerFactory, reader, address, relative);
+            Position = pointerFactory.Create<Vector3>(address + 0x0020, relative, true).Unbox(pointerFactory, reader);
             AliveTime = reader.ReadSingle(address + 0x0034, relative);
             return this;
         }

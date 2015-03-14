@@ -12,7 +12,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Map.Item
         public int Amount { get; set; }
         public Vector3 Position { get; set; }
 
-        public MapItem Read(IReader reader, int address, bool relative = false)
+        public MapItem Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             short containerIdLow = reader.ReadInt16(address + 0x0008, relative);
             Unknown1 = containerIdLow;
@@ -24,7 +24,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Map.Item
             // TODO: Check if this works with multiple items
             // or Matrix4 at 0x00D0-0x010C
 
-            Position = Pointer<Vector3>.Create(address + 0x0100, relative).Unbox(reader);
+            Position = pointerFactory.Create<Vector3>(address + 0x0100, relative, true).Unbox(pointerFactory, reader);
             return this;
         }
     }

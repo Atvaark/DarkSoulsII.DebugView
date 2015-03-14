@@ -2,7 +2,7 @@
 {
     public class NetSvrPlayerManager : IReadable<NetSvrPlayerManager>
     {
-        public NetSvrPlayerManager Read(IReader reader, int address, bool relative = false)
+        public NetSvrPlayerManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             return this;
         }

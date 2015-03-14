@@ -2,7 +2,7 @@
 {
     public class MapModelWindReactor : IReadable<MapModelWindReactor>
     {
-        public MapModelWindReactor Read(IReader reader, int address, bool relative = false)
+        public MapModelWindReactor Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             return this;
         }

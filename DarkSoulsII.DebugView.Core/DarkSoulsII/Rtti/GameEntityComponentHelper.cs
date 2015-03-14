@@ -6,7 +6,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Rtti
 {
     public class GameEntityComponentHelper : IRttiResolver<GameEntityComponent>
     {
-        public IPointer<GameEntityComponent> ResolvePointer(IReader reader, int address, bool relative = false)
+        public IPointer<GameEntityComponent> ResolvePointer(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             // TODO: Create an abstract RttiResolver with a template method
 
@@ -28,7 +28,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Rtti
             switch (vtable)
             {
                 case 0x00000000:
-                    pointer = Pointer<GameEntityComponent>.Create(address, relative);
+                    pointer = pointerFactory.Create<GameEntityComponent>(address, relative, true);
                     break;
                 default:
                     pointer = null;

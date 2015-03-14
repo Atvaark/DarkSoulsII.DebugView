@@ -6,9 +6,9 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Map
     {
         public MapTextureResolutionCtrl TextureResolutionCtrl { get; set; }
 
-        public MapTextureResolutionManager Read(IReader reader, int address, bool relative = false)
+        public MapTextureResolutionManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
-            TextureResolutionCtrl = Pointer<MapTextureResolutionCtrl>.CreateAndUnbox(reader, address + 0x0004, relative);
+            TextureResolutionCtrl = pointerFactory.Create<MapTextureResolutionCtrl>(address + 0x0004, relative).Unbox(pointerFactory, reader);
             return this;
         }
     }

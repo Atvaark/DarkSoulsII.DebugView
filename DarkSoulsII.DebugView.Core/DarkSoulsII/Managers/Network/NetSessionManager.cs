@@ -7,10 +7,10 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Network
         public ServerInfo ServerInfo { get; set; }
         public NetLatencyManager LatencyManager { get; set; }
 
-        public NetSessionManager Read(IReader reader, int address, bool relative = false)
+        public NetSessionManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
-            ServerInfo = Pointer<ServerInfo>.Create(address + 0x002C, relative).Unbox(reader);
-            LatencyManager = Pointer<NetLatencyManager>.CreateAndUnbox(reader, address + 0x005C, relative);
+            ServerInfo = pointerFactory.Create<ServerInfo>(address + 0x002C, relative, true).Unbox(pointerFactory, reader);
+            LatencyManager = pointerFactory.Create<NetLatencyManager>(address + 0x005C, relative).Unbox(pointerFactory, reader);
             return this;
         }
     }

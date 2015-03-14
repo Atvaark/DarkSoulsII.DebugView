@@ -13,7 +13,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Sign
         public bool Initialized { get; set; }
         public List<ActiveSignCtrl> ActiveSigns { get; set; }
 
-        public ActiveSignManager Read(IReader reader, int address, bool relative = false)
+        public ActiveSignManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             Initialized = reader.ReadBoolean(address + 0x0008, relative);
             int activeSignCount = reader.ReadInt32(address + 0x000C, relative);
@@ -25,7 +25,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Sign
                     int activeSignAddress = a;
                     for (int i = 0; i < activeSignCount; i++, activeSignAddress += ActiveSignCtrl.Size)
                     {
-                        activeSigns.Add(Pointer<ActiveSignCtrl>.Create(activeSignAddress, relative).Unbox(reader));
+                        activeSigns.Add(pointerFactory.Create<ActiveSignCtrl>(activeSignAddress, relative, true).Unbox(pointerFactory, reader));
                     }
                     return activeSigns;
                 });

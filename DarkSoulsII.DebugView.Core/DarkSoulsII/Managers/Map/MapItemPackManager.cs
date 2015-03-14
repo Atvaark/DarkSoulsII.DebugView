@@ -6,9 +6,9 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Map
     {
         public MapItemPackTable ItemPackTable { get; set; }
 
-        public MapItemPackManager Read(IReader reader, int address, bool relative = false)
+        public MapItemPackManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
-            ItemPackTable = Pointer<MapItemPackTable>.CreateAndUnbox(reader, address + 0x0004, relative);
+            ItemPackTable = pointerFactory.Create<MapItemPackTable>(address + 0x0004, relative).Unbox(pointerFactory, reader);
             return this;
         }
     }

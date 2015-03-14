@@ -33,10 +33,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Resources.Param.Containers
         public ParamFileResourceObjectForRegulation<ArmorReinforceParam> ArmorReinforceParam { get; set; }
         public ParamFileResourceObjectForRegulation<ArmorHandsUpFParam> ArmorHandsUpFParam { get; set; }
         public ParamFileResourceObjectForRegulation<EquipmentInterfereParam> EquipmentInterfereParam { get; set; }
-
-        public ParamFileResourceObjectForRegulation<EquipmentCullingTargetParam> EquipmentCullingTargetParam { get; set;
-        }
-
+        public ParamFileResourceObjectForRegulation<EquipmentCullingTargetParam> EquipmentCullingTargetParam { get; set;}
         public ParamFileResourceObjectForRegulation<CustomAttrSpecParam> CustomAttrSpecParam { get; set; }
         public ParamFileResourceObjectForRegulation<CustomAttrCostParam> CustomAttrCostParam { get; set; }
         public ParamFileResourceObjectForRegulation<ReinforceCostParam> ReinforceCostParam { get; set; }
@@ -90,207 +87,91 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Resources.Param.Containers
         public ParamFileResourceObjectForRegulation<ChrMultiplayParam> ChrMultiplayParam { get; set; }
         public ParamFileResourceObjectForRegulation<FootEffectWaterSfxParam> FootEffectWaterSfxParam { get; set; }
 
-        public CharacterParamContainer Read(IReader reader, int address, bool relative = false)
+        public CharacterParamContainer Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
-            ChrParam1 = Pointer<ParamFileResourceObjectForRegulation<ChrParam>>.CreateAndUnbox(reader, address + 0x000,
-                relative);
-            ChrCommonParam1 = Pointer<ParamFileResourceObjectForRegulation<ChrCommonParam>>.CreateAndUnbox(reader,
-                address + 0x008, relative);
-            ChrMoveParam1 = Pointer<ParamFileResourceObjectForRegulation<ChrMoveParam>>.CreateAndUnbox(reader,
-                address + 0x0010, relative);
-            ChrEquipWeaponParam1 =
-                Pointer<ParamFileResourceObjectForRegulation<ChrEquipWeaponParam>>.CreateAndUnbox(reader,
-                    address + 0x0018, relative);
-            ChrParam2 = Pointer<ParamFileResourceObjectForRegulation<ChrParam>>.CreateAndUnbox(reader, address + 0x0020,
-                relative);
-            ChrCommonParam2 = Pointer<ParamFileResourceObjectForRegulation<ChrCommonParam>>.CreateAndUnbox(reader,
-                address + 0x0028, relative);
-            ChrMoveParam2 = Pointer<ParamFileResourceObjectForRegulation<ChrMoveParam>>.CreateAndUnbox(reader,
-                address + 0x0030, relative);
-            ChrEquipWeaponParam2 =
-                Pointer<ParamFileResourceObjectForRegulation<ChrEquipWeaponParam>>.CreateAndUnbox(reader,
-                    address + 0x0038, relative);
-            PlayerCommonParam = Pointer<ParamFileResourceObjectForRegulation<PlayerCommonParam>>.CreateAndUnbox(reader,
-                address + 0x0040, relative);
-            BehaviorParam1 = Pointer<ParamFileResourceObjectForRegulation<BehaviorParam>>.CreateAndUnbox(reader,
-                address + 0x0048, relative);
-            BehaviorParam2 = Pointer<ParamFileResourceObjectForRegulation<BehaviorParam>>.CreateAndUnbox(reader,
-                address + 0x0050, relative);
-            BehaviorParam3 = Pointer<ParamFileResourceObjectForRegulation<BehaviorParam>>.CreateAndUnbox(reader,
-                address + 0x0058, relative);
-            ComboBehaviorParam = Pointer<ParamFileResourceObjectForRegulation<ComboBehaviorParam>>.CreateAndUnbox(
-                reader, address + 0x0060, relative);
-            ChrColorParam = Pointer<ParamFileResourceObjectForRegulation<ChrColorParam>>.CreateAndUnbox(reader,
-                address + 0x0068, relative);
-            ChrCullingParam = Pointer<ParamFileResourceObjectForRegulation<ChrCullingParam>>.CreateAndUnbox(reader,
-                address + 0x0070, relative);
-            ChrEquipLoadParam = Pointer<ParamFileResourceObjectForRegulation<ChrEquipLoadParam>>.CreateAndUnbox(reader,
-                address + 0x0078, relative);
-            FallingParam = Pointer<ParamFileResourceObjectForRegulation<FallingParam>>.CreateAndUnbox(reader,
-                address + 0x0080, relative);
-            WeaponParam = Pointer<ParamFileResourceObjectForRegulation<WeaponParam>>.CreateAndUnbox(reader,
-                address + 0x0088, relative);
-            WeaponActionCategoryParam =
-                Pointer<ParamFileResourceObjectForRegulation<WeaponActionCategoryParam>>.CreateAndUnbox(reader,
-                    address + 0x0090, relative);
-            WeaponAttackMotionParam =
-                Pointer<ParamFileResourceObjectForRegulation<WeaponAttackMotionParam>>.CreateAndUnbox(reader,
-                    address + 0x0098, relative);
-            WeaponTypeParam = Pointer<ParamFileResourceObjectForRegulation<WeaponTypeParam>>.CreateAndUnbox(reader,
-                address + 0x00A0, relative);
-            WeaponStaminaCostParam =
-                Pointer<ParamFileResourceObjectForRegulation<WeaponStaminaCostParam>>.CreateAndUnbox(reader,
-                    address + 0x00A8, relative);
-            WeaponReinforceParam =
-                Pointer<ParamFileResourceObjectForRegulation<WeaponReinforceParam>>.CreateAndUnbox(reader,
-                    address + 0x00B0, relative);
-            WeaponStatsAffectParam =
-                Pointer<ParamFileResourceObjectForRegulation<WeaponStatsAffectParam>>.CreateAndUnbox(reader,
-                    address + 0x00B8, relative);
-            DualWieldPermissionParam =
-                Pointer<ParamFileResourceObjectForRegulation<DualWieldPermissionParam>>.CreateAndUnbox(reader,
-                    address + 0x00C0, relative);
-            ArmorParam = Pointer<ParamFileResourceObjectForRegulation<ArmorParam>>.CreateAndUnbox(reader,
-                address + 0x00C8, relative);
-            ArmorReinforceParam =
-                Pointer<ParamFileResourceObjectForRegulation<ArmorReinforceParam>>.CreateAndUnbox(reader,
-                    address + 0x00D0, relative);
-            ArmorHandsUpFParam = Pointer<ParamFileResourceObjectForRegulation<ArmorHandsUpFParam>>.CreateAndUnbox(
-                reader, address + 0x00D8, relative);
-            EquipmentInterfereParam =
-                Pointer<ParamFileResourceObjectForRegulation<EquipmentInterfereParam>>.CreateAndUnbox(reader,
-                    address + 0x00E0, relative);
-            EquipmentCullingTargetParam =
-                Pointer<ParamFileResourceObjectForRegulation<EquipmentCullingTargetParam>>.CreateAndUnbox(reader,
-                    address + 0x00E8, relative);
-            CustomAttrSpecParam =
-                Pointer<ParamFileResourceObjectForRegulation<CustomAttrSpecParam>>.CreateAndUnbox(reader,
-                    address + 0x00F0, relative);
-            CustomAttrCostParam =
-                Pointer<ParamFileResourceObjectForRegulation<CustomAttrCostParam>>.CreateAndUnbox(reader,
-                    address + 0x00F8, relative);
-            ReinforceCostParam = Pointer<ParamFileResourceObjectForRegulation<ReinforceCostParam>>.CreateAndUnbox(
-                reader, address + 0x00100, relative);
-            ArrowParam = Pointer<ParamFileResourceObjectForRegulation<ArrowParam>>.CreateAndUnbox(reader,
-                address + 0x00108, relative);
-            RingParam = Pointer<ParamFileResourceObjectForRegulation<RingParam>>.CreateAndUnbox(reader,
-                address + 0x00110, relative);
-            SpellParam = Pointer<ParamFileResourceObjectForRegulation<SpellParam>>.CreateAndUnbox(reader,
-                address + 0x00118, relative);
-            SpellSoulConsumeParam =
-                Pointer<ParamFileResourceObjectForRegulation<SpellSoulConsumeParam>>.CreateAndUnbox(reader,
-                    address + 0x00120, relative);
-            FootEffectSfxParam = Pointer<ParamFileResourceObjectForRegulation<FootEffectSfxParam>>.CreateAndUnbox(
-                reader, address + 0x00128, relative);
-            ChrGrowthParam = Pointer<ParamFileResourceObjectForRegulation<ChrGrowthParam>>.CreateAndUnbox(reader,
-                address + 0x00130, relative);
-            ChrLevelUpSoulsParam =
-                Pointer<ParamFileResourceObjectForRegulation<ChrLevelUpSoulsParam>>.CreateAndUnbox(reader,
-                    address + 0x00138, relative);
-            RelatePhysStatToLevelStat =
-                Pointer<ParamFileResourceObjectForRegulation<RelatePhysStatToLevelStat>>.CreateAndUnbox(reader,
-                    address + 0x00140, relative);
-            PhysStatsPerLevelStatParam =
-                Pointer<ParamFileResourceObjectForRegulation<PhysStatsPerLevelStatParam>>.CreateAndUnbox(reader,
-                    address + 0x00148, relative);
-            MenuStatsParam = Pointer<ParamFileResourceObjectForRegulation<MenuStatsParam>>.CreateAndUnbox(reader,
-                address + 0x00150, relative);
-            HollowLevelStatsParam =
-                Pointer<ParamFileResourceObjectForRegulation<HollowLevelStatsParam>>.CreateAndUnbox(reader,
-                    address + 0x00158, relative);
-            LackOfStatsParam = Pointer<ParamFileResourceObjectForRegulation<LackOfStatsParam>>.CreateAndUnbox(reader,
-                address + 0x00160, relative);
-            NpcGenerateParam = Pointer<ParamFileResourceObjectForRegulation<NpcGenerateParam>>.CreateAndUnbox(reader,
-                address + 0x00168, relative);
-            ChrEditParamBodyPreset =
-                Pointer<ParamFileResourceObjectForRegulation<ChrEditParamBodyPreset>>.CreateAndUnbox(reader,
-                    address + 0x00170, relative);
-            MaterialParam = Pointer<ParamFileResourceObjectForRegulation<MaterialParam>>.CreateAndUnbox(reader,
-                address + 0x00178, relative);
-            GroundMaterialParam =
-                Pointer<ParamFileResourceObjectForRegulation<GroundMaterialParam>>.CreateAndUnbox(reader,
-                    address + 0x00180, relative);
-            LockOnParam = Pointer<ParamFileResourceObjectForRegulation<LockOnParam>>.CreateAndUnbox(reader,
-                address + 0x00188, relative);
-            LockTargetParam = Pointer<ParamFileResourceObjectForRegulation<LockTargetParam>>.CreateAndUnbox(reader,
-                address + 0x00190, relative);
-            LockOnCameraOffsetParam =
-                Pointer<ParamFileResourceObjectForRegulation<LockOnCameraOffsetParam>>.CreateAndUnbox(reader,
-                    address + 0x00198, relative);
-            GuardLevelMotionParam =
-                Pointer<ParamFileResourceObjectForRegulation<GuardLevelMotionParam>>.CreateAndUnbox(reader,
-                    address + 0x001A0, relative);
-            BossParam = Pointer<ParamFileResourceObjectForRegulation<BossParam>>.CreateAndUnbox(reader,
-                address + 0x001A8, relative);
-            BossPartsParam = Pointer<ParamFileResourceObjectForRegulation<BossPartsParam>>.CreateAndUnbox(reader,
-                address + 0x001B0, relative);
-            BossPartsModelParam =
-                Pointer<ParamFileResourceObjectForRegulation<BossPartsModelParam>>.CreateAndUnbox(reader,
-                    address + 0x001B8, relative);
-            BossEnemyGenerateParam =
-                Pointer<ParamFileResourceObjectForRegulation<BossEnemyGenerateParam>>.CreateAndUnbox(reader,
-                    address + 0x001C0, relative);
-            GrabParam = Pointer<ParamFileResourceObjectForRegulation<GrabParam>>.CreateAndUnbox(reader,
-                address + 0x001C8, relative);
-            DeadTypeParam = Pointer<ParamFileResourceObjectForRegulation<DeadTypeParam>>.CreateAndUnbox(reader,
-                address + 0x001D0, relative);
-            TorchCtrlParam = Pointer<ParamFileResourceObjectForRegulation<TorchCtrlParam>>.CreateAndUnbox(reader,
-                address + 0x001D8, relative);
-            TorchOffCtrlParam = Pointer<ParamFileResourceObjectForRegulation<TorchOffCtrlParam>>.CreateAndUnbox(reader,
-                address + 0x001E0, relative);
-            ChrWetParam = Pointer<ParamFileResourceObjectForRegulation<ChrWetParam>>.CreateAndUnbox(reader,
-                address + 0x001E8, relative);
-            HitBackMatrixParam = Pointer<ParamFileResourceObjectForRegulation<HitBackMatrixParam>>.CreateAndUnbox(
-                reader, address + 0x001F0, relative);
-            HitBackParam = Pointer<ParamFileResourceObjectForRegulation<HitBackParam>>.CreateAndUnbox(reader,
-                address + 0x001F8, relative);
-            ChrFullbodySfxParam =
-                Pointer<ParamFileResourceObjectForRegulation<ChrFullbodySfxParam>>.CreateAndUnbox(reader,
-                    address + 0x00200, relative);
-            EnemyAttackMoveParam =
-                Pointer<ParamFileResourceObjectForRegulation<EnemyAttackMoveParam>>.CreateAndUnbox(reader,
-                    address + 0x00208, relative);
-            PlayerStatusNormal = Pointer<ParamFileResourceObjectForRegulation<PlayerStatusNormal>>.CreateAndUnbox(
-                reader, address + 0x00210, relative);
-            PlayerStatusItemParam =
-                Pointer<ParamFileResourceObjectForRegulation<PlayerStatusItemParam>>.CreateAndUnbox(reader,
-                    address + 0x00218, relative);
-            NpcPlayerStatusParam =
-                Pointer<ParamFileResourceObjectForRegulation<NpcPlayerStatusParam>>.CreateAndUnbox(reader,
-                    address + 0x00220, relative);
-            NpcPlayerSkinParam = Pointer<ParamFileResourceObjectForRegulation<NpcPlayerSkinParam>>.CreateAndUnbox(
-                reader, address + 0x00228, relative);
-            CriminalAndDeceasedParam =
-                Pointer<ParamFileResourceObjectForRegulation<CriminalAndDeceasedParam>>.CreateAndUnbox(reader,
-                    address + 0x00230, relative);
-            ChrPointWindParam = Pointer<ParamFileResourceObjectForRegulation<ChrPointWindParam>>.CreateAndUnbox(reader,
-                address + 0x00238, relative);
-            PlayerLightParam = Pointer<ParamFileResourceObjectForRegulation<PlayerLightParam>>.CreateAndUnbox(reader,
-                address + 0x00240, relative);
-            VowParam = Pointer<ParamFileResourceObjectForRegulation<VowParam>>.CreateAndUnbox(reader, address + 0x00248,
-                relative);
-            ChrNetworkPhantomParam =
-                Pointer<ParamFileResourceObjectForRegulation<ChrNetworkPhantomParam>>.CreateAndUnbox(reader,
-                    address + 0x00250, relative);
-            ChrNetPhantomSoulRateParam =
-                Pointer<ParamFileResourceObjectForRegulation<ChrNetPhantomSoulRateParam>>.CreateAndUnbox(reader,
-                    address + 0x00258, relative);
-            ChrModelParam = Pointer<ParamFileResourceObjectForRegulation<ChrModelParam>>.CreateAndUnbox(reader,
-                address + 0x00260, relative);
-            EnemyShotSfxParam = Pointer<ParamFileResourceObjectForRegulation<EnemyShotSfxParam>>.CreateAndUnbox(reader,
-                address + 0x00268, relative);
-            ChrRoundDamageParam =
-                Pointer<ParamFileResourceObjectForRegulation<ChrRoundDamageParam>>.CreateAndUnbox(reader,
-                    address + 0x00270, relative);
-            ChrRoundDropSoulParam =
-                Pointer<ParamFileResourceObjectForRegulation<ChrRoundDropSoulParam>>.CreateAndUnbox(reader,
-                    address + 0x00278, relative);
-            ChrMultiplayParam = Pointer<ParamFileResourceObjectForRegulation<ChrMultiplayParam>>.CreateAndUnbox(reader,
-                address + 0x00280, relative);
-            FootEffectWaterSfxParam =
-                Pointer<ParamFileResourceObjectForRegulation<FootEffectWaterSfxParam>>.CreateAndUnbox(reader,
-                    address + 0x00288, relative);
-
+            // TODO: Refactor
+            ChrParam1 = pointerFactory.Create<ParamFileResourceObjectForRegulation<ChrParam>>(address + 0x0000, relative).Unbox(pointerFactory, reader);
+            ChrCommonParam1 = pointerFactory.Create<ParamFileResourceObjectForRegulation<ChrCommonParam>>(address + 0x0008, relative).Unbox(pointerFactory, reader);
+            ChrMoveParam1 = pointerFactory.Create<ParamFileResourceObjectForRegulation<ChrMoveParam>>(address + 0x0010, relative).Unbox(pointerFactory, reader);
+            ChrEquipWeaponParam1 = pointerFactory.Create<ParamFileResourceObjectForRegulation<ChrEquipWeaponParam>>(address + 0x0018, relative).Unbox(pointerFactory, reader);
+            ChrParam2 = pointerFactory.Create<ParamFileResourceObjectForRegulation<ChrParam>>(address + 0x0020, relative).Unbox(pointerFactory, reader);
+            ChrCommonParam2 = pointerFactory.Create<ParamFileResourceObjectForRegulation<ChrCommonParam>>(address + 0x0028, relative).Unbox(pointerFactory, reader);
+            ChrMoveParam2 = pointerFactory.Create<ParamFileResourceObjectForRegulation<ChrMoveParam>>(address + 0x0030, relative).Unbox(pointerFactory, reader);
+            ChrEquipWeaponParam2 = pointerFactory.Create<ParamFileResourceObjectForRegulation<ChrEquipWeaponParam>>(address + 0x0038, relative).Unbox(pointerFactory, reader);
+            PlayerCommonParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<PlayerCommonParam>>(address + 0x0040, relative).Unbox(pointerFactory, reader);
+            BehaviorParam1 = pointerFactory.Create<ParamFileResourceObjectForRegulation<BehaviorParam>>(address + 0x0048, relative).Unbox(pointerFactory, reader);
+            BehaviorParam2 = pointerFactory.Create<ParamFileResourceObjectForRegulation<BehaviorParam>>(address + 0x0050, relative).Unbox(pointerFactory, reader);
+            BehaviorParam3 = pointerFactory.Create<ParamFileResourceObjectForRegulation<BehaviorParam>>(address + 0x0058, relative).Unbox(pointerFactory, reader);
+            ComboBehaviorParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<ComboBehaviorParam>>(address + 0x0060, relative).Unbox(pointerFactory, reader);
+            ChrColorParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<ChrColorParam>>(address + 0x0068, relative).Unbox(pointerFactory, reader);
+            ChrCullingParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<ChrCullingParam>>(address + 0x0070, relative).Unbox(pointerFactory, reader);
+            ChrEquipLoadParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<ChrEquipLoadParam>>(address + 0x0078, relative).Unbox(pointerFactory, reader);
+            FallingParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<FallingParam>>(address + 0x0080, relative).Unbox(pointerFactory, reader);
+            WeaponParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<WeaponParam>>(address + 0x0088, relative).Unbox(pointerFactory, reader);
+            WeaponActionCategoryParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<WeaponActionCategoryParam>>(address + 0x0090, relative).Unbox(pointerFactory, reader);
+            WeaponAttackMotionParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<WeaponAttackMotionParam>>(address + 0x0098, relative).Unbox(pointerFactory, reader);
+            WeaponTypeParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<WeaponTypeParam>>(address + 0x00A0, relative).Unbox(pointerFactory, reader);
+            WeaponStaminaCostParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<WeaponStaminaCostParam>>(address + 0x00A8, relative).Unbox(pointerFactory, reader);
+            WeaponReinforceParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<WeaponReinforceParam>>(address + 0x00B0, relative).Unbox(pointerFactory, reader);
+            WeaponStatsAffectParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<WeaponStatsAffectParam>>(address + 0x00B8, relative).Unbox(pointerFactory, reader);
+            DualWieldPermissionParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<DualWieldPermissionParam>>(address + 0x00C0, relative).Unbox(pointerFactory, reader);
+            ArmorParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<ArmorParam>>(address + 0x00C8, relative).Unbox(pointerFactory, reader);
+            ArmorReinforceParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<ArmorReinforceParam>>(address + 0x00D0, relative).Unbox(pointerFactory, reader);
+            ArmorHandsUpFParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<ArmorHandsUpFParam>>(address + 0x00D8, relative).Unbox(pointerFactory, reader);
+            EquipmentInterfereParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<EquipmentInterfereParam>>(address + 0x00E0, relative).Unbox(pointerFactory, reader);
+            EquipmentCullingTargetParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<EquipmentCullingTargetParam>>(address + 0x00E8, relative).Unbox(pointerFactory, reader);
+            CustomAttrSpecParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<CustomAttrSpecParam>>(address + 0x00F0, relative).Unbox(pointerFactory, reader);
+            CustomAttrCostParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<CustomAttrCostParam>>(address + 0x00F8, relative).Unbox(pointerFactory, reader);
+            ReinforceCostParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<ReinforceCostParam>>(address + 0x00100, relative).Unbox(pointerFactory, reader);
+            ArrowParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<ArrowParam>>(address + 0x00108, relative).Unbox(pointerFactory, reader);
+            RingParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<RingParam>>(address + 0x00110, relative).Unbox(pointerFactory, reader);
+            SpellParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<SpellParam>>(address + 0x00118, relative).Unbox(pointerFactory, reader);
+            SpellSoulConsumeParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<SpellSoulConsumeParam>>(address + 0x00120, relative).Unbox(pointerFactory, reader);
+            FootEffectSfxParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<FootEffectSfxParam>>(address + 0x00128, relative).Unbox(pointerFactory, reader);
+            ChrGrowthParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<ChrGrowthParam>>(address + 0x00130, relative).Unbox(pointerFactory, reader);
+            ChrLevelUpSoulsParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<ChrLevelUpSoulsParam>>(address + 0x00138, relative).Unbox(pointerFactory, reader);
+            RelatePhysStatToLevelStat = pointerFactory.Create<ParamFileResourceObjectForRegulation<RelatePhysStatToLevelStat>>(address + 0x00140, relative).Unbox(pointerFactory, reader);
+            PhysStatsPerLevelStatParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<PhysStatsPerLevelStatParam>>(address + 0x00148, relative).Unbox(pointerFactory, reader);
+            MenuStatsParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<MenuStatsParam>>(address + 0x00150, relative).Unbox(pointerFactory, reader);
+            HollowLevelStatsParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<HollowLevelStatsParam>>(address + 0x00158, relative).Unbox(pointerFactory, reader);
+            LackOfStatsParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<LackOfStatsParam>>(address + 0x00160, relative).Unbox(pointerFactory, reader);
+            NpcGenerateParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<NpcGenerateParam>>(address + 0x00168, relative).Unbox(pointerFactory, reader);
+            ChrEditParamBodyPreset = pointerFactory.Create<ParamFileResourceObjectForRegulation<ChrEditParamBodyPreset>>(address + 0x00170, relative).Unbox(pointerFactory, reader);
+            MaterialParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<MaterialParam>>(address + 0x00178, relative).Unbox(pointerFactory, reader);
+            GroundMaterialParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<GroundMaterialParam>>(address + 0x00180, relative).Unbox(pointerFactory, reader);
+            LockOnParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<LockOnParam>>(address + 0x00188, relative).Unbox(pointerFactory, reader);
+            LockTargetParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<LockTargetParam>>(address + 0x00190, relative).Unbox(pointerFactory, reader);
+            LockOnCameraOffsetParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<LockOnCameraOffsetParam>>(address + 0x00198, relative).Unbox(pointerFactory, reader);
+            GuardLevelMotionParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<GuardLevelMotionParam>>(address + 0x001A0, relative).Unbox(pointerFactory, reader);
+            BossParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<BossParam>>(address + 0x001A8, relative).Unbox(pointerFactory, reader);
+            BossPartsParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<BossPartsParam>>(address + 0x001B0, relative).Unbox(pointerFactory, reader);
+            BossPartsModelParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<BossPartsModelParam>>(address + 0x001B8, relative).Unbox(pointerFactory, reader);
+            BossEnemyGenerateParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<BossEnemyGenerateParam>>(address + 0x001C0, relative).Unbox(pointerFactory, reader);
+            GrabParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<GrabParam>>(address + 0x001C8, relative).Unbox(pointerFactory, reader);
+            DeadTypeParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<DeadTypeParam>>(address + 0x001D0, relative).Unbox(pointerFactory, reader);
+            TorchCtrlParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<TorchCtrlParam>>(address + 0x001D8, relative).Unbox(pointerFactory, reader);
+            TorchOffCtrlParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<TorchOffCtrlParam>>(address + 0x001E0, relative).Unbox(pointerFactory, reader);
+            ChrWetParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<ChrWetParam>>(address + 0x001E8, relative).Unbox(pointerFactory, reader);
+            HitBackMatrixParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<HitBackMatrixParam>>(address + 0x001F0, relative).Unbox(pointerFactory, reader);
+            HitBackParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<HitBackParam>>(address + 0x001F8, relative).Unbox(pointerFactory, reader);
+            ChrFullbodySfxParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<ChrFullbodySfxParam>>(address + 0x00200, relative).Unbox(pointerFactory, reader);
+            EnemyAttackMoveParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<EnemyAttackMoveParam>>(address + 0x00208, relative).Unbox(pointerFactory, reader);
+            PlayerStatusNormal = pointerFactory.Create<ParamFileResourceObjectForRegulation<PlayerStatusNormal>>(address + 0x00210, relative).Unbox(pointerFactory, reader);
+            PlayerStatusItemParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<PlayerStatusItemParam>>(address + 0x00218, relative).Unbox(pointerFactory, reader);
+            NpcPlayerStatusParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<NpcPlayerStatusParam>>(address + 0x00220, relative).Unbox(pointerFactory, reader);
+            NpcPlayerSkinParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<NpcPlayerSkinParam>>(address + 0x00228, relative).Unbox(pointerFactory, reader);
+            CriminalAndDeceasedParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<CriminalAndDeceasedParam>>(address + 0x00230, relative).Unbox(pointerFactory, reader);
+            ChrPointWindParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<ChrPointWindParam>>(address + 0x00238, relative).Unbox(pointerFactory, reader);
+            PlayerLightParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<PlayerLightParam>>(address + 0x00240, relative).Unbox(pointerFactory, reader);
+            VowParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<VowParam>>(address + 0x00248, relative).Unbox(pointerFactory, reader);
+            ChrNetworkPhantomParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<ChrNetworkPhantomParam>>(address + 0x00250, relative).Unbox(pointerFactory, reader);
+            ChrNetPhantomSoulRateParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<ChrNetPhantomSoulRateParam>>(address + 0x00258, relative).Unbox(pointerFactory, reader);
+            ChrModelParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<ChrModelParam>>(address + 0x00260, relative).Unbox(pointerFactory, reader);
+            EnemyShotSfxParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<EnemyShotSfxParam>>(address + 0x00268, relative).Unbox(pointerFactory, reader);
+            ChrRoundDamageParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<ChrRoundDamageParam>>(address + 0x00270, relative).Unbox(pointerFactory, reader);
+            ChrRoundDropSoulParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<ChrRoundDropSoulParam>>(address + 0x00278, relative).Unbox(pointerFactory, reader);
+            ChrMultiplayParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<ChrMultiplayParam>>(address + 0x00280, relative).Unbox(pointerFactory, reader);
+            FootEffectWaterSfxParam = pointerFactory.Create<ParamFileResourceObjectForRegulation<FootEffectWaterSfxParam>>(address + 0x00288, relative).Unbox(pointerFactory, reader);
             return this;
         }
     }

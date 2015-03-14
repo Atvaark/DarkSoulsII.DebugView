@@ -11,12 +11,12 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Map.Item
 
         public Dictionary<MapItemListType, MapItemPack> Table { get; set; }
 
-        public MapItemPackTable Read(IReader reader, int address, bool relative = false)
+        public MapItemPackTable Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             int mapItemListAddress = address;
             for (int i = 0; i < 4; i++, mapItemListAddress += Pointer<MapItemPack>.Size)
             {
-                var mapItemList = Pointer<MapItemPack>.CreateAndUnbox(reader, mapItemListAddress, relative);
+                var mapItemList = pointerFactory.Create<MapItemPack>(mapItemListAddress, relative).Unbox(pointerFactory, reader);
 
                 Table.Add((MapItemListType) i, mapItemList);
             }

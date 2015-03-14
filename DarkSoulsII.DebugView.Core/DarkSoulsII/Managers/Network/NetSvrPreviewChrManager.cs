@@ -2,7 +2,7 @@
 {
     public class NetSvrPreviewChrManager : IReadable<NetSvrPreviewChrManager>
     {
-        public NetSvrPreviewChrManager Read(IReader reader, int address, bool relative = false)
+        public NetSvrPreviewChrManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             return this;
         }

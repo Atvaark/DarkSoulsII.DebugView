@@ -2,6 +2,6 @@
 {
     public interface IReadable<out T>
     {
-        T Read(IReader reader, int address, bool relative = false);
+        T Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false);
     }
 }

@@ -2,7 +2,7 @@
 {
     public class SignSetCtrlManager : IReadable<SignSetCtrlManager>
     {
-        public SignSetCtrlManager Read(IReader reader, int address, bool relative = false)
+        public SignSetCtrlManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             return this;
         }

@@ -2,7 +2,7 @@
 {
     public class MdlTexture : IReadable<MdlTexture>
     {
-        public MdlTexture Read(IReader reader, int address, bool relative = false)
+        public MdlTexture Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             return this;
         }

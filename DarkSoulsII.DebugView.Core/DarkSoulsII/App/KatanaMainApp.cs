@@ -7,11 +7,11 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.App
         public KatanaDrawDeviceContainer DrawDeviceContainer { get; set; }
         public KatanaDrawSystem DrawSystem { get; set; }
 
-        public new KatanaMainApp Read(IReader reader, int address, bool relative = false)
+        public new KatanaMainApp Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
-            base.Read(reader, address, relative);
-            DrawDeviceContainer = Pointer<KatanaDrawDeviceContainer>.CreateAndUnbox(reader, address + 0x002C, relative);
-            DrawSystem = Pointer<KatanaDrawSystem>.CreateAndUnbox(reader, address + 0x01AC, relative);
+            base.Read(pointerFactory, reader, address, relative);
+            DrawDeviceContainer = pointerFactory.Create<KatanaDrawDeviceContainer>(address + 0x002C, relative).Unbox(pointerFactory, reader);
+            DrawSystem = pointerFactory.Create<KatanaDrawSystem>(address + 0x01AC, relative).Unbox(pointerFactory, reader);
             return this;
         }
     }

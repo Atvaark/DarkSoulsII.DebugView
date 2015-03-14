@@ -2,7 +2,7 @@
 {
     public class ItemInventory2ListBase : IReadable<ItemInventory2ListBase>
     {
-        public ItemInventory2ListBase Read(IReader reader, int address, bool relative = false)
+        public ItemInventory2ListBase Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             return this;
         }

@@ -10,7 +10,7 @@
         public float Overlay { get; set; }
         public float Height { get; set; }
 
-        public AppFogFilter Read(IReader reader, int address, bool relative = false)
+        public AppFogFilter Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             FogBlue = reader.ReadByte(address + 0x0004, relative);
             FogGreen = reader.ReadByte(address + 0x0005, relative);

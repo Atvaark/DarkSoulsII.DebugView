@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CachingPointerProxy.cs" />
+    <Compile Include="CachingPointerProxyFactory.cs" />
     <Compile Include="DarkSoulsII\Character\Gestures\ChrAsmCtrlGesture.cs" />
     <Compile Include="DarkSoulsII\Character\Gestures\ChrAsmCtrlGestures.cs" />
     <Compile Include="DarkSoulsII\Character\Gestures\GestureType.cs" />
@@ -286,8 +289,10 @@
     <Compile Include="DarkSoulsII\Resources\Text\TextLookUpTable.cs" />
     <Compile Include="DarkSoulsII\Resources\Text\TextLookUpTableCache.cs" />
     <Compile Include="DarkSoulsII\Resources\Text\TextLookUpTableCacheEntry.cs" />
+    <Compile Include="ICachingPointerFactory.cs" />
     <Compile Include="IPointer.cs" />
     <Compile Include="DarkSoulsII\Rtti\CharacterCtrlBaseHelper.cs" />
+    <Compile Include="IPointerFactory.cs" />
     <Compile Include="PointerFactory.cs" />
     <Compile Include="Standard\Matrix4.cs" />
     <Compile Include="Standard\Quaternion.cs" />

@@ -29,7 +29,7 @@
         public short CompanyOfChampionsStanding { get; set; }
         public short PilgrimsOfTheDarkStanding { get; set; }
 
-        public PlayerData Read(IReader reader, int address, bool relative = false)
+        public PlayerData Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             Vitality = reader.ReadInt16(address + 0x0004);
             Endurance = reader.ReadInt16(address + 0x0006);

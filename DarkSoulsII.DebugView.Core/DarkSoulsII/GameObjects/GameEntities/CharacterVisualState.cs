@@ -9,7 +9,7 @@
         public byte Hostility3 { get; set; }
         public CharacterGlowEffectType SecondaryGlowEffectType { get; set; }
 
-        public CharacterVisualState Read(IReader reader, int address, bool relative = false)
+        public CharacterVisualState Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             PrimaryGlowEffectType = (CharacterGlowEffectType) reader.ReadInt32(address + 0x0038);
             Collison = reader.ReadByte(address + 0x003C);

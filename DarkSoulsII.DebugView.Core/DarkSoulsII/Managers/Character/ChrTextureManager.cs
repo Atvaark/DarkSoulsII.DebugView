@@ -2,7 +2,7 @@
 {
     public class ChrTextureManager : IReadable<ChrTextureManager>
     {
-        public ChrTextureManager Read(IReader reader, int address, bool relative = false)
+        public ChrTextureManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             return this;
         }

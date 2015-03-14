@@ -18,24 +18,26 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Character
         public List<PlayerCtrl> PlayerControls { get; set; }
         public CharacterParamContainer ParamContainer { get; set; }
 
-        public CharacterManager Read(IReader reader, int address, bool relative = false)
+        public CharacterManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
-            var characterControlPointerstest = reader.ReadInt32(80, address + 0x0028)
-                .Select(rawPointer => CharacterCtrlBaseResolver.Instance.ResolvePointer(reader, rawPointer))
-                .Where(pointer => pointer != null && pointer.IsNull == false);
+            var characterControlPointers = reader.ReadInt32(80, address + 0x0028)
+                .Select(rawPointer => CharacterCtrlBaseResolver.Instance.ResolvePointer(pointerFactory, reader, rawPointer))
+                .Where(pointer => pointer != null);
 
-            foreach (var pointer in characterControlPointerstest)
+            foreach (var characterControlPointer in characterControlPointers)
             {
-                CharacterControls.Add(pointer.Unbox(reader));
+                var characterControl = characterControlPointer.Unbox(pointerFactory, reader);
+                if(characterControl != null)
+                    CharacterControls.Add(characterControl);
             }
 
             var playerControlPointers =
                 reader.ReadInt32(4, address + 0x0168)
-                    .Select(a => Pointer<PlayerCtrl>.Create(a))
+                    .Select(a => pointerFactory.Create<PlayerCtrl>(a))
                     .Where(pointer => pointer.IsNull == false);
             foreach (var pointer in playerControlPointers)
             {
-                PlayerControls.Add(pointer.Unbox(reader));
+                PlayerControls.Add(pointer.Unbox(pointerFactory, reader));
             }
 
 
@@ -43,7 +45,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Character
             byte playerControlCount = reader.ReadByte(address + 0x0179);
 
             // Disabled until caching is implemented
-            ////ParamContainer = Pointer<CharacterParamContainer>.Create(address + 0x0188).Unbox(reader);
+            ParamContainer = pointerFactory.Create<CharacterParamContainer>(address + 0x0188, relative, true).Unbox(pointerFactory, reader);
 
 
             return this;

@@ -15,15 +15,15 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Map
         public MapEntity Entity2 { get; set; }
         public List<MapAreaCtrlOwner> Owners { get; set; }
 
-        public MapAreaManager Read(IReader reader, int address, bool relative = false)
+        public MapAreaManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
-            Entity1 = Pointer<MapEntity>.CreateAndUnbox(reader, address + 0x0010, relative);
-            Entity2 = Pointer<MapEntity>.CreateAndUnbox(reader, address + 0x0014, relative);
+            Entity1 = pointerFactory.Create<MapEntity>(address + 0x0010, relative).Unbox(pointerFactory, reader);
+            Entity2 = pointerFactory.Create<MapEntity>(address + 0x0014, relative).Unbox(pointerFactory, reader);
 
             int ownersAddress = address + 0x001C;
             for (int i = 0; i < 38; i++, ownersAddress += Pointer<MapAreaCtrlOwner>.Size)
             {
-                MapAreaCtrlOwner owner = Pointer<MapAreaCtrlOwner>.CreateAndUnbox(reader, ownersAddress, relative);
+                MapAreaCtrlOwner owner = pointerFactory.Create<MapAreaCtrlOwner>(ownersAddress, relative).Unbox(pointerFactory, reader);
                 Owners.Add(owner);
             }
 

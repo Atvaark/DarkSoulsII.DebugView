@@ -6,7 +6,7 @@
         public float TimeSinceLastSave { get; set; }
         public SaveReason SaveReasonType { get; set; }
 
-        public SaveLoadSystem Read(IReader reader, int address, bool relative = false)
+        public SaveLoadSystem Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             TimeUntilNextSaveOpportunity = reader.ReadSingle(address + 0x0034, relative);
             TimeSinceLastSave = reader.ReadSingle(address + 0x0038, relative);

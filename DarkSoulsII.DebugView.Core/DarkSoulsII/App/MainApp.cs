@@ -2,7 +2,7 @@
 {
     public class MainApp : IReadable<MainApp>
     {
-        public MainApp Read(IReader reader, int address, bool relative = false)
+        public MainApp Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             return this;
         }

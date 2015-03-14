@@ -2,7 +2,7 @@
 {
     public class GameManager : IReadable<GameManager>
     {
-        public GameManager Read(IReader reader, int address, bool relative = false)
+        public GameManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             return this;
         }

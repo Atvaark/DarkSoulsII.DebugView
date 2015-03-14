@@ -2,7 +2,7 @@
 {
     public class NetSvrVisitorManager : IReadable<NetSvrVisitorManager>
     {
-        public NetSvrVisitorManager Read(IReader reader, int address, bool relative = false)
+        public NetSvrVisitorManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             return this;
         }

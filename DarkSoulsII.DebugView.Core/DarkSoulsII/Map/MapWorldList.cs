@@ -2,7 +2,7 @@
 {
     public class MapWorldList : IReadable<MapWorldList>
     {
-        public MapWorldList Read(IReader reader, int address, bool relative = false)
+        public MapWorldList Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             return this;
         }

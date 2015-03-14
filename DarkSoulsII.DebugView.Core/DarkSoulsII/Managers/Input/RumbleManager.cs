@@ -2,7 +2,7 @@
 {
     public class RumbleManager : IReadable<RumbleManager>
     {
-        public RumbleManager Read(IReader reader, int address, bool relative = false)
+        public RumbleManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             // TODO: Add RumbleParamContainer 001C
             return this;

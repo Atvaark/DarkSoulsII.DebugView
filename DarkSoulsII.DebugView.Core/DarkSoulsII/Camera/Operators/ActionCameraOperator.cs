@@ -2,9 +2,9 @@
 {
     public class ActionCameraOperator : PerspectiveCameraOperator, IReadable<ActionCameraOperator>
     {
-        public new ActionCameraOperator Read(IReader reader, int address, bool relative = false)
+        public new ActionCameraOperator Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
-            base.Read(reader, address, relative);
+            base.Read(pointerFactory, reader, address, relative);
             return this;
         }
     }

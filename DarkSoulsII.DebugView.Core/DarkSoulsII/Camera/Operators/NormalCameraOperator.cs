@@ -2,9 +2,9 @@
 {
     public class NormalCameraOperator : PerspectiveCameraOperator, IReadable<NormalCameraOperator>
     {
-        public new NormalCameraOperator Read(IReader reader, int address, bool relative = false)
+        public new NormalCameraOperator Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
-            base.Read(reader, address, relative);
+            base.Read(pointerFactory, reader, address, relative);
             return this;
         }
     }

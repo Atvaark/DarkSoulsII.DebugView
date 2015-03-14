@@ -2,7 +2,7 @@
 {
     public class AiManager : IReadable<AiManager>
     {
-        public AiManager Read(IReader reader, int address, bool relative = false)
+        public AiManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             return this;
         }

@@ -2,7 +2,7 @@
 {
     public class NetSvrDuelManager : IReadable<NetSvrDuelManager>
     {
-        public NetSvrDuelManager Read(IReader reader, int address, bool relative = false)
+        public NetSvrDuelManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             return this;
         }

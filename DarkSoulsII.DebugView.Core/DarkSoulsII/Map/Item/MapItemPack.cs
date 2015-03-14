@@ -11,9 +11,9 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Map.Item
 
         public List<MapItem> Items { get; set; }
 
-        public MapItemPack Read(IReader reader, int address, bool relative = false)
+        public MapItemPack Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
-            // TODO: Is this a StdVector or a Std(Linked-)List?
+            // TODO: Is this an StdVector or a Std(Linked-)List?
             Items = GenericPointer.Create(reader, address + 0x000C, relative)
                 .Unbox(reader, (rootNodeReader, rootNodeAddress) =>
                 {
@@ -26,7 +26,8 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Map.Item
                         nextNodePointer = GenericPointer.Create(rootNodeReader, nextNodePointer, false)
                             .Unbox(rootNodeReader, (nodeReader, nodeAddress) =>
                             {
-                                items.Add(Pointer<MapItem>.CreateAndUnbox(nodeReader, nodeAddress + 0x0008));
+                                items.Add(pointerFactory.Create<MapItem>(nodeAddress + 0x0008)
+                                    .Unbox(pointerFactory, reader));
                                 return nodeAddress;
                             });
                     }

@@ -8,11 +8,11 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Map
         public MapTargetDirectionalWind TargetDirectionalWind { get; set; }
         public MapModelWindReactor ModelWindReactor { get; set; }
 
-        public MapWindManager Read(IReader reader, int address, bool relative = false)
+        public MapWindManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
-            PointWind = Pointer<MapPointWind>.CreateAndUnbox(reader, address + 0x0008, relative);
-            TargetDirectionalWind = Pointer<MapTargetDirectionalWind>.CreateAndUnbox(reader, address + 0x000C, relative);
-            ModelWindReactor = Pointer<MapModelWindReactor>.CreateAndUnbox(reader, address + 0x000C, relative);
+            PointWind = pointerFactory.Create<MapPointWind>(address + 0x0008, relative).Unbox(pointerFactory, reader);
+            TargetDirectionalWind = pointerFactory.Create<MapTargetDirectionalWind>(address + 0x000C, relative).Unbox(pointerFactory, reader);
+            ModelWindReactor = pointerFactory.Create<MapModelWindReactor>(address + 0x000C, relative).Unbox(pointerFactory, reader);
             return this;
         }
     }

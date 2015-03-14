@@ -2,7 +2,7 @@
 {
     public class AppVignettingFilter : IReadable<AppVignettingFilter>
     {
-        public AppVignettingFilter Read(IReader reader, int address, bool relative = false)
+        public AppVignettingFilter Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             return this;
         }

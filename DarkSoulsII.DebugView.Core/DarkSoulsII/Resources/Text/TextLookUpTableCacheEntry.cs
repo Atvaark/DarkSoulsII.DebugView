@@ -5,12 +5,12 @@
         public const int Size = 16;
         public TextLookUpTable LookupTable { get; set; }
 
-        public TextLookUpTableCacheEntry Read(IReader reader, int address, bool relative = false)
+        public TextLookUpTableCacheEntry Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             // 0000 MemoryResourceObject
             // 0008 Memory
 
-            LookupTable = Pointer<TextLookUpTable>.CreateAndUnbox(reader, address + 0x000C, relative);
+            LookupTable = pointerFactory.Create<TextLookUpTable>(address + 0x000C, relative).Unbox(pointerFactory, reader);
             return this;
         }
     }

@@ -6,9 +6,9 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Camera
     {
         public Matrix4 Matrix { get; set; }
 
-        public CameraOperator Read(IReader reader, int address, bool relative = false)
+        public CameraOperator Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
-            Matrix = Pointer<Matrix4>.Create(address + 0x0010, relative).Unbox(reader);
+            Matrix = pointerFactory.Create<Matrix4>(address + 0x0010, relative, true).Unbox(pointerFactory, reader);
 
             return this;
         }

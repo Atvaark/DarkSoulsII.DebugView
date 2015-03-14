@@ -2,7 +2,7 @@
 {
     public class NetSvrBreakInManager : IReadable<NetSvrBreakInManager>
     {
-        public NetSvrBreakInManager Read(IReader reader, int address, bool relative = false)
+        public NetSvrBreakInManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             return this;
         }

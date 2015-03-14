@@ -6,7 +6,7 @@
         public float Y { get; set; }
         public float Z { get; set; }
 
-        public Vector3 Read(IReader reader, int address, bool relative = false)
+        public Vector3 Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             X = reader.ReadSingle(address + 0x0000, relative);
             Y = reader.ReadSingle(address + 0x0004, relative);

@@ -13,7 +13,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Resources.Text
             IdToTextMap = new Dictionary<int, string>();
         }
 
-        public TextLookUpTable Read(IReader reader, int address, bool relative = false)
+        public TextLookUpTable Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             ////int size = reader.ReadInt32(address + 0x0004, relative);
             int count = reader.ReadInt32(address + 0x000C, relative);

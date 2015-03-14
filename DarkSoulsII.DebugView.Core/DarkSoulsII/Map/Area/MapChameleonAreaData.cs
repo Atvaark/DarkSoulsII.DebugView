@@ -18,7 +18,7 @@
             get { return 28; }
         }
 
-        public MapChameleonAreaData Read(IReader reader, int address, bool relative = false)
+        public MapChameleonAreaData Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             ChameleonId = reader.ReadInt32(address + 0x0000, relative);
             ChameleonIndex = reader.ReadInt32(address + 0x0004, relative);

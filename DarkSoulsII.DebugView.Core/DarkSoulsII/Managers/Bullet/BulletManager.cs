@@ -2,7 +2,7 @@
 {
     public class BulletManager : IReadable<BulletManager>
     {
-        public BulletManager Read(IReader reader, int address, bool relative = false)
+        public BulletManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             // TODO: Add BulletParamContainer
             return this;

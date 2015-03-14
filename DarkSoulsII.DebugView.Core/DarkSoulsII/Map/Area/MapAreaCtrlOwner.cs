@@ -4,7 +4,7 @@
     {
         public int MapId { get; set; }
 
-        public MapAreaCtrlOwner Read(IReader reader, int address, bool relative = false)
+        public MapAreaCtrlOwner Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             MapId = reader.ReadInt32(address + 0x0004, relative);
             return this;

@@ -2,7 +2,7 @@
 {
     public class AppBlackOutFilter : IReadable<AppBlackOutFilter>
     {
-        public AppBlackOutFilter Read(IReader reader, int address, bool relative = false)
+        public AppBlackOutFilter Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             return this;
         }

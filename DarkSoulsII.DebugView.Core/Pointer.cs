@@ -1,40 +1,51 @@
-﻿using DarkSoulsII.DebugView.Core.Exceptions;
+﻿using System;
+using DarkSoulsII.DebugView.Core.Exceptions;
 
 namespace DarkSoulsII.DebugView.Core
 {
-    public class Pointer<T> : IReadable<Pointer<T>>, IPointer<T> where T : class, IReadable<T>, new()
+    public class Pointer<T> : IPointer<T> where T : class, IReadable<T>, new()
     {
-        public Pointer()
+        public Pointer(int address, bool relative, bool dereferenced)
         {
-        }
-
-        private Pointer(int address, bool relative)
-        {
-            Address = address;
-            Relative = relative;
+            Address = dereferenced ? 0 : address;
+            TargetAddress = dereferenced ? address : 0;
+            Relative = !dereferenced && relative;
+            TargetRelative = dereferenced && relative;
+            Dereferenced = dereferenced;
         }
 
         public int Address { get; set; }
         public bool Relative { get; set; }
+        public int TargetAddress { get; set; }
+        public bool TargetRelative { get; set; }
+        public bool Dereferenced { get; set; }
 
+        public bool IsNull
+        {
+            get { return TargetAddress == 0; }
+        }
+        
         public static int Size
         {
             get { return sizeof (int); }
         }
-
-        public T Unbox(IReader reader)
+        
+        public T Unbox(IPointerFactory pointerFactory, IReader reader)
         {
+            if (Dereferenced == false)
+                Dereference(reader);
             if (IsNull)
                 return null;
+
             T obj = new T();
-            return obj.Read(reader, Address, Relative);
+            return obj.Read(pointerFactory, reader, TargetAddress, TargetRelative);
         }
 
-        public T TryUnbox(IReader reader)
+        public T TryUnbox(IPointerFactory pointerFactory, IReader reader)
         {
             try
             {
-                return Unbox(reader);
+                return Unbox(pointerFactory, reader);
             }
             catch (MemoryInaccessibleException)
             {
@@ -42,53 +53,17 @@ namespace DarkSoulsII.DebugView.Core
             }
         }
 
-        public bool IsNull
+        public void Dereference(IReader reader)
         {
-            get { return Address == 0; }
+            TargetAddress = reader.ReadInt32(Address, Relative);
+            TargetRelative = false;
+            Dereferenced = true;
         }
-
-        public Pointer<T> Read(IReader reader, int address, bool relative = false)
+        
+        [Obsolete]
+        public static Pointer<T> Create(int address, bool relative = false, bool dereferenced = false)
         {
-            Address = reader.ReadInt32(address, relative);
-            Relative = false;
-            return this;
-        }
-
-        public static Pointer<T> Create(int address, bool relative = false)
-        {
-            return new Pointer<T>(address, relative);
-        }
-
-        public static T CreateAndUnbox(IReader reader, int address, bool relative = false)
-        {
-            Pointer<T> pointer = new Pointer<T>();
-            pointer.Read(reader, address, relative);
-            return pointer.Unbox(reader);
-        }
-
-        public static T CreateAndTryUnbox(IReader reader, int address, bool relative = false)
-        {
-            Pointer<T> pointer = new Pointer<T>();
-            pointer.Read(reader, address, relative);
-            return pointer.TryUnbox(reader);
-        }
-
-        private bool Equals(Pointer<T> other)
-        {
-            return Address == other.Address;
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != GetType()) return false;
-            return Equals((Pointer<T>) obj);
-        }
-
-        public override int GetHashCode()
-        {
-            return Address;
+            return new Pointer<T>(address, relative, dereferenced);
         }
     }
 }

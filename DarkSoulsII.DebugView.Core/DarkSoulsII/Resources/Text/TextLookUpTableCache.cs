@@ -11,12 +11,12 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Resources.Text
 
         public Dictionary<TextLookupTableType, TextLookUpTableCacheEntry> Entries { get; set; }
 
-        public TextLookUpTableCache Read(IReader reader, int address, bool relative = false)
+        public TextLookUpTableCache Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             int offset = 0x00D8;
             for (int i = 0; i < 26; i++, offset += TextLookUpTableCacheEntry.Size)
             {
-                var entry = Pointer<TextLookUpTableCacheEntry>.Create(address + offset, relative).Unbox(reader);
+                var entry = pointerFactory.Create<TextLookUpTableCacheEntry>(address + offset, relative, true).Unbox(pointerFactory, reader);
                 Entries.Add((TextLookupTableType) i, entry);
             }
             return this;

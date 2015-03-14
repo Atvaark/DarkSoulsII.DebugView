@@ -2,7 +2,7 @@
 {
     public class NetSvrMemory : IReadable<NetSvrMemory>
     {
-        public NetSvrMemory Read(IReader reader, int address, bool relative = false)
+        public NetSvrMemory Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             return this;
         }

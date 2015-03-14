@@ -17,7 +17,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Rtti
             get { return _instance ?? (_instance = new CharacterCtrlBaseResolver()); }
         }
 
-        public IPointer<CharacterCtrlBase> ResolvePointer(IReader reader, int address, bool relative = false)
+        public IPointer<CharacterCtrlBase> ResolvePointer(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             if (address == 0)
                 return null;
@@ -36,16 +36,16 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Rtti
             switch (vtable)
             {
                 case 0x012D2054:
-                    pointer = Pointer<PlayerCtrl>.Create(address, relative);
+                    pointer = pointerFactory.Create<PlayerCtrl>(address, relative, true);
                     break;
                 case 0x012CE454:
-                    pointer = Pointer<CharacterCtrl>.Create(address, relative);
+                    pointer = pointerFactory.Create<CharacterCtrl>(address, relative, true);
                     break;
                 case 0x012CEB44:
-                    pointer = Pointer<DemoCharacterCtrl>.Create(address, relative);
+                    pointer = pointerFactory.Create<DemoCharacterCtrl>(address, relative, true);
                     break;
                 case 0x012CE5EC:
-                    pointer = Pointer<CharacterCtrlBase>.Create(address, relative);
+                    pointer = pointerFactory.Create<CharacterCtrlBase>(address, relative, true);
                     break;
                 default:
                     pointer = null;

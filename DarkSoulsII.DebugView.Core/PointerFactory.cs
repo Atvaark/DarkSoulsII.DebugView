@@ -1,12 +1,17 @@
 ﻿namespace DarkSoulsII.DebugView.Core
 {
-    public class PointerFactory
+    public class PointerFactory : IPointerFactory
     {
-        private readonly IReader _reader;
+        protected readonly IReader Reader;
 
         public PointerFactory(IReader reader)
         {
-            _reader = reader;
+            Reader = reader;
+        }
+        
+        public IPointer<T> Create<T>(int address, bool relative = false, bool dereferenced = false) where T : class, IReadable<T>, new()
+        {
+            return new Pointer<T>(address, relative, dereferenced);
         }
     }
 }

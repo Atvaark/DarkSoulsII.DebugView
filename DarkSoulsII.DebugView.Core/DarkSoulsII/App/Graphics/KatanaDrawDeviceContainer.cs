@@ -4,9 +4,9 @@
     {
         public DrawDevice DrawDevice { get; set; }
 
-        public KatanaDrawDeviceContainer Read(IReader reader, int address, bool relative = false)
+        public KatanaDrawDeviceContainer Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
-            DrawDevice = Pointer<DrawDevice>.CreateAndUnbox(reader, address + 0x0138, relative);
+            DrawDevice = pointerFactory.Create<DrawDevice>(address + 0x0138, relative).Unbox(pointerFactory, reader);
             return this;
         }
     }

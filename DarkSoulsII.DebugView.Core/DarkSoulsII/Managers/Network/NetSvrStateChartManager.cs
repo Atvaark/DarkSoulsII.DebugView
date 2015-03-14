@@ -2,7 +2,7 @@
 {
     public class NetSvrStateChartManager : IReadable<NetSvrStateChartManager>
     {
-        public NetSvrStateChartManager Read(IReader reader, int address, bool relative = false)
+        public NetSvrStateChartManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             return this;
         }

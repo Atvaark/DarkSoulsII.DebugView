@@ -2,7 +2,7 @@
 {
     public class NetPlayerSyncObject : IReadable<NetPlayerSyncObject>
     {
-        public NetPlayerSyncObject Read(IReader reader, int address, bool relative = false)
+        public NetPlayerSyncObject Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             return this;
         }

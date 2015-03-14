@@ -2,7 +2,7 @@
 {
     public class GxToneMapFilter : IReadable<GxToneMapFilter>
     {
-        public GxToneMapFilter Read(IReader reader, int address, bool relative = false)
+        public GxToneMapFilter Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             return this;
         }

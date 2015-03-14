@@ -6,9 +6,9 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Controllers
     {
         public Vector3 Position { get; set; }
 
-        public SignKeyGuideCtrl Read(IReader reader, int address, bool relative = false)
+        public SignKeyGuideCtrl Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
-            Position = Pointer<Vector3>.Create(address + 0x0020, relative).Unbox(reader);
+            Position = pointerFactory.Create<Vector3>(address + 0x0020, relative, true).Unbox(pointerFactory, reader);
             return this;
         }
     }

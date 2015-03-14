@@ -14,14 +14,14 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers
         public Matrix4 Matrix { get; set; }
         public Vector3 CameraTarget { get; set; }
 
-        public CameraManager Read(IReader reader, int address, bool relative = false)
+        public CameraManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
-            FreeCameraOperator = Pointer<FreeCameraOperator>.CreateAndUnbox(reader, address + 0x0018, relative);
-            PlayerCameraOperator = Pointer<PlayerCameraOperator>.CreateAndUnbox(reader, address + 0x001C, relative);
-            IngameCameraOperator = Pointer<IngameCameraOperator>.CreateAndUnbox(reader, address + 0x0020, relative);
+            FreeCameraOperator = pointerFactory.Create<FreeCameraOperator>(address + 0x0018, relative).Unbox(pointerFactory, reader);
+            PlayerCameraOperator = pointerFactory.Create<PlayerCameraOperator>(address + 0x001C, relative).Unbox(pointerFactory, reader);
+            IngameCameraOperator = pointerFactory.Create<IngameCameraOperator>(address + 0x0020, relative).Unbox(pointerFactory, reader);
 
-            Matrix = Pointer<Matrix4>.Create(address + 0x0160, relative).Unbox(reader);
-            CameraTarget = Pointer<Vector3>.Create(address + 0x01A0, relative).Unbox(reader);
+            Matrix = pointerFactory.Create<Matrix4>(address + 0x0160, relative, true).Unbox(pointerFactory, reader);
+            CameraTarget = pointerFactory.Create<Vector3>(address + 0x01A0, relative, true).Unbox(pointerFactory, reader);
             FieldOfView = reader.ReadSingle(address + 0x01B0, relative);
             ScreenWidth = reader.ReadInt32(address + 0x01BC, relative);
             ScreenHeight = reader.ReadInt32(address + 0x01C0, relative);

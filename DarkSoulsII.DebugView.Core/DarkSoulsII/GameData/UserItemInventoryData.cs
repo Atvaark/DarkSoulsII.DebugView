@@ -8,12 +8,11 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.GameData
         public ItemInventory2CofferList ItemInventory2CofferList { get; set; }
         public ItemInventory2ShopList ItemInventory2ShopList { get; set; }
 
-        public UserItemInventoryData Read(IReader reader, int address, bool relative = false)
+        public UserItemInventoryData Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
-            ItemInventory2BagList = Pointer<ItemInventory2BagList>.CreateAndUnbox(reader, address + 0x0008, relative);
-            ItemInventory2CofferList = Pointer<ItemInventory2CofferList>.CreateAndUnbox(reader, address + 0x000C,
-                relative);
-            ItemInventory2ShopList = Pointer<ItemInventory2ShopList>.CreateAndUnbox(reader, address + 0x0010, relative);
+            ItemInventory2BagList = pointerFactory.Create<ItemInventory2BagList>(address + 0x0008, relative).Unbox(pointerFactory, reader);
+            ItemInventory2CofferList = pointerFactory.Create<ItemInventory2CofferList>(address + 0x000C, relative).Unbox(pointerFactory, reader);
+            ItemInventory2ShopList = pointerFactory.Create<ItemInventory2ShopList>(address + 0x0010, relative).Unbox(pointerFactory, reader);
             // TODO: +0014->+0008->+0000 = torch time
             return this;
         }

@@ -6,12 +6,12 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.GameObjects.GameEntities
     {
         public PlayerData Data { get; set; }
 
-        public new PlayerCtrl Read(IReader reader, int address, bool relative = false)
+        public new PlayerCtrl Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
-            base.Read(reader, address, relative);
+            base.Read(pointerFactory, reader, address, relative);
             // ActionCtrl 0x0370
             // 0x0374
-            Data = Pointer<PlayerData>.CreateAndUnbox(reader, address + 0x0378, relative);
+            Data = pointerFactory.Create<PlayerData>(address + 0x0378, relative).Unbox(pointerFactory, reader);
             // 0x037C
 
             return this;

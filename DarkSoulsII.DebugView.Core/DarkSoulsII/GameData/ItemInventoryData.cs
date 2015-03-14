@@ -4,9 +4,9 @@
     {
         public UserItemInventoryData UserData { get; set; }
 
-        public ItemInventoryData Read(IReader reader, int address, bool relative = false)
+        public ItemInventoryData Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
-            UserData = Pointer<UserItemInventoryData>.CreateAndUnbox(reader, address + 0x0008, relative);
+            UserData = pointerFactory.Create<UserItemInventoryData>(address + 0x0008, relative).Unbox(pointerFactory, reader);
             return this;
         }
     }

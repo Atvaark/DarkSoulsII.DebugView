@@ -22,21 +22,21 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.GameObjects.GameEntities
         public float SpeedFactor { get; set; }
         public ChrAsmCtrl AsmControl { get; set; }
 
-        public new CharacterCtrl Read(IReader reader, int address, bool relative = false)
+        public new CharacterCtrl Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
-            base.Read(reader, address, relative);
+            base.Read(pointerFactory, reader, address, relative);
 
-            // TODO: Maybe it's a quarternion?
+            // TODO: Maybe it's a quaternion?
             var angleYFlag = reader.ReadUInt32(address + 0x0058, relative);
             var cosineY = reader.ReadSingle(address + 0x0068, relative);
             var angleY = Math.Acos(cosineY)*180.0/Math.PI;
             AngleY = (angleYFlag & 0x80000000) > 0 ? 360 - angleY : angleY;
 
-            Position = Pointer<Vector3>.Create(address + 0x0070, relative).Unbox(reader);
+            Position = pointerFactory.Create<Vector3>(address + 0x0070, relative, true).Unbox(pointerFactory, reader);
 
-            VisualState = Pointer<CharacterVisualState>.CreateAndUnbox(reader, address + 0x0090, relative);
+            VisualState = pointerFactory.Create<CharacterVisualState>(address + 0x0090, relative).Unbox(pointerFactory, reader);
 
-            Name = Pointer<StdString>.Create(address + 0x00C8, relative).Unbox(reader).Value;
+            Name = pointerFactory.Create<StdString>(address + 0x00C8, relative, true).Unbox(pointerFactory, reader).Value;
 
             Health = reader.ReadInt32(address + 0x00FC, relative);
             HealthMaxHuman = reader.ReadInt32(address + 0x0104, relative);
@@ -50,7 +50,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.GameObjects.GameEntities
             PoisonMax = reader.ReadSingle(address + 0x01B4, relative);
             SpeedFactor = reader.ReadSingle(address + 0x0208, relative);
 
-            AsmControl = Pointer<ChrAsmCtrl>.CreateAndUnbox(reader, address + 0x2D4, relative);
+            AsmControl = pointerFactory.Create<ChrAsmCtrl>(address + 0x2D4, relative).Unbox(pointerFactory, reader);
 
             return this;
         }

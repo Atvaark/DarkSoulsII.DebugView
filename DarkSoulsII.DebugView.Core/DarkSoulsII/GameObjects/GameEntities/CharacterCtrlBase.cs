@@ -9,9 +9,9 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.GameObjects.GameEntities
         public CharacterType Type { get; set; }
         public string Name { get; set; }
 
-        public new CharacterCtrlBase Read(IReader reader, int address, bool relative = false)
+        public new CharacterCtrlBase Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
-            base.Read(reader, address, relative);
+            base.Read(pointerFactory, reader, address, relative);
             Id1 = reader.ReadInt32(address + 0x0014);
             Id2 = reader.ReadInt32(address + 0x0018);
             Type = (CharacterType) reader.ReadInt32(address + 0x001C);

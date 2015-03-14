@@ -2,7 +2,7 @@
 {
     public class NetSummonSlotAreaManager : IReadable<NetSummonSlotAreaManager>
     {
-        public NetSummonSlotAreaManager Read(IReader reader, int address, bool relative = false)
+        public NetSummonSlotAreaManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             // 0004
             // 0008

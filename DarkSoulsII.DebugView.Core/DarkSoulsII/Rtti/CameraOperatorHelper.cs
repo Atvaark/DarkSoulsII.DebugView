@@ -18,7 +18,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Rtti
             get { return _instance ?? (_instance = new CameraOperatorHelper()); }
         }
 
-        public IPointer<CameraOperator> ResolvePointer(IReader reader, int address, bool relative = false)
+        public IPointer<CameraOperator> ResolvePointer(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             if (address == 0)
                 return null;
@@ -37,58 +37,58 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Rtti
             switch (vtable)
             {
                 case 0x012DCFCC:
-                    pointer = Pointer<ActionCameraOperator>.Create(address, relative);
+                    pointer = pointerFactory.Create<ActionCameraOperator>(address, relative, true);
                     break;
                 case 0x012DD08C:
-                    pointer = Pointer<DefaultCameraOperator>.Create(address, relative);
+                    pointer = pointerFactory.Create<DefaultCameraOperator>(address, relative, true);
                     break;
                 case 0x012DD0E4:
-                    pointer = Pointer<DemoCameraOperator>.Create(address, relative);
+                    pointer = pointerFactory.Create<DemoCameraOperator>(address, relative, true);
                     break;
                 case 0x012B03AC:
-                    pointer = Pointer<EventCameraOperator>.Create(address, relative);
+                    pointer = pointerFactory.Create<EventCameraOperator>(address, relative, true);
                     break;
                 case 0x012DD1DC:
-                    pointer = Pointer<ExFollowCameraOperator>.Create(address, relative);
+                    pointer = pointerFactory.Create<ExFollowCameraOperator>(address, relative, true);
                     break;
                 case 0x012DD23C:
-                    pointer = Pointer<FallDeadCameraOperator>.Create(address, relative);
+                    pointer = pointerFactory.Create<FallDeadCameraOperator>(address, relative, true);
                     break;
                 case 0x012DCDD4:
-                    pointer = Pointer<FreeCameraOperator>.Create(address, relative);
+                    pointer = pointerFactory.Create<FreeCameraOperator>(address, relative, true);
                     break;
                 case 0x012DCE84:
-                    pointer = Pointer<FreeOrthoCameraOperator>.Create(address, relative);
+                    pointer = pointerFactory.Create<FreeOrthoCameraOperator>(address, relative, true);
                     break;
                 case 0x012B0558:
-                    pointer = Pointer<GrapplerCameraOperator>.Create(address, relative);
+                    pointer = pointerFactory.Create<GrapplerCameraOperator>(address, relative, true);
                     break;
                 case 0x012DCED4:
-                    pointer = Pointer<IngameCameraOperator>.Create(address, relative);
+                    pointer = pointerFactory.Create<IngameCameraOperator>(address, relative, true);
                     break;
                 case 0x012B0608:
-                    pointer = Pointer<MenuCameraOperator>.Create(address, relative);
+                    pointer = pointerFactory.Create<MenuCameraOperator>(address, relative, true);
                     break;
                 case 0x012DD294:
-                    pointer = Pointer<NormalCameraOperator>.Create(address, relative);
+                    pointer = pointerFactory.Create<NormalCameraOperator>(address, relative, true);
                     break;
                 case 0x0134F624:
-                    pointer = Pointer<OrthoCameraOperator>.Create(address, relative);
+                    pointer = pointerFactory.Create<OrthoCameraOperator>(address, relative, true);
                     break;
                 case 0x0134A3CC:
-                    pointer = Pointer<PerspectiveCameraOperator>.Create(address, relative);
+                    pointer = pointerFactory.Create<PerspectiveCameraOperator>(address, relative, true);
                     break;
                 case 0x012DCF7C:
-                    pointer = Pointer<PlayerCameraOperator>.Create(address, relative);
+                    pointer = pointerFactory.Create<PlayerCameraOperator>(address, relative, true);
                     break;
                 case 0x012DD2E4:
-                    pointer = Pointer<SubjectiveCameraOperator>.Create(address, relative);
+                    pointer = pointerFactory.Create<SubjectiveCameraOperator>(address, relative, true);
                     break;
                 case 0x0134F64C:
-                    pointer = Pointer<TransitionCameraOperator>.Create(address, relative);
+                    pointer = pointerFactory.Create<TransitionCameraOperator>(address, relative, true);
                     break;
                 case 0x0134A3FC:
-                    pointer = Pointer<CameraOperator>.Create(address, relative);
+                    pointer = pointerFactory.Create<CameraOperator>(address, relative, true);
                     break;
                 default:
                     pointer = null;

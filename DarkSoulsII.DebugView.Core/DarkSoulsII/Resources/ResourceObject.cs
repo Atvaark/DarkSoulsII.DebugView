@@ -2,7 +2,7 @@
 {
     public class ResourceObject : IReadable<ResourceObject>
     {
-        public ResourceObject Read(IReader reader, int address, bool relative = false)
+        public ResourceObject Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             return this;
         }

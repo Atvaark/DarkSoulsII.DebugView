@@ -12,11 +12,11 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Network
 
         public List<NetSummonSlot> Slots { get; set; }
 
-        public NetSummonSlotManager Read(IReader reader, int address, bool relative = false)
+        public NetSummonSlotManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             for (int i = 0; i < 3; i++)
             {
-                var slot = Pointer<NetSummonSlot>.Create(address + 0x0108 + i*0xB0, relative).Unbox(reader);
+                var slot = pointerFactory.Create<NetSummonSlot>(address + 0x0108 + i*0xB0, relative, true).Unbox(pointerFactory, reader);
                 Slots.Add(slot);
             }
             return this;

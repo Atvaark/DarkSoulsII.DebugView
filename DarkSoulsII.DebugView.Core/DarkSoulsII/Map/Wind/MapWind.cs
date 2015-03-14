@@ -2,7 +2,7 @@
 {
     public class MapWind : IReadable<MapWind>
     {
-        public MapWind Read(IReader reader, int address, bool relative = false)
+        public MapWind Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             return this;
         }

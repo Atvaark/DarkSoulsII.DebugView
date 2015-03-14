@@ -2,7 +2,7 @@
 {
     public class NetSvrLoginManager : IReadable<NetSvrLoginManager>
     {
-        public NetSvrLoginManager Read(IReader reader, int address, bool relative = false)
+        public NetSvrLoginManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             return this;
         }

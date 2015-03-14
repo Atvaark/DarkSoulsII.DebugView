@@ -32,26 +32,30 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers
         public DemoManager DemoManager { get; set; }
         public GameManagerState ManagerState { get; set; }
 
-        public new GameManagerImpl Read(IReader reader, int address, bool relative = false)
+        public new GameManagerImpl Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
-            base.Read(reader, address, relative);
+            base.Read(pointerFactory, reader, address, relative);
 
-            CharacterManager = Pointer<CharacterManager>.CreateAndUnbox(reader, address + 0x0018, relative);
-            CameraManager = Pointer<CameraManager>.CreateAndUnbox(reader, address + 0x001C, relative);
-            AiManager = Pointer<AiManager>.CreateAndUnbox(reader, address + 0x0020, relative);
-            ResourceManager = Pointer<AppResourceManager>.CreateAndUnbox(reader, address + 0x0024, relative);
-            MapManager = Pointer<MapManager>.CreateAndUnbox(reader, address + 0x0028, relative);
-            BulletManager = Pointer<BulletManager>.CreateAndUnbox(reader, address + 0x003C, relative);
-            EventManager = Pointer<EventManager>.CreateAndUnbox(reader, address + 0x0044, relative);
-            FaceGenManager = Pointer<FaceGenManager>.CreateAndUnbox(reader, address + 0x004C, relative);
-            RumbleManager = Pointer<RumbleManager>.CreateAndUnbox(reader, address + 0x0050, relative);
-            SignManager = Pointer<SignManager>.CreateAndUnbox(reader, address + 0x0054, relative);
-            GameDataManager = Pointer<GameDataManager>.CreateAndUnbox(reader, address + 0x0060, relative);
-            PlayerControl = Pointer<PlayerCtrl>.CreateAndUnbox(reader, address + 0x0074, relative);
-            SaveLoadSystem = Pointer<SaveLoadSystem>.CreateAndUnbox(reader, address + 0x0068, relative);
+            CharacterManager = pointerFactory.Create<CharacterManager>(address + 0x0018, relative).Unbox(pointerFactory, reader);
+            CameraManager = pointerFactory.Create<CameraManager>(address + 0x001C, relative).Unbox(pointerFactory, reader);
+            AiManager = pointerFactory.Create<AiManager>(address + 0x0020, relative).Unbox(pointerFactory, reader);
+            ResourceManager = pointerFactory.Create<AppResourceManager>(address + 0x0024, relative).Unbox(pointerFactory, reader);
+            MapManager = pointerFactory.Create<MapManager>(address + 0x0028, relative).Unbox(pointerFactory, reader);
+            BulletManager = pointerFactory.Create<BulletManager>(address + 0x003C, relative).Unbox(pointerFactory, reader);
+            EventManager = pointerFactory.Create<EventManager>(address + 0x0044, relative).Unbox(pointerFactory, reader);
+            FaceGenManager = pointerFactory.Create<FaceGenManager>(address + 0x004C, relative).Unbox(pointerFactory, reader);
+            RumbleManager = pointerFactory.Create<RumbleManager>(address + 0x0050, relative).Unbox(pointerFactory, reader);
+            SignManager = pointerFactory.Create<SignManager>(address + 0x0054, relative).Unbox(pointerFactory, reader);
+            GameDataManager = pointerFactory.Create<GameDataManager>(address + 0x0060, relative).Unbox(pointerFactory, reader);
+            PlayerControl = pointerFactory.Create<PlayerCtrl>(address + 0x0074, relative).Unbox(pointerFactory, reader);
+            SaveLoadSystem = pointerFactory.Create<SaveLoadSystem>(address + 0x0068, relative).Unbox(pointerFactory, reader);
             Tick = reader.ReadInt32(address + 0x00A4, relative);
-            DecalManager = Pointer<AppDecalManager>.CreateAndUnbox(reader, address + 0x0648, relative);
-            DemoManager = Pointer<DemoManager>.CreateAndUnbox(reader, address + 0x065C, relative);
+            DecalManager = pointerFactory.Create<AppDecalManager>(address + 0x0648, relative).Unbox(pointerFactory, reader);
+            DemoManager = pointerFactory.Create<DemoManager>(address + 0x065C, relative).Unbox(pointerFactory, reader);
+
+            DemoManager = pointerFactory.Create<DemoManager>(address + 0x065C, relative).Unbox(pointerFactory, reader);
+
+
             ManagerState = (GameManagerState) reader.ReadInt32(address + 0x0DEC, relative);
             return this;
         }

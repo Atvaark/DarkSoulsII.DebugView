@@ -2,7 +2,7 @@
 {
     public class GameEntityComponent : IReadable<GameEntityComponent>
     {
-        public GameEntityComponent Read(IReader reader, int address, bool relative = false)
+        public GameEntityComponent Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             return this;
         }

@@ -11,12 +11,12 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Map.Area
 
         public List<MapChameleonAreaData> ChameleonAreaDataList { get; set; }
 
-        public MapChameleonArea Read(IReader reader, int address, bool relative = false)
+        public MapChameleonArea Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             int chameleonDataAddress = address + 0x0010;
             for (int i = 0; i < 3; i++, chameleonDataAddress += MapChameleonAreaData.Size)
             {
-                var data = Pointer<MapChameleonAreaData>.Create(chameleonDataAddress, relative).Unbox(reader);
+                var data = pointerFactory.Create<MapChameleonAreaData>(chameleonDataAddress, relative, true).Unbox(pointerFactory, reader);
                 ChameleonAreaDataList.Add(data);
             }
 

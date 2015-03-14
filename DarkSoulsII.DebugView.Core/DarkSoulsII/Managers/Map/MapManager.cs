@@ -12,16 +12,16 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Map
         public MapItemPackManager ItemPackManager { get; set; }
         public MapChameleonAreaManager ChameleonAreaManager { get; set; }
 
-        public MapManager Read(IReader reader, int address, bool relative = false)
+        public MapManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
-            AreaManager = Pointer<MapAreaManager>.CreateAndUnbox(reader, address + 0x0004, relative);
-            WorldList = Pointer<MapWorldList>.CreateAndUnbox(reader, address + 0x0008, relative);
-            TextureManager = Pointer<MapTextureManager>.CreateAndUnbox(reader, address + 0x00C0);
-            TextureResolutionManager = Pointer<MapTextureResolutionManager>.CreateAndUnbox(reader, address + 0x00C4,
-                relative);
-            WindManager = Pointer<MapWindManager>.CreateAndUnbox(reader, address + 0x00DC, relative);
-            ItemPackManager = Pointer<MapItemPackManager>.CreateAndUnbox(reader, address + 0x00E4, relative);
-            ChameleonAreaManager = Pointer<MapChameleonAreaManager>.CreateAndUnbox(reader, address + 0x0104, relative);
+            AreaManager = pointerFactory.Create<MapAreaManager>(address + 0x0004, relative).Unbox(pointerFactory, reader);
+            WorldList = pointerFactory.Create<MapWorldList>(address + 0x0008, relative).Unbox(pointerFactory, reader);
+            TextureManager = pointerFactory.Create<MapTextureManager>(address + 0x00C0).Unbox(pointerFactory, reader);
+
+            TextureResolutionManager = pointerFactory.Create<MapTextureResolutionManager>(address + 0x00C4, relative).Unbox(pointerFactory, reader);
+            WindManager = pointerFactory.Create<MapWindManager>(address + 0x00DC, relative).Unbox(pointerFactory, reader);
+            ItemPackManager = pointerFactory.Create<MapItemPackManager>(address + 0x00E4, relative).Unbox(pointerFactory, reader);
+            ChameleonAreaManager = pointerFactory.Create<MapChameleonAreaManager>(address + 0x0104, relative).Unbox(pointerFactory, reader);
             return this;
         }
     }

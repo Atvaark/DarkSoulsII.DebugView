@@ -2,7 +2,7 @@
 {
     public class NetSyncDataManager : IReadable<NetSyncDataManager>
     {
-        public NetSyncDataManager Read(IReader reader, int address, bool relative = false)
+        public NetSyncDataManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             return this;
         }

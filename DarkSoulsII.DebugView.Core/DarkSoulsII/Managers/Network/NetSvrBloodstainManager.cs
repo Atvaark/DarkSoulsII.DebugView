@@ -2,7 +2,7 @@
 {
     public class NetSvrBloodstainManager : IReadable<NetSvrBloodstainManager>
     {
-        public NetSvrBloodstainManager Read(IReader reader, int address, bool relative = false)
+        public NetSvrBloodstainManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             return this;
         }

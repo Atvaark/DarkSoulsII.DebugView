@@ -2,7 +2,7 @@
 {
     public class MapTextureResolutionCtrl : IReadable<MapTextureResolutionCtrl>
     {
-        public MapTextureResolutionCtrl Read(IReader reader, int address, bool relative = false)
+        public MapTextureResolutionCtrl Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             return this;
         }
