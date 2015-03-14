@@ -87,6 +87,12 @@ namespace DarkSoulsII.DebugView.Core
             pointer.Read(reader, address, relative);
             return pointer.Unbox(reader);
         }
+        public static T CreateAndTryUnbox(IReader reader, int address, bool relative = false)
+        {
+            Pointer<T> pointer = Create();
+            pointer.Read(reader, address, relative);
+            return pointer.TryUnbox(reader);
+        }
 
         public static T CreateAndUnbox(IReader reader, int address, bool relative,
             Action<T, IReader, int, bool> readAction)

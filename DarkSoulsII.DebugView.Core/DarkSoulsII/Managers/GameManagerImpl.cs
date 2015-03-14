@@ -27,7 +27,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers
         public GameDataManager GameDataManager { get; set; }
         public PlayerCtrl PlayerControl { get; set; }
         public SaveLoadSystem SaveLoadSystem { get; set; }
-        public int FrameCount { get; set; }
+        public int Tick { get; set; }
         public AppDecalManager DecalManager { get; set; }
         public DemoManager DemoManager { get; set; }
         public GameManagerState ManagerState { get; set; }
@@ -49,7 +49,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers
             GameDataManager = Pointer<GameDataManager>.CreateAndUnbox(reader, address + 0x0060, relative);
             PlayerControl = Pointer<PlayerCtrl>.CreateAndUnbox(reader, address + 0x0074, relative);
             SaveLoadSystem = Pointer<SaveLoadSystem>.CreateAndUnbox(reader, address + 0x0068, relative);
-            FrameCount = reader.ReadInt32(address + 0x00A4, relative);
+            Tick = reader.ReadInt32(address + 0x00A4, relative);
             DecalManager = Pointer<AppDecalManager>.CreateAndUnbox(reader, address + 0x0648, relative);
             DemoManager = Pointer<DemoManager>.CreateAndUnbox(reader, address + 0x065C, relative);
             ManagerState = (GameManagerState) reader.ReadInt32(address + 0x0DEC, relative);
