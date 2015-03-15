@@ -1,4 +1,4 @@
-﻿namespace DarkSoulsII.DebugView.Core.DarkSoulsII.GameData.Items
+﻿namespace DarkSoulsII.DebugView.Core.DarkSoulsII.GameData.Items.Lists
 {
     public class ItemInventory2ListBase : IReadable<ItemInventory2ListBase>
     {

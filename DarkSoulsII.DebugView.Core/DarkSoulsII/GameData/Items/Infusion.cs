@@ -1,6 +1,6 @@
-﻿namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Character.Equipment
+﻿namespace DarkSoulsII.DebugView.Core.DarkSoulsII.GameData.Items
 {
-    public enum WeaponInfusion : byte
+    public enum Infusion : byte
     {
         None = 0,
         Fire,

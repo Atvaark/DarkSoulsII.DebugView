@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using DarkSoulsII.DebugView.Core.Exceptions;
 
 namespace DarkSoulsII.DebugView.Core
@@ -47,8 +48,9 @@ namespace DarkSoulsII.DebugView.Core
             {
                 return Unbox(pointerFactory, reader);
             }
-            catch (MemoryInaccessibleException)
+            catch (MemoryInaccessibleException e)
             {
+                Debug.WriteLine(e);
                 return null;
             }
         }

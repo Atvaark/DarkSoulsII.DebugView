@@ -1,4 +1,5 @@
-﻿using DarkSoulsII.DebugView.Core.DarkSoulsII.Map.Area;
+﻿using System.ComponentModel;
+using DarkSoulsII.DebugView.Core.DarkSoulsII.Map.Area;
 
 namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Map
 {
@@ -8,8 +9,12 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Map
 
         public MapChameleonAreaManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
-            // TryUnbox gets called because during initialization +0x0014 and +0x0020 are equal to 1019 and not a pointer.
-            Area = pointerFactory.Create<MapChameleonArea>(address + 0x0020, relative).TryUnbox(pointerFactory, reader);
+            // TODO: Check how the game initializes the pointer and if 1019 is a hard coded default value
+            // This checks if the pointer at +0x0020 is initialized or has the default value (1019).
+            bool initialized = reader.ReadInt32(address + 0x0014, relative) != reader.ReadInt32(address + 0x0020, relative);
+            if (initialized == false)
+                return this;
+            Area = pointerFactory.Create<MapChameleonArea>(address + 0x0020, relative).Unbox(pointerFactory, reader);
             return this;
         }
     }
