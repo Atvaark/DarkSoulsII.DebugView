@@ -9,7 +9,6 @@
         {
             ItemId = reader.ReadInt32(address + 0x0000);
             Quantity = reader.ReadInt32(address + 0x0008);
-
             return this;
         }
     }

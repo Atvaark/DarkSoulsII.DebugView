@@ -59,8 +59,6 @@
             CompanyOfChampionsStanding = reader.ReadInt16(address + 0x01CE);
             PilgrimsOfTheDarkStanding = reader.ReadInt16(address + 0x01D0);
             Sins = reader.ReadByte(address + 0x01D3);
-
-
             return this;
         }
     }

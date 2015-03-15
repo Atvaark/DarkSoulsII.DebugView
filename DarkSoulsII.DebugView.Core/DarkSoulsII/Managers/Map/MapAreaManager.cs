@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using DarkSoulsII.DebugView.Core.DarkSoulsII.GameObjects.GameEntities;
 using DarkSoulsII.DebugView.Core.DarkSoulsII.Map.Area;
 
@@ -20,14 +21,10 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Map
             Entity1 = pointerFactory.Create<MapEntity>(address + 0x0010, relative).Unbox(pointerFactory, reader);
             Entity2 = pointerFactory.Create<MapEntity>(address + 0x0014, relative).Unbox(pointerFactory, reader);
 
-            int ownersAddress = address + 0x001C;
-            for (int i = 0; i < 38; i++, ownersAddress += Pointer<MapAreaCtrlOwner>.Size)
-            {
-                MapAreaCtrlOwner owner = pointerFactory.Create<MapAreaCtrlOwner>(ownersAddress, relative).Unbox(pointerFactory, reader);
-                Owners.Add(owner);
-            }
-
             short areaCtrlOwnerCount = reader.ReadInt16(address + 0x0C8, relative);
+            Owners = pointerFactory
+                .CreateArray<MapAreaCtrlOwner>(address + 0x001C, relative, areaCtrlOwnerCount)
+                .Select(p => p.Unbox(pointerFactory, reader)).ToList();
             return this;
         }
     }

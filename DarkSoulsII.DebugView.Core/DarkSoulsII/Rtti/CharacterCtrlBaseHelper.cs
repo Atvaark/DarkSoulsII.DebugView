@@ -1,37 +1,11 @@
 using DarkSoulsII.DebugView.Core.DarkSoulsII.GameObjects.GameEntities;
-using DarkSoulsII.DebugView.Core.Exceptions;
-using DarkSoulsII.DebugView.Core.Rtti;
 
 namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Rtti
 {
-    public class CharacterCtrlBaseResolver : IRttiResolver<CharacterCtrlBase>
+    public class CharacterCtrlBaseResolver : AbstractRttiResolver<CharacterCtrlBase>
     {
-        private static CharacterCtrlBaseResolver _instance;
-
-        private CharacterCtrlBaseResolver()
+        protected override IPointer<CharacterCtrlBase> ResolvePointerTransitive(IPointerFactory pointerFactory, int address, bool relative, int vtable)
         {
-        }
-
-        public static CharacterCtrlBaseResolver Instance
-        {
-            get { return _instance ?? (_instance = new CharacterCtrlBaseResolver()); }
-        }
-
-        public IPointer<CharacterCtrlBase> ResolvePointer(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
-        {
-            if (address == 0)
-                return null;
-
-            int vtable;
-            try
-            {
-                vtable = reader.ReadInt32(address, relative);
-            }
-            catch (MemoryInaccessibleException)
-            {
-                return null;
-            }
-
             IPointer<CharacterCtrlBase> pointer;
             switch (vtable)
             {

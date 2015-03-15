@@ -6,7 +6,6 @@ namespace DarkSoulsII.DebugView.Core
         private T _value;
         private bool _valueInitialized;
 
-
         public CachingPointerProxy(IPointer<T> pointer)
         {
             _pointer = pointer;
@@ -16,13 +15,13 @@ namespace DarkSoulsII.DebugView.Core
         {
             get
             {
-                return _valueInitialized || _pointer.IsNull;
+                return _pointer.IsNull;
             }
         }
 
         public bool Dereferenced
         {
-            get { return _valueInitialized || _pointer.Dereferenced; }
+            get { return _pointer.Dereferenced; }
         }
 
         public T Unbox(IPointerFactory pointerFactory, IReader reader)

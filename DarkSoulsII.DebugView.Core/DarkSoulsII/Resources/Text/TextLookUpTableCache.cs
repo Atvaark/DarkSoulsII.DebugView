@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Resources.Text
 {
@@ -13,12 +14,14 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Resources.Text
 
         public TextLookUpTableCache Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
-            int offset = 0x00D8;
-            for (int i = 0; i < 26; i++, offset += TextLookUpTableCacheEntry.Size)
-            {
-                var entry = pointerFactory.Create<TextLookUpTableCacheEntry>(address + offset, relative, true).Unbox(pointerFactory, reader);
-                Entries.Add((TextLookupTableType) i, entry);
-            }
+            Entries = pointerFactory
+                .CreateArrayDereferenced<TextLookUpTableCacheEntry>(address + 0x00D8, relative, 26)
+                .Select((p, i) => new
+                {
+                    Type = (TextLookupTableType) i,
+                    Entry = p.Unbox(pointerFactory, reader)
+                })
+                .ToDictionary(pair => pair.Type, pair => pair.Entry);
             return this;
         }
     }

@@ -4,25 +4,10 @@ using DarkSoulsII.DebugView.Core.Rtti;
 
 namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Rtti
 {
-    public class GameEntityComponentHelper : IRttiResolver<GameEntityComponent>
+    public class GameEntityComponentHelper : AbstractRttiResolver<GameEntityComponent>
     {
-        public IPointer<GameEntityComponent> ResolvePointer(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
+        protected override IPointer<GameEntityComponent> ResolvePointerTransitive(IPointerFactory pointerFactory, int address, bool relative, int vtable)
         {
-            // TODO: Create an abstract RttiResolver with a template method
-
-            if (address == 0)
-                return null;
-
-            int vtable;
-            try
-            {
-                vtable = reader.ReadInt32(address, relative);
-            }
-            catch (MemoryInaccessibleException)
-            {
-                return null;
-            }
-
             // TODO: Implement switch statement
             IPointer<GameEntityComponent> pointer;
             switch (vtable)

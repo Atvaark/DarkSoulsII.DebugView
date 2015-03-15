@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Map.Item
 {
@@ -13,14 +14,14 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Map.Item
 
         public MapItemPackTable Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
-            int mapItemListAddress = address;
-            for (int i = 0; i < 4; i++, mapItemListAddress += Pointer<MapItemPack>.Size)
-            {
-                var mapItemList = pointerFactory.Create<MapItemPack>(mapItemListAddress, relative).Unbox(pointerFactory, reader);
-
-                Table.Add((MapItemListType) i, mapItemList);
-            }
-
+            Table = pointerFactory
+                .CreateArray<MapItemPack>(address, relative, 4)
+                .Select((p, i) => new
+                {
+                    Type = (MapItemListType) i,
+                    List = p.Unbox(pointerFactory, reader)
+                })
+                .ToDictionary(pair => pair.Type, pair => pair.List);
             return this;
         }
     }

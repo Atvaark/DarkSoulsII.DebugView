@@ -9,7 +9,6 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Camera
         public CameraOperator Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             Matrix = pointerFactory.Create<Matrix4>(address + 0x0010, relative, true).Unbox(pointerFactory, reader);
-
             return this;
         }
     }

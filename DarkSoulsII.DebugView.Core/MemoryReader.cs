@@ -7,7 +7,7 @@ using DarkSoulsII.DebugView.Core.Exceptions;
 
 namespace DarkSoulsII.DebugView.Core
 {
-    public class MemoryReader : IDisposable, IReader
+    public class MemoryReader : IReader, IDisposable
     {
         private readonly IntPtr _baseAddress;
         private readonly IntPtr _processHandle;
@@ -22,6 +22,14 @@ namespace DarkSoulsII.DebugView.Core
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        private void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                NativeMethods.CloseHandle(_processHandle);
+            }
         }
 
         public byte[] Read(int size, int address, bool relative = false)
@@ -232,15 +240,7 @@ namespace DarkSoulsII.DebugView.Core
                 throw new ProcessAccessDeniedException();
             return new MemoryReader(processHandle, process.MainModule.BaseAddress);
         }
-
-        private void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                NativeMethods.CloseHandle(_processHandle);
-            }
-        }
-
+        
         private IntPtr GetAbsoluteAddress(int address, bool relative)
         {
             return relative ? IntPtr.Add(_baseAddress, address) : new IntPtr(address);

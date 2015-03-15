@@ -17,7 +17,6 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Sign
             ActiveSignManager = pointerFactory.Create<ActiveSignManager>(address + 0x0038, relative).Unbox(pointerFactory, reader);
             SignPreviewCtrl = pointerFactory.Create<SignPreviewCtrl>(address + 0x003C, relative).Unbox(pointerFactory, reader);
             SignEventAreaManager = pointerFactory.Create<SignEventAreaManager>(address + 0x0040, relative).Unbox(pointerFactory, reader);
-
             return this;
         }
     }

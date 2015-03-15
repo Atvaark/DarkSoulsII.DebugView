@@ -57,7 +57,6 @@
         public Matrix4 Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             float[] data = reader.ReadSingle(16, address, relative);
-
             M11 = data[0];
             M12 = data[1];
             M13 = data[2];
@@ -74,7 +73,6 @@
             M42 = data[13];
             M43 = data[14];
             M44 = data[15];
-
             return this;
         }
 

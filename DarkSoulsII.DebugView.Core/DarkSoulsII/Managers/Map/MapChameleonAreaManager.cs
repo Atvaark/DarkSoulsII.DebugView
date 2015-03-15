@@ -8,9 +8,8 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Map
 
         public MapChameleonAreaManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
-            // BUG: Sometimes +0020 is just +0014 (value: 1019) and not a pointer.
-            // Either check the value for equality or catch the exception.
-            Area = pointerFactory.Create<MapChameleonArea>(address, relative).Unbox(pointerFactory, reader);
+            // TryUnbox gets called because during initialization +0x0014 and +0x0020 are equal to 1019 and not a pointer.
+            Area = pointerFactory.Create<MapChameleonArea>(address + 0x0020, relative).TryUnbox(pointerFactory, reader);
             return this;
         }
     }

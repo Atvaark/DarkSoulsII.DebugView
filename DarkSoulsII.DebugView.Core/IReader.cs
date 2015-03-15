@@ -28,8 +28,6 @@ namespace DarkSoulsII.DebugView.Core
         string ReadNullTerminatedString(Encoding encoding, int charSize, int address, bool relative);
         string ReadNullTerminatedStringChunked(int address, bool relative);
         string ReadNullTerminatedStringChunked(int lookaheadCharCount, int address, bool relative);
-
-        string ReadNullTerminatedStringChunked(Encoding encoding, int charSize, int lookaheadCharCount, int address,
-            bool relative);
+        string ReadNullTerminatedStringChunked(Encoding encoding, int charSize, int lookaheadCharCount, int address, bool relative);
     }
 }

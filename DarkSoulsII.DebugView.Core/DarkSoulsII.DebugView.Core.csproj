@@ -228,6 +228,7 @@
     <Compile Include="DarkSoulsII\Resources\Param\Containers\MapParamContainer.cs" />
     <Compile Include="DarkSoulsII\Rtti\CameraOperatorHelper.cs" />
     <Compile Include="DarkSoulsII\Rtti\GameEntityComponentHelper.cs" />
+    <Compile Include="DarkSoulsII\Rtti\AbstractRttiResolver.cs" />
     <Compile Include="DarkSoulsII\Savegame\SaveLoadSystem.cs" />
     <Compile Include="DarkSoulsII\Savegame\SaveReason.cs" />
     <Compile Include="GenericPointer.cs" />
@@ -290,6 +291,7 @@
     <Compile Include="DarkSoulsII\Resources\Text\TextLookUpTableCache.cs" />
     <Compile Include="DarkSoulsII\Resources\Text\TextLookUpTableCacheEntry.cs" />
     <Compile Include="ICachingPointerFactory.cs" />
+    <Compile Include="IFixedSize.cs" />
     <Compile Include="IPointer.cs" />
     <Compile Include="DarkSoulsII\Rtti\CharacterCtrlBaseHelper.cs" />
     <Compile Include="IPointerFactory.cs" />

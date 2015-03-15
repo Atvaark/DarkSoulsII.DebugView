@@ -21,7 +21,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Character
         public CharacterManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             var characterControlPointers = reader.ReadInt32(80, address + 0x0028)
-                .Select(rawPointer => CharacterCtrlBaseResolver.Instance.ResolvePointer(pointerFactory, reader, rawPointer))
+                .Select(rawPointer => new CharacterCtrlBaseResolver().ResolvePointer(pointerFactory, reader, rawPointer))
                 .Where(pointer => pointer != null);
 
             foreach (var characterControlPointer in characterControlPointers)
@@ -44,10 +44,8 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Character
             byte characterControlCount = reader.ReadByte(address + 0x0178);
             byte playerControlCount = reader.ReadByte(address + 0x0179);
 
-            // Disabled until caching is implemented
-            ParamContainer = pointerFactory.Create<CharacterParamContainer>(address + 0x0188, relative, true).Unbox(pointerFactory, reader);
-
-
+            // TODO: Enable when it is cached correctly
+            // ParamContainer = pointerFactory.Create<CharacterParamContainer>(address + 0x0188, relative, true).Unbox(pointerFactory, reader);
             return this;
         }
     }

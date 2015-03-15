@@ -7,7 +7,6 @@
         public ChrAsmCtrlEquipmentArmor Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             Durability = reader.ReadSingle(address + 0x0018);
-
             return this;
         }
     }

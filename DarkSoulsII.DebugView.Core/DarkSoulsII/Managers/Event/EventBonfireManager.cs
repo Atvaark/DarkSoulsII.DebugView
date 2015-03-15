@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using DarkSoulsII.DebugView.Core.DarkSoulsII.Events;
 
 namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Event
@@ -14,14 +15,9 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Event
             Bonfires = GenericPointer.Create(reader, address + 0x0010, relative).Unbox(reader,
                 (r, a) =>
                 {
-                    List<MapObjectBonfire> bonfires = new List<MapObjectBonfire>();
-                    int bonfireAddress = a;
-                    for (int i = 0; i < bonfireCount; i++, bonfireAddress += MapObjectBonfire.Size)
-                    {
-                        bonfires.Add(pointerFactory.Create<MapObjectBonfire>(bonfireAddress, relative, true).Unbox(pointerFactory, reader));
-                    }
-
-                    return bonfires;
+                    return pointerFactory
+                        .CreateArrayDereferenced<MapObjectBonfire>(a, false, bonfireCount)
+                        .Select(p => p.Unbox(pointerFactory, reader)).ToList();
                 });
             CurrentTime = reader.ReadSingle(address + 0x002C, relative);
             return this;

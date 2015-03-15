@@ -3,9 +3,8 @@ using DarkSoulsII.DebugView.Core.Standard;
 
 namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Controllers
 {
-    public class ActiveSignCtrl : IReadable<ActiveSignCtrl>
+    public class ActiveSignCtrl : IReadable<ActiveSignCtrl>, IFixedSize
     {
-        public const int Size = 60;
         public Vector3 Position { get; set; }
         public SignKeyGuideEntity SignKeyGuideEntity { get; set; }
         public SignKeyGuideCtrl SignKeyGuideCtrl { get; set; }
@@ -21,8 +20,12 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Controllers
 
             SignKeyGuideEntity = pointerFactory.Create<SignKeyGuideEntity>(address + 0x0034, relative).Unbox(pointerFactory, reader);
             SignKeyGuideCtrl = pointerFactory.Create<SignKeyGuideCtrl>(address + 0x0038, relative).Unbox(pointerFactory, reader);
-
             return this;
+        }
+
+        public int Size
+        {
+            get { return 60; }
         }
     }
 }

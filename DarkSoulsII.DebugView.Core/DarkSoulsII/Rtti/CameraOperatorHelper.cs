@@ -1,38 +1,12 @@
 ﻿using DarkSoulsII.DebugView.Core.DarkSoulsII.Camera;
 using DarkSoulsII.DebugView.Core.DarkSoulsII.Camera.Operators;
-using DarkSoulsII.DebugView.Core.Exceptions;
-using DarkSoulsII.DebugView.Core.Rtti;
 
 namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Rtti
 {
-    public class CameraOperatorHelper : IRttiResolver<CameraOperator>
+    public class CameraOperatorHelper : AbstractRttiResolver<CameraOperator>
     {
-        private static CameraOperatorHelper _instance;
-
-        private CameraOperatorHelper()
+        protected override IPointer<CameraOperator> ResolvePointerTransitive(IPointerFactory pointerFactory, int address, bool relative, int vtable)
         {
-        }
-
-        public static CameraOperatorHelper Instance
-        {
-            get { return _instance ?? (_instance = new CameraOperatorHelper()); }
-        }
-
-        public IPointer<CameraOperator> ResolvePointer(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
-        {
-            if (address == 0)
-                return null;
-
-            int vtable;
-            try
-            {
-                vtable = reader.ReadInt32(address, relative);
-            }
-            catch (MemoryInaccessibleException)
-            {
-                return null;
-            }
-
             IPointer<CameraOperator> pointer;
             switch (vtable)
             {

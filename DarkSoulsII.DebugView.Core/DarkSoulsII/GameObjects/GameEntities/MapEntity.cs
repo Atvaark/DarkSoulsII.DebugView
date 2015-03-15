@@ -13,7 +13,6 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.GameObjects.GameEntities
 
             short type1 = reader.ReadInt16(address + 0x0078, relative);
             short type2 = reader.ReadInt16(address + 0x007A, relative);
-
             return this;
         }
     }

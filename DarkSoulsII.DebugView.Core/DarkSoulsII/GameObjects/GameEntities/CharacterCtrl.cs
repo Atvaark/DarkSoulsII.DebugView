@@ -51,7 +51,6 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.GameObjects.GameEntities
             SpeedFactor = reader.ReadSingle(address + 0x0208, relative);
 
             AsmControl = pointerFactory.Create<ChrAsmCtrl>(address + 0x2D4, relative).Unbox(pointerFactory, reader);
-
             return this;
         }
 

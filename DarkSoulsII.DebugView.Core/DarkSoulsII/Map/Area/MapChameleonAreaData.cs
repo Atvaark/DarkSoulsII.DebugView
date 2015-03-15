@@ -1,6 +1,6 @@
 ﻿namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Map.Area
 {
-    public class MapChameleonAreaData : IReadable<MapChameleonAreaData>
+    public class MapChameleonAreaData : IReadable<MapChameleonAreaData>, IFixedSize
     {
         public int ChameleonId { get; set; }
         public int ChameleonIndex { get; set; }
@@ -12,8 +12,7 @@
         public byte RolledId2Flag { get; set; }
         public byte RolledId3Flag { get; set; }
         public byte RolledId4Flag { get; set; }
-
-        public static int Size
+        public int Size
         {
             get { return 28; }
         }
@@ -30,8 +29,8 @@
             RolledId2Flag = reader.ReadByte(address + 0x0019, relative);
             RolledId3Flag = reader.ReadByte(address + 0x001A, relative);
             RolledId4Flag = reader.ReadByte(address + 0x001B, relative);
-
             return this;
         }
+
     }
 }

@@ -14,8 +14,6 @@
 			// TODO: Check if this was converted correctly when the pointer factory was added
                 Param = GenericPointer.Create(address + 0x008C).Unbox(reader,
                 (r, a) => pointerFactory.Create<T>(r.ReadInt32(a + 0x0008), false, true).Unbox(pointerFactory, r));
-
-
             return this;
         }
     }

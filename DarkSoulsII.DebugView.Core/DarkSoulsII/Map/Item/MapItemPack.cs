@@ -36,5 +36,6 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Map.Item
             int count = reader.ReadInt32(address + 0x0010, relative);
             return this;
         }
+
     }
 }

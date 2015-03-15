@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using DarkSoulsII.DebugView.Core.DarkSoulsII.Controllers;
 
 namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Sign
@@ -21,15 +22,10 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Sign
             ActiveSigns = GenericPointer.Create(reader, address + 0x0010, relative).Unbox(reader,
                 (r, a) =>
                 {
-                    List<ActiveSignCtrl> activeSigns = new List<ActiveSignCtrl>();
-                    int activeSignAddress = a;
-                    for (int i = 0; i < activeSignCount; i++, activeSignAddress += ActiveSignCtrl.Size)
-                    {
-                        activeSigns.Add(pointerFactory.Create<ActiveSignCtrl>(activeSignAddress, relative, true).Unbox(pointerFactory, reader));
-                    }
-                    return activeSigns;
+                    return pointerFactory
+                        .CreateArrayDereferenced<ActiveSignCtrl>(a, false, activeSignCount)
+                        .Select(p => p.Unbox(pointerFactory, reader)).ToList();
                 });
-
             return this;
         }
     }

@@ -54,8 +54,7 @@ namespace DarkSoulsII.DebugView.Core
 
         private static string GetKey<T>(int address, bool relative, bool dereferenced) where T : class, IReadable<T>, new()
         {
-            string key = typeof(T).Name + address + relative + dereferenced;
-            return key;
+            return typeof(T).Name + address + relative + dereferenced;
         }
 
     }

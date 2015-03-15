@@ -51,7 +51,6 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Character
             Ring2 = pointerFactory.Create<ChrAsmCtrlEquipmentRing>(address + 0x0414, relative, true).Unbox(pointerFactory, reader);
             Ring3 = pointerFactory.Create<ChrAsmCtrlEquipmentRing>(address + 0x0420, relative, true).Unbox(pointerFactory, reader);
             Ring4 = pointerFactory.Create<ChrAsmCtrlEquipmentRing>(address + 0x042C, relative, true).Unbox(pointerFactory, reader);
-
             return this;
         }
     }

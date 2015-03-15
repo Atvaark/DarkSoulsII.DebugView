@@ -13,7 +13,6 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.GameObjects.GameEntities
             // 0x0374
             Data = pointerFactory.Create<PlayerData>(address + 0x0378, relative).Unbox(pointerFactory, reader);
             // 0x037C
-
             return this;
         }
     }
