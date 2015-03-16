@@ -5,6 +5,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Rtti
 {
     public abstract class AbstractRttiResolver<T> : IRttiResolver<T> where T : class, IReadable<T>, new()
     {
+        // TODO: Implement resolving non dereferenced pointers
         public IPointer<T> ResolvePointer(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             if (address == 0)

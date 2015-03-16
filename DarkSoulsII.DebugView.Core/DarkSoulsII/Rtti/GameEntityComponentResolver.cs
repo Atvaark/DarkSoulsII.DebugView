@@ -1,10 +1,8 @@
 ﻿using DarkSoulsII.DebugView.Core.DarkSoulsII.GameObjects.GameEntities.Components;
-using DarkSoulsII.DebugView.Core.Exceptions;
-using DarkSoulsII.DebugView.Core.Rtti;
 
 namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Rtti
 {
-    public class GameEntityComponentHelper : AbstractRttiResolver<GameEntityComponent>
+    public class GameEntityComponentResolver : AbstractRttiResolver<GameEntityComponent>
     {
         protected override IPointer<GameEntityComponent> ResolvePointerTransitive(IPointerFactory pointerFactory, int address, bool relative, int vtable)
         {

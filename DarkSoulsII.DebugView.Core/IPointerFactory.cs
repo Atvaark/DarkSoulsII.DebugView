@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace DarkSoulsII.DebugView.Core
+﻿namespace DarkSoulsII.DebugView.Core
 {
     public interface IPointerFactory
     {

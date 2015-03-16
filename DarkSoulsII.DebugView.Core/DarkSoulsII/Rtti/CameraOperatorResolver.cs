@@ -3,7 +3,7 @@ using DarkSoulsII.DebugView.Core.DarkSoulsII.Camera.Operators;
 
 namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Rtti
 {
-    public class CameraOperatorHelper : AbstractRttiResolver<CameraOperator>
+    public class CameraOperatorResolver : AbstractRttiResolver<CameraOperator>
     {
         protected override IPointer<CameraOperator> ResolvePointerTransitive(IPointerFactory pointerFactory, int address, bool relative, int vtable)
         {

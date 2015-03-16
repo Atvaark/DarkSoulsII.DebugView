@@ -25,7 +25,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Camera.Operators
 
             var cameraOperators = cameraOperatorsPointer
                 .Unbox(reader, (r, a) => r.ReadInt32(10, a))
-                .Select(a => new CameraOperatorHelper().ResolvePointer(pointerFactory, reader, a).Unbox(pointerFactory, reader));
+                .Select(a => new CameraOperatorResolver().ResolvePointer(pointerFactory, reader, a).Unbox(pointerFactory, reader));
             CameraOperators.AddRange(cameraOperators);
             var index = reader.ReadInt32(address + 0x00C4, relative);
             CurrentOperator = CameraOperators.ElementAt(index);

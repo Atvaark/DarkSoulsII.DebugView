@@ -1,4 +1,3 @@
-using DarkSoulsII.DebugView.Core.DarkSoulsII.GameData.Items;
 using DarkSoulsII.DebugView.Core.DarkSoulsII.GameData.Items.Lists;
 
 namespace DarkSoulsII.DebugView.Core.DarkSoulsII.GameData

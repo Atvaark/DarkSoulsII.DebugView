@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using DarkSoulsII.DebugView.Core.DarkSoulsII.Map.Area;
+﻿using DarkSoulsII.DebugView.Core.DarkSoulsII.Map.Area;
 
 namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Map
 {

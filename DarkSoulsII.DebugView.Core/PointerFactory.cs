@@ -1,7 +1,4 @@
-﻿using System.Threading;
-using DarkSoulsII.DebugView.Core.DarkSoulsII.Network;
-
-namespace DarkSoulsII.DebugView.Core
+﻿namespace DarkSoulsII.DebugView.Core
 {
     public class PointerFactory : IPointerFactory
     {
@@ -16,7 +13,7 @@ namespace DarkSoulsII.DebugView.Core
         {
             return new Pointer<T>(address, relative, dereferenced);
         }
-
+        
         public IPointer<T>[] CreateArray<T>(int address, bool relative = false, int count = 1) where T : class, IReadable<T>, new()
         {
             IPointer<T>[] result = new IPointer<T>[count];

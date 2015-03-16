@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace DarkSoulsII.DebugView.Core.DarkSoulsII.GameData.Items.Lists
 {
