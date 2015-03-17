@@ -8,6 +8,7 @@ using DarkSoulsII.DebugView.Core.DarkSoulsII.App;
 using DarkSoulsII.DebugView.Core.DarkSoulsII.Managers;
 using DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Network;
 using DarkSoulsII.DebugView.Core.DarkSoulsII.Resources.Text;
+using DarkSoulsII.DebugView.Core.DarkSoulsII.Steam;
 
 namespace DarkSoulsII.DebugView.Test
 {
@@ -21,8 +22,9 @@ namespace DarkSoulsII.DebugView.Test
             var gameManagerImplPointer = GetPointer<GameManagerImpl>(pointerFactory, reader, 0x011593F4);
             var networkManagerPointer = GetPointer<NetworkManager>(pointerFactory, reader, 0x0115A5B4);
             var katanaMainAppPointer = GetPointer<KatanaMainApp>(pointerFactory, reader, 0x011A36C4);
+            var steamSurveillancePointer = GetPointer<SteamSurveillance>(pointerFactory, reader, 0x011A1B10);
             var lookUpTableCachePointer = GetPointerProxy<TextLookUpTableCache>(pointerFactory, reader, 0x0115A590);
-
+            
             long startSampleTick = 0;
             int currentSampleCount = 0;
             int samplesPerSecond = 0;
@@ -51,6 +53,7 @@ namespace DarkSoulsII.DebugView.Test
                 var gameManagerImpl = gameManagerImplPointer.Unbox(pointerFactory, reader);
                 var networkManager = networkManagerPointer.Unbox(pointerFactory, reader);
                 var katanaMainApp = katanaMainAppPointer.Unbox(pointerFactory, reader);
+                var steamSurveillance = steamSurveillancePointer.Unbox(pointerFactory, reader);
                 var lookUpTableCache = lookUpTableCachePointer.Unbox(pointerFactory, reader);
 
                 currentTotalIngameTick = gameManagerImpl.Tick;

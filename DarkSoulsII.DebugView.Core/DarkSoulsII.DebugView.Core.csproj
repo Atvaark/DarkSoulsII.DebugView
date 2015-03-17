@@ -45,6 +45,9 @@
     <Compile Include="CachingPointerProxy.cs" />
     <Compile Include="CachingPointerProxyFactory.cs" />
     <Compile Include="DarkSoulsII\App\Sound\KatanaSfxSystem.cs" />
+    <Compile Include="DarkSoulsII\Bullet\BulletAttachMotion.cs" />
+    <Compile Include="DarkSoulsII\Bullet\BulletMotionBase.cs" />
+    <Compile Include="DarkSoulsII\Bullet\BulletShotMotion.cs" />
     <Compile Include="DarkSoulsII\Character\Gestures\ChrAsmCtrlGesture.cs" />
     <Compile Include="DarkSoulsII\Character\Gestures\ChrAsmCtrlGestures.cs" />
     <Compile Include="DarkSoulsII\Character\Gestures\GestureType.cs" />
@@ -68,6 +71,9 @@
     <Compile Include="DarkSoulsII\GameData\Items\Shop.cs" />
     <Compile Include="DarkSoulsII\GameData\Items\Torch.cs" />
     <Compile Include="DarkSoulsII\GameData\UserItemInventoryData.cs" />
+    <Compile Include="DarkSoulsII\GameObjects\GameEntities\BulletObject.cs" />
+    <Compile Include="DarkSoulsII\GameObjects\GameEntities\BulletObjectBase.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Bullet\BulletParam.cs" />
     <Compile Include="DarkSoulsII\GameObjects\GameEntities\SignKeyGuideEntity.cs" />
     <Compile Include="DarkSoulsII\GameObjects\GameEntities\EnemyGeneratorCtrl.cs" />
     <Compile Include="DarkSoulsII\GameObjects\Target\TargetBulletCtrl.cs" />
@@ -302,6 +308,9 @@
     <Compile Include="DarkSoulsII\Savegame\SaveData\SaveDataShopLineup.cs" />
     <Compile Include="DarkSoulsII\Savegame\SaveLoadSystem.cs" />
     <Compile Include="DarkSoulsII\Savegame\SaveReason.cs" />
+    <Compile Include="DarkSoulsII\Steam\Achievement\AppTrophy.cs" />
+    <Compile Include="DarkSoulsII\Steam\Achievement\AppTrophyManagerImplWin.cs" />
+    <Compile Include="DarkSoulsII\Steam\SteamSurveillance.cs" />
     <Compile Include="DarkSoulsII\Target\TargetIndex.cs" />
     <Compile Include="GenericPointer.cs" />
     <Compile Include="DarkSoulsII\Character\ChrAsmCtrl.cs" />
@@ -381,6 +390,7 @@
     <Compile Include="Exceptions\ProcessNotFoundException.cs" />
     <Compile Include="Pointer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Standard\Templates\StdVector.cs" />
     <Compile Include="Standard\Vector3.cs" />
   </ItemGroup>
   <ItemGroup />
