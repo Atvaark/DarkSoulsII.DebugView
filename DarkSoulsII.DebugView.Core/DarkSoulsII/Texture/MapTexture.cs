@@ -1,4 +1,4 @@
-﻿namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Drawing
+﻿namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Texture
 {
     public class MapTexture : MdlTexture, IReadable<MapTexture>
     {

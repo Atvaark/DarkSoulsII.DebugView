@@ -1,4 +1,4 @@
-﻿using DarkSoulsII.DebugView.Core.DarkSoulsII.Controllers;
+﻿using DarkSoulsII.DebugView.Core.DarkSoulsII.Texture;
 
 namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Map
 {

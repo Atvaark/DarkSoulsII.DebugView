@@ -36,7 +36,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.GameObjects.GameEntities
 
             VisualState = pointerFactory.Create<CharacterVisualState>(address + 0x0090, relative).Unbox(pointerFactory, reader);
 
-            Name = pointerFactory.Create<StdString>(address + 0x00C8, relative, true).Unbox(pointerFactory, reader).Value;
+            Name = pointerFactory.Create<StdWstring>(address + 0x00C8, relative, true).Unbox(pointerFactory, reader).Value;
 
             Health = reader.ReadInt32(address + 0x00FC, relative);
             HealthMaxHuman = reader.ReadInt32(address + 0x0104, relative);

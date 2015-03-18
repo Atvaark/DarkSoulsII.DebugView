@@ -7,7 +7,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.GameObjects.GameEntities
         public new DemoCharacterCtrl Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             base.Read(pointerFactory, reader, address, relative);
-            Name = pointerFactory.Create<StdString>(address + 0x00B0, relative, true).Unbox(pointerFactory, reader).Value;
+            Name = pointerFactory.Create<StdWstring>(address + 0x00B0, relative, true).Unbox(pointerFactory, reader).Value;
             return this;
         }
 

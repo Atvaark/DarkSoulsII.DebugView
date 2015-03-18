@@ -1,4 +1,4 @@
-﻿namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Controllers
+﻿namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Texture
 {
     public class MapTextureResolutionCtrl : IReadable<MapTextureResolutionCtrl>
     {

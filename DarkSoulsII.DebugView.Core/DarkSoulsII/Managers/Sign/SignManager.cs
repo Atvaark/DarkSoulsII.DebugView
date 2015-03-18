@@ -1,4 +1,4 @@
-﻿using DarkSoulsII.DebugView.Core.DarkSoulsII.Controllers;
+﻿using DarkSoulsII.DebugView.Core.DarkSoulsII.Sign;
 
 namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Sign
 {

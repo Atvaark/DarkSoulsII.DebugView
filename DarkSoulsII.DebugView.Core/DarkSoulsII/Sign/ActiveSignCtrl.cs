@@ -1,7 +1,7 @@
 using DarkSoulsII.DebugView.Core.DarkSoulsII.GameObjects.GameEntities;
 using DarkSoulsII.DebugView.Core.Standard;
 
-namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Controllers
+namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Sign
 {
     public class ActiveSignCtrl : IReadable<ActiveSignCtrl>, IFixedSize
     {

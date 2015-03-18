@@ -1,6 +1,6 @@
 ﻿using DarkSoulsII.DebugView.Core.Standard;
 
-namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Controllers
+namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Sign
 {
     public class SignKeyGuideCtrl : IReadable<SignKeyGuideCtrl>
     {

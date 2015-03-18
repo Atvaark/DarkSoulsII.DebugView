@@ -12,6 +12,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.App.Graphics
         public AppLightFilter LightFilter { get; set; }
         public AppVignettingFilter VignettingFilter { get; set; }
         public AppBlackOutFilter BlackOutFilter { get; set; }
+        public AppDepthOfFieldFilter DepthOfFieldFilter { get; set; }
 
         public KatanaDrawSystem Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
@@ -23,7 +24,9 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.App.Graphics
             LightFilter = pointerFactory.Create<AppLightFilter>(address + 0x11BC, relative).Unbox(pointerFactory, reader);
             VignettingFilter = pointerFactory.Create<AppVignettingFilter>(address + 0x11C0, relative).Unbox(pointerFactory, reader);
             BlackOutFilter = pointerFactory.Create<AppBlackOutFilter>(address + 0x11C4, relative).Unbox(pointerFactory, reader);
+            DepthOfFieldFilter = pointerFactory.Create<AppDepthOfFieldFilter>(address + 0x11C8, relative).Unbox(pointerFactory, reader);
             return this;
         }
+
     }
 }

@@ -44,6 +44,8 @@
   <ItemGroup>
     <Compile Include="CachingPointerProxy.cs" />
     <Compile Include="CachingPointerProxyFactory.cs" />
+    <Compile Include="DarkSoulsII\App\Graphics\Filters\ColorVector4.cs" />
+    <Compile Include="DarkSoulsII\App\Graphics\Filters\AppDepthOfFieldFilter.cs" />
     <Compile Include="DarkSoulsII\App\Sound\KatanaSfxSystem.cs" />
     <Compile Include="DarkSoulsII\Bullet\BulletAttachMotion.cs" />
     <Compile Include="DarkSoulsII\Bullet\BulletMotionBase.cs" />
@@ -51,10 +53,10 @@
     <Compile Include="DarkSoulsII\Character\Gestures\ChrAsmCtrlGesture.cs" />
     <Compile Include="DarkSoulsII\Character\Gestures\ChrAsmCtrlGestures.cs" />
     <Compile Include="DarkSoulsII\Character\Gestures\GestureType.cs" />
-    <Compile Include="DarkSoulsII\Controllers\MapTextureResolutionCtrl.cs" />
-    <Compile Include="DarkSoulsII\Controllers\SignKeyGuideCtrl.cs" />
-    <Compile Include="DarkSoulsII\Controllers\SignPreviewCtrl.cs" />
-    <Compile Include="DarkSoulsII\Drawing\MdlTexture.cs" />
+    <Compile Include="DarkSoulsII\Texture\MapTextureResolutionCtrl.cs" />
+    <Compile Include="DarkSoulsII\Sign\SignKeyGuideCtrl.cs" />
+    <Compile Include="DarkSoulsII\Sign\SignPreviewCtrl.cs" />
+    <Compile Include="DarkSoulsII\Texture\MdlTexture.cs" />
     <Compile Include="DarkSoulsII\Events\MapObjectBonfire.cs" />
     <Compile Include="DarkSoulsII\GameData\Items\Bag.cs" />
     <Compile Include="DarkSoulsII\GameData\Items\BagFlags.cs" />
@@ -129,8 +131,8 @@
     <Compile Include="DarkSoulsII\Managers\FaceGenManager.cs" />
     <Compile Include="DarkSoulsII\Managers\Input\RumbleManager.cs" />
     <Compile Include="DarkSoulsII\GameData\SaveSlotData.cs" />
-    <Compile Include="DarkSoulsII\Controllers\ActiveSignCtrl.cs" />
-    <Compile Include="DarkSoulsII\Drawing\MapTexture.cs" />
+    <Compile Include="DarkSoulsII\Sign\ActiveSignCtrl.cs" />
+    <Compile Include="DarkSoulsII\Texture\MapTexture.cs" />
     <Compile Include="DarkSoulsII\GameData\ItemInventoryData.cs" />
     <Compile Include="DarkSoulsII\Managers\PadOwnershipManager.cs" />
     <Compile Include="DarkSoulsII\Managers\Sign\ActiveSignManager.cs" />
@@ -381,6 +383,7 @@
     <Compile Include="Standard\Quaternion.cs" />
     <Compile Include="Rtti\IRttiHelper.cs" />
     <Compile Include="Standard\Templates\StdString.cs" />
+    <Compile Include="Standard\Templates\StdWstring.cs" />
     <Compile Include="IReader.cs" />
     <Compile Include="IReadable.cs" />
     <Compile Include="MemoryReader.cs" />

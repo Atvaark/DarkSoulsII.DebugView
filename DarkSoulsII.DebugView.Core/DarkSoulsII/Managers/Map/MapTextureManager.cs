@@ -1,5 +1,5 @@
-﻿using DarkSoulsII.DebugView.Core.DarkSoulsII.Drawing;
-using DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Character;
+﻿using DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Character;
+using DarkSoulsII.DebugView.Core.DarkSoulsII.Texture;
 
 namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Map
 {
