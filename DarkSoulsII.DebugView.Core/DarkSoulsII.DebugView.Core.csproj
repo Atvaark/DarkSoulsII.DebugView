@@ -44,6 +44,19 @@
   <ItemGroup>
     <Compile Include="CachingPointerProxy.cs" />
     <Compile Include="CachingPointerProxyFactory.cs" />
+    <Compile Include="DarkSoulsII\Ai\ChrAi.cs" />
+    <Compile Include="DarkSoulsII\Ai\ChrAiBase.cs" />
+    <Compile Include="DarkSoulsII\Ai\ChrAiMapObjectCtrl.cs" />
+    <Compile Include="DarkSoulsII\Ai\ChrAiNavimeshCtrl.cs" />
+    <Compile Include="DarkSoulsII\Ai\Navigation\LocationFinder.cs" />
+    <Compile Include="DarkSoulsII\Ai\Navigation\NaviGraphCostEstimator.cs" />
+    <Compile Include="DarkSoulsII\Ai\Navigation\NaviGraphGate.cs" />
+    <Compile Include="DarkSoulsII\Ai\Navigation\NaviGraphHashTable.cs" />
+    <Compile Include="DarkSoulsII\Ai\Navigation\NaviGraphParts.cs" />
+    <Compile Include="DarkSoulsII\Ai\Navigation\NaviGraphWorld.cs" />
+    <Compile Include="DarkSoulsII\Ai\Navigation\RouteNavigator.cs" />
+    <Compile Include="DarkSoulsII\Ai\Navigation\RoutePlanner.cs" />
+    <Compile Include="DarkSoulsII\Ai\SearchEzStateCtrl.cs" />
     <Compile Include="DarkSoulsII\App\Graphics\Filters\ColorVector4.cs" />
     <Compile Include="DarkSoulsII\App\Graphics\Filters\AppDepthOfFieldFilter.cs" />
     <Compile Include="DarkSoulsII\App\Sound\KatanaSfxSystem.cs" />

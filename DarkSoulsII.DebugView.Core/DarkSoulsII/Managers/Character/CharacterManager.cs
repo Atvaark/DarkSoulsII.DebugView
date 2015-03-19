@@ -20,8 +20,11 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Character
 
         public CharacterManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
+            // TODO: Check if +0000 contains game objects
+
+            var characterControlResolver = new CharacterCtrlBaseResolver();
             var characterControlPointers = reader.ReadInt32(80, address + 0x0028)
-                .Select(rawPointer => new CharacterCtrlBaseResolver().ResolvePointer(pointerFactory, reader, rawPointer))
+                .Select(rawPointer => characterControlResolver.ResolvePointer(pointerFactory, reader, rawPointer))
                 .Where(pointer => pointer != null);
 
             foreach (var characterControlPointer in characterControlPointers)
