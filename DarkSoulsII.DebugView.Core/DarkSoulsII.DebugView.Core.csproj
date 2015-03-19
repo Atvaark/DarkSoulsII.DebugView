@@ -66,6 +66,12 @@
     <Compile Include="DarkSoulsII\Character\Gestures\ChrAsmCtrlGesture.cs" />
     <Compile Include="DarkSoulsII\Character\Gestures\ChrAsmCtrlGestures.cs" />
     <Compile Include="DarkSoulsII\Character\Gestures\GestureType.cs" />
+    <Compile Include="DarkSoulsII\EnemyGenerator\EnemyGeneratorAreaChrStatus.cs" />
+    <Compile Include="DarkSoulsII\EnemyGenerator\EnemyGeneratorAreaCtrl.cs" />
+    <Compile Include="DarkSoulsII\EnemyGenerator\EnemyGeneratorCtrl.cs" />
+    <Compile Include="DarkSoulsII\EnemyGenerator\EnemyGeneratorDeadCounter.cs" />
+    <Compile Include="DarkSoulsII\EnemyGenerator\EnemyGeneratorPacketCtrl.cs" />
+    <Compile Include="DarkSoulsII\EnemyGenerator\MapDeadCounter.cs" />
     <Compile Include="DarkSoulsII\Texture\MapTextureResolutionCtrl.cs" />
     <Compile Include="DarkSoulsII\Sign\SignKeyGuideCtrl.cs" />
     <Compile Include="DarkSoulsII\Sign\SignPreviewCtrl.cs" />
