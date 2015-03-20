@@ -12,7 +12,7 @@
         public AppTrophy Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             Id = reader.ReadInt32(address + 0x0000, relative);
-            Name = reader.ReadString(128, address + 0x0008, relative).TrimEnd('\0');
+            Name = reader.ReadAnsiString(128, address + 0x0008, relative).TrimEnd('\0');
             return this;
         }
 

@@ -10,7 +10,7 @@ namespace DarkSoulsII.DebugView.Core.Standard.Templates
         {
             int length = reader.ReadInt32(address + 0x0010);
             int stringAddress = length >= 8 ? reader.ReadInt32(address) : address;
-            Value = reader.ReadString(length, 2, Encoding.Unicode, stringAddress);
+            Value = reader.ReadUnicodeString(length, stringAddress);
             return this;
         }
     }

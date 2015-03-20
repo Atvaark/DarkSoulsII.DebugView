@@ -12,7 +12,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Network
             // Mutex 0004-0020
 
             PlayerControl = pointerFactory.Create<PlayerCtrl>(address + 0x0024).Unbox(pointerFactory, reader);
-            Name = reader.ReadString(62, address + 0x006C, relative).Replace("\0", "");
+            Name = reader.ReadAnsiString(62, address + 0x006C, relative).Replace("\0", "");
             return this;
         }
     }

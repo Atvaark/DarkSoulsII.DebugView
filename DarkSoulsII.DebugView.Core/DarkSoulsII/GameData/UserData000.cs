@@ -6,7 +6,7 @@
 
         public UserData000 Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
-            SteamId = reader.ReadString(16, address + 0x0015, relative);
+            SteamId = reader.ReadAnsiString(16, address + 0x0015, relative);
             return this;
         }
     }

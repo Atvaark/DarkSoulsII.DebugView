@@ -17,7 +17,7 @@ namespace DarkSoulsII.DebugView.Test
         private static void Main(string[] args)
         {
             Process process = GetProcess("DarkSoulsII");
-            IReader reader = MemoryReader.Create(process);
+            IReader reader = ProcessMemoryReader.Create(process);
             IPointerFactory pointerFactory = new PointerFactory(reader);
             var gameManagerImplPointer = GetPointer<GameManagerImpl>(pointerFactory, reader, 0x011593F4);
             var networkManagerPointer = GetPointer<NetworkManager>(pointerFactory, reader, 0x0115A5B4);

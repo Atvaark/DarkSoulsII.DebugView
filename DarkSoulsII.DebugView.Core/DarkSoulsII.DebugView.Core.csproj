@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IPointerProxy.cs" />
+    <Compile Include="MemoryReader.cs" />
     <Compile Include="PointerProxy.cs" />
     <Compile Include="PointerFactory.cs" />
     <Compile Include="DarkSoulsII\Ai\ChrAi.cs" />
@@ -404,7 +405,7 @@
     <Compile Include="Standard\Templates\StdWstring.cs" />
     <Compile Include="IReader.cs" />
     <Compile Include="IReadable.cs" />
-    <Compile Include="MemoryReader.cs" />
+    <Compile Include="ProcessMemoryReader.cs" />
     <Compile Include="Exceptions\MemoryInaccessibleException.cs" />
     <Compile Include="NativeMethods.cs" />
     <Compile Include="Exceptions\ProcessAccessDeniedException.cs" />

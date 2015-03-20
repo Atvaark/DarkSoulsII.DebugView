@@ -1,6 +1,3 @@
-using System;
-using System.Text;
-
 namespace DarkSoulsII.DebugView.Core
 {
     public interface IReader
@@ -8,7 +5,7 @@ namespace DarkSoulsII.DebugView.Core
         byte[] Read(int size, int address, bool relative = false);
         bool ReadBoolean(int address, bool relative = false);
         byte ReadByte(int address, bool relative = false);
-        SByte ReadSByte(int address, bool relative = false);
+        sbyte ReadSByte(int address, bool relative = false);
         short ReadInt16(int address, bool relative = false);
         ushort ReadUInt16(int address, bool relative = false);
         int ReadInt32(int address, bool relative = false);
@@ -20,14 +17,13 @@ namespace DarkSoulsII.DebugView.Core
         float[] ReadSingle(int count, int address, bool relative = false);
         double ReadDouble(int address, bool relative = false);
         decimal ReadDecimal(int address, bool relative = false);
-        char ReadChar(int address, bool relative = false);
-        char ReadChar(int charSize, Encoding encoding, int address, bool relative = false);
-        string ReadString(int length, int address, bool relative = false);
-        string ReadString(int length, int charSize, Encoding encoding, int address, bool relative = false);
-        string ReadNullTerminatedString(int address, bool relative);
-        string ReadNullTerminatedString(Encoding encoding, int charSize, int address, bool relative);
-        string ReadNullTerminatedStringChunked(int address, bool relative);
-        string ReadNullTerminatedStringChunked(int lookaheadCharCount, int address, bool relative);
-        string ReadNullTerminatedStringChunked(Encoding encoding, int charSize, int lookaheadCharCount, int address, bool relative);
+        char ReadAnsiChar(int address, bool relative = false);
+        char ReadUnicodeChar(int address, bool relative = false);
+        string ReadAnsiString(int length, int address, bool relative = false);
+        string ReadUnicodeString(int length, int address, bool relative = false);
+        string ReadNullTerminatedAnsiString(int address, bool relative);
+        string ReadNullTerminatedUnicodeString(int address, bool relative);
+        string ReadNullTerminatedAnsiStringChunked(int lookaheadCharCount, int address, bool relative);
+        string ReadNullTerminatedUnicodeStringChunked(int lookaheadCharCount, int address, bool relative);
     }
 }

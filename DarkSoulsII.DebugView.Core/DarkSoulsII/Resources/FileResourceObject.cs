@@ -10,7 +10,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Resources
         {
             base.Read(pointerFactory, reader, address, relative);
             Name = GenericPointer.Create(reader, address + 0x005C, relative).Unbox(reader,
-                (r, a) => r.ReadNullTerminatedStringChunked(Encoding.Unicode, 2, 16, a, false));
+                (r, a) => r.ReadNullTerminatedUnicodeStringChunked(16, a, false));
             return this;
         }
     }
