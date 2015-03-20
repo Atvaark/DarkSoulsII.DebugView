@@ -1,6 +1,6 @@
 namespace DarkSoulsII.DebugView.Core
 {
-    public interface IPointer<out T> where T : class, IReadable<T>, new()
+    public interface IPointer<out T> : IFixedSize where T : class, IReadable<T>, new()
     {
         bool IsNull { get; }
         bool Dereferenced { get; }

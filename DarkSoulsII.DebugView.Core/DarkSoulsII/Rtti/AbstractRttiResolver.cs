@@ -1,5 +1,4 @@
 ﻿using DarkSoulsII.DebugView.Core.Exceptions;
-using DarkSoulsII.DebugView.Core.Rtti;
 
 namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Rtti
 {

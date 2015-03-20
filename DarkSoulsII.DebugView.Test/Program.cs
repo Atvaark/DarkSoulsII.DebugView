@@ -18,7 +18,7 @@ namespace DarkSoulsII.DebugView.Test
         {
             Process process = GetProcess("DarkSoulsII");
             IReader reader = MemoryReader.Create(process);
-            ICachingPointerFactory pointerFactory = new CachingPointerProxyFactory(reader);
+            IPointerFactory pointerFactory = new PointerFactory(reader);
             var gameManagerImplPointer = GetPointer<GameManagerImpl>(pointerFactory, reader, 0x011593F4);
             var networkManagerPointer = GetPointer<NetworkManager>(pointerFactory, reader, 0x0115A5B4);
             var katanaMainAppPointer = GetPointer<KatanaMainApp>(pointerFactory, reader, 0x011A36C4);
@@ -102,7 +102,7 @@ namespace DarkSoulsII.DebugView.Test
         }
 
 
-        private static IPointer<T> GetPointerProxy<T>(ICachingPointerFactory pointerFactory, IReader reader, int address) where T : class, IReadable<T>, new()
+        private static IPointer<T> GetPointerProxy<T>(IPointerFactory pointerFactory, IReader reader, int address) where T : class, IReadable<T>, new()
         {
             var pointer = pointerFactory.CreateProxy<T>(address, true);
             while (pointer.Dereferenced == false || pointer.IsNull)

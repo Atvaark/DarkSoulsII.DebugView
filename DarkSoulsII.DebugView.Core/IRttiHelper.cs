@@ -1,4 +1,4 @@
-﻿namespace DarkSoulsII.DebugView.Core.Rtti
+﻿namespace DarkSoulsII.DebugView.Core
 {
     public interface IRttiResolver<out T> where T : class, IReadable<T>, new()
     {

@@ -25,10 +25,10 @@ namespace DarkSoulsII.DebugView.Core
         {
             get { return TargetAddress == 0; }
         }
-        
-        public static int Size
+
+        public int Size
         {
-            get { return sizeof (int); }
+            get { return IntPtr.Size; }
         }
         
         public T Unbox(IPointerFactory pointerFactory, IReader reader)
@@ -62,10 +62,5 @@ namespace DarkSoulsII.DebugView.Core
             Dereferenced = true;
         }
         
-        [Obsolete]
-        public static Pointer<T> Create(int address, bool relative = false, bool dereferenced = false)
-        {
-            return new Pointer<T>(address, relative, dereferenced);
-        }
     }
 }

@@ -42,8 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CachingPointerProxy.cs" />
-    <Compile Include="CachingPointerProxyFactory.cs" />
+    <Compile Include="IPointerProxy.cs" />
+    <Compile Include="PointerProxy.cs" />
+    <Compile Include="PointerFactory.cs" />
     <Compile Include="DarkSoulsII\Ai\ChrAi.cs" />
     <Compile Include="DarkSoulsII\Ai\ChrAiBase.cs" />
     <Compile Include="DarkSoulsII\Ai\ChrAiMapObjectCtrl.cs" />
@@ -392,15 +393,13 @@
     <Compile Include="DarkSoulsII\Resources\Text\TextLookUpTable.cs" />
     <Compile Include="DarkSoulsII\Resources\Text\TextLookUpTableCache.cs" />
     <Compile Include="DarkSoulsII\Resources\Text\TextLookUpTableCacheEntry.cs" />
-    <Compile Include="ICachingPointerFactory.cs" />
     <Compile Include="IFixedSize.cs" />
     <Compile Include="IPointer.cs" />
     <Compile Include="DarkSoulsII\Rtti\CharacterCtrlBaseResolver.cs" />
     <Compile Include="IPointerFactory.cs" />
-    <Compile Include="PointerFactory.cs" />
     <Compile Include="Standard\Matrix4.cs" />
     <Compile Include="Standard\Quaternion.cs" />
-    <Compile Include="Rtti\IRttiHelper.cs" />
+    <Compile Include="IRttiHelper.cs" />
     <Compile Include="Standard\Templates\StdString.cs" />
     <Compile Include="Standard\Templates\StdWstring.cs" />
     <Compile Include="IReader.cs" />
