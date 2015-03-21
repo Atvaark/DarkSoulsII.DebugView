@@ -8,9 +8,10 @@
 
         public Vector3 Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
-            X = reader.ReadSingle(address + 0x0000, relative);
-            Y = reader.ReadSingle(address + 0x0004, relative);
-            Z = reader.ReadSingle(address + 0x0008, relative);
+            float[] data = reader.ReadSingle(3, address, relative);
+            X = data[0];
+            Y = data[1];
+            Z = data[2];
             return this;
         }
 

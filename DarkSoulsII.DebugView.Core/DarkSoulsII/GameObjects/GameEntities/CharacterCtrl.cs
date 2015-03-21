@@ -1,5 +1,6 @@
 ﻿using System;
 using DarkSoulsII.DebugView.Core.DarkSoulsII.Character;
+using DarkSoulsII.DebugView.Core.DarkSoulsII.Model;
 using DarkSoulsII.DebugView.Core.Standard;
 using DarkSoulsII.DebugView.Core.Standard.Templates;
 
@@ -10,6 +11,8 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.GameObjects.GameEntities
         public double AngleY { get; set; }
         public Vector3 Position { get; set; }
         public CharacterVisualState VisualState { get; set; }
+        public CharacterModelCtrl ModelCtrl { get; set; }
+        public ChrMotionCtrl MotionCtrl { get; set; }
         public int Health { get; set; }
         public int HealthMaxHuman { get; set; }
         public int HealthMaxHollow { get; set; }
@@ -29,13 +32,14 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.GameObjects.GameEntities
             // TODO: Maybe it's a quaternion?
             var angleYFlag = reader.ReadUInt32(address + 0x0058, relative);
             var cosineY = reader.ReadSingle(address + 0x0068, relative);
-            var angleY = Math.Acos(cosineY)*180.0/Math.PI;
+            var angleY = Math.Acos(cosineY) * 180.0 / Math.PI;
             AngleY = (angleYFlag & 0x80000000) > 0 ? 360 - angleY : angleY;
 
             Position = pointerFactory.Create<Vector3>(address + 0x0070, relative, true).Unbox(pointerFactory, reader);
 
             VisualState = pointerFactory.Create<CharacterVisualState>(address + 0x0090, relative).Unbox(pointerFactory, reader);
-
+            ModelCtrl = pointerFactory.Create<CharacterModelCtrl>(address + 0x00B0, relative).Unbox(pointerFactory, reader);
+            MotionCtrl = pointerFactory.Create<ChrMotionCtrl>(address + 0x00B4, relative).Unbox(pointerFactory, reader);
             Name = pointerFactory.Create<StdWstring>(address + 0x00C8, relative, true).Unbox(pointerFactory, reader).Value;
 
             Health = reader.ReadInt32(address + 0x00FC, relative);
@@ -53,6 +57,8 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.GameObjects.GameEntities
             AsmControl = pointerFactory.Create<ChrAsmCtrl>(address + 0x2D4, relative).Unbox(pointerFactory, reader);
             return this;
         }
+
+
 
         public override string ToString()
         {
