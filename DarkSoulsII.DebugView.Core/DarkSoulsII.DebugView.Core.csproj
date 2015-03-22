@@ -42,7 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DarkSoulsII\Character\ChrBodyScale.cs" />
     <Compile Include="DarkSoulsII\Character\ChrMotionCtrl.cs" />
+    <Compile Include="DarkSoulsII\Character\ChrSpEffectCtrl.cs" />
     <Compile Include="DarkSoulsII\Resources\Param\Sign\BloodMessageParam.cs" />
     <Compile Include="DarkSoulsII\Sign\BloodMessageSetCtrl.cs" />
     <Compile Include="DarkSoulsII\Resources\Param\Sign\BloodstainParam.cs" />

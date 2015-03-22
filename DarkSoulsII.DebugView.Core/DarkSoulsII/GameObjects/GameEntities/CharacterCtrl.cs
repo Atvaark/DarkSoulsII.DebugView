@@ -48,8 +48,7 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.GameObjects.GameEntities
             Stamina = reader.ReadSingle(address + 0x0140, relative);
             StaminaMax = reader.ReadSingle(address + 0x0148, relative);
 
-            // TODO: Check if the offset is correct
-            Petrification = reader.ReadSingle(address + 0x014A, relative);
+            Petrification = reader.ReadSingle(address + 0x01A0, relative);
             PetrificationMax = reader.ReadSingle(address + 0x01A8, relative);
             Poison = reader.ReadSingle(address + 0x01AC, relative);
             PoisonMax = reader.ReadSingle(address + 0x01B4, relative);

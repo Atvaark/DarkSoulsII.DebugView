@@ -37,20 +37,20 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Character
             WeaponRight2 = pointerFactory.Create<ChrAsmCtrlEquipmentWeapon>(address + 0x00F4, relative, true).Unbox(pointerFactory, reader);
             WeaponRight3 = pointerFactory.Create<ChrAsmCtrlEquipmentWeapon>(address + 0x0120, relative, true).Unbox(pointerFactory, reader);
 
-            Head = pointerFactory.Create<ChrAsmCtrlEquipmentArmor>(address + 0x02F4, relative, true).Unbox(pointerFactory, reader);
-            Chest = pointerFactory.Create<ChrAsmCtrlEquipmentArmor>(address + 0x0310, relative, true).Unbox(pointerFactory, reader);
-            Hands = pointerFactory.Create<ChrAsmCtrlEquipmentArmor>(address + 0x032C, relative, true).Unbox(pointerFactory, reader);
-            Legs = pointerFactory.Create<ChrAsmCtrlEquipmentArmor>(address + 0x0348, relative, true).Unbox(pointerFactory, reader);
+            Head = pointerFactory.Create<ChrAsmCtrlEquipmentArmor>(address + 0x01A4, relative, true).Unbox(pointerFactory, reader);
+            Chest = pointerFactory.Create<ChrAsmCtrlEquipmentArmor>(address + 0x01C0, relative, true).Unbox(pointerFactory, reader);
+            Hands = pointerFactory.Create<ChrAsmCtrlEquipmentArmor>(address + 0x01DC, relative, true).Unbox(pointerFactory, reader);
+            Legs = pointerFactory.Create<ChrAsmCtrlEquipmentArmor>(address + 0x01F8, relative, true).Unbox(pointerFactory, reader);
 
-            Arrows1 = pointerFactory.Create<ChrAsmCtrlEquipmentAmmo>(address + 0x036C, relative, true).Unbox(pointerFactory, reader);
-            Arrows2 = pointerFactory.Create<ChrAsmCtrlEquipmentAmmo>(address + 0x0378, relative, true).Unbox(pointerFactory, reader);
-            Bolts1 = pointerFactory.Create<ChrAsmCtrlEquipmentAmmo>(address + 0x0384, relative, true).Unbox(pointerFactory, reader);
-            Bolts2 = pointerFactory.Create<ChrAsmCtrlEquipmentAmmo>(address + 0x0390, relative, true).Unbox(pointerFactory, reader);
+            Arrows1 = pointerFactory.Create<ChrAsmCtrlEquipmentAmmo>(address + 0x021C, relative, true).Unbox(pointerFactory, reader);
+            Arrows2 = pointerFactory.Create<ChrAsmCtrlEquipmentAmmo>(address + 0x0228, relative, true).Unbox(pointerFactory, reader);
+            Bolts1 = pointerFactory.Create<ChrAsmCtrlEquipmentAmmo>(address + 0x0234, relative, true).Unbox(pointerFactory, reader);
+            Bolts2 = pointerFactory.Create<ChrAsmCtrlEquipmentAmmo>(address + 0x0240, relative, true).Unbox(pointerFactory, reader);
 
-            Ring1 = pointerFactory.Create<ChrAsmCtrlEquipmentRing>(address + 0x0408, relative, true).Unbox(pointerFactory, reader);
-            Ring2 = pointerFactory.Create<ChrAsmCtrlEquipmentRing>(address + 0x0414, relative, true).Unbox(pointerFactory, reader);
-            Ring3 = pointerFactory.Create<ChrAsmCtrlEquipmentRing>(address + 0x0420, relative, true).Unbox(pointerFactory, reader);
-            Ring4 = pointerFactory.Create<ChrAsmCtrlEquipmentRing>(address + 0x042C, relative, true).Unbox(pointerFactory, reader);
+            Ring1 = pointerFactory.Create<ChrAsmCtrlEquipmentRing>(address + 0x0258, relative, true).Unbox(pointerFactory, reader);
+            Ring2 = pointerFactory.Create<ChrAsmCtrlEquipmentRing>(address + 0x0264, relative, true).Unbox(pointerFactory, reader);
+            Ring3 = pointerFactory.Create<ChrAsmCtrlEquipmentRing>(address + 0x0270, relative, true).Unbox(pointerFactory, reader);
+            Ring4 = pointerFactory.Create<ChrAsmCtrlEquipmentRing>(address + 0x027C, relative, true).Unbox(pointerFactory, reader);
             return this;
         }
     }
