@@ -24,7 +24,7 @@ namespace DarkSoulsII.DebugView.Test
             var katanaMainAppPointer = GetPointer<KatanaMainApp>(pointerFactory, reader, 0x011A36C4);
             var steamSurveillancePointer = GetPointer<SteamSurveillance>(pointerFactory, reader, 0x011A1B10);
             var lookUpTableCachePointer = GetPointerProxy<TextLookUpTableCache>(pointerFactory, reader, 0x0115A590);
-            
+
             long startSampleTick = 0;
             int currentSampleCount = 0;
             int samplesPerSecond = 0;
@@ -57,29 +57,33 @@ namespace DarkSoulsII.DebugView.Test
                 var lookUpTableCache = lookUpTableCachePointer.Unbox(pointerFactory, reader);
 
                 currentTotalIngameTick = gameManagerImpl.Tick;
-                Console.WriteLine("State     | Samples/s|    Sample|   Tick/s|       Tick");
-                Console.WriteLine("------------------------------------------------------");
-                Console.WriteLine("{0, -10}|{1, 10}|{2, 10}|{3, 10}|{4, 10}", gameManagerImpl.ManagerState,
-                    samplesPerSecond, currentSampleCount, ingameTicksPerSecond, currentIngameTick);
-                Console.WriteLine("");
 
-                var playerCtrl = gameManagerImpl.PlayerControl;
-                if (playerCtrl != null)
+                if (currentSampleCount % 5 == 0)
                 {
-                }
+                    Console.Clear();
+                    Console.WriteLine("State     | Samples/s|    Sample|   Tick/s|       Tick");
+                    Console.WriteLine("------------------------------------------------------");
+                    Console.WriteLine("{0, -10}|{1, 10}|{2, 10}|{3, 10}|{4, 10}", gameManagerImpl.ManagerState,
+                        samplesPerSecond, currentSampleCount, ingameTicksPerSecond, currentIngameTick);
+                    Console.WriteLine("");
 
-                foreach (var characterControl in gameManagerImpl.CharacterManager.CharacterControls)
-                {
-                    Console.WriteLine(characterControl.ToString());
+                    var playerCtrl = gameManagerImpl.PlayerControl;
+                    if (playerCtrl != null)
+                    {
+                    }
+
+                    foreach (var characterControl in gameManagerImpl.CharacterManager.CharacterControls)
+                    {
+                        Console.WriteLine(characterControl.ToString());
+                    }
                 }
 
                 if (currentSampleCount >= currentIngameTick)
                     Thread.Sleep(16);
 
-                Console.Clear();
             }
         }
-        
+
         private static Process GetProcess(string processName)
         {
             Process process = null;

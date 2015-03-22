@@ -43,6 +43,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DarkSoulsII\Character\ChrMotionCtrl.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Sign\BloodMessageParam.cs" />
+    <Compile Include="DarkSoulsII\Sign\BloodMessageSetCtrl.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Sign\BloodstainParam.cs" />
+    <Compile Include="DarkSoulsII\Sign\BloodstainSetCtrl.cs" />
+    <Compile Include="DarkSoulsII\Sign\SignSet.cs" />
+    <Compile Include="DarkSoulsII\Sign\SignSetBase.cs" />
+    <Compile Include="DarkSoulsII\Sign\SignSetCommonCtrl.cs" />
+    <Compile Include="DarkSoulsII\Resources\Param\Sign\SummonSignParam.cs" />
+    <Compile Include="DarkSoulsII\Sign\SummonSignSetCtrl.cs" />
     <Compile Include="DarkSoulsII\Model\AppFlverModelCtrl.cs" />
     <Compile Include="DarkSoulsII\Model\CharacterModelCtrl.cs" />
     <Compile Include="DarkSoulsII\Model\FlverModelData.cs" />

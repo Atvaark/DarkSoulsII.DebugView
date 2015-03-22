@@ -4,7 +4,7 @@
     {
         Dummy = 0,
         Player,
-        GhostPlayer,
+        NpcPhantomGhostPlayer,
         Boss,
         Enemy,
         Npc
