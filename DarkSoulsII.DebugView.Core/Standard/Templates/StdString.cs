@@ -1,5 +1,3 @@
-using System.Text;
-
 namespace DarkSoulsII.DebugView.Core.Standard.Templates
 {
     public class StdString : IReadable<StdString>

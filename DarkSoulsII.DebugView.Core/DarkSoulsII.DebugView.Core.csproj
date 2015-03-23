@@ -35,6 +35,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,6 +46,12 @@
     <Compile Include="DarkSoulsII\Character\ChrBodyScale.cs" />
     <Compile Include="DarkSoulsII\Character\ChrMotionCtrl.cs" />
     <Compile Include="DarkSoulsII\Character\ChrSpEffectCtrl.cs" />
+    <Compile Include="DarkSoulsII\Managers\Map\MapStateAct.cs" />
+    <Compile Include="DarkSoulsII\Managers\Map\MapStateActEntry.cs" />
+    <Compile Include="DarkSoulsII\Managers\Map\MapStateActManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\StateAct\StateActElapsedTimeManager.cs" />
+    <Compile Include="DarkSoulsII\StateAct\NullStateActCtrl.cs" />
+    <Compile Include="DarkSoulsII\Managers\StateAct\StateActGraphManager.cs" />
     <Compile Include="DarkSoulsII\Resources\Param\Sign\BloodMessageParam.cs" />
     <Compile Include="DarkSoulsII\Sign\BloodMessageSetCtrl.cs" />
     <Compile Include="DarkSoulsII\Resources\Param\Sign\BloodstainParam.cs" />
@@ -95,6 +102,7 @@
     <Compile Include="DarkSoulsII\Morpheme\MorphemeMotionCtrl.cs" />
     <Compile Include="DarkSoulsII\Morpheme\MorphemeSkeletonMapper.cs" />
     <Compile Include="DarkSoulsII\Rtti\MorphemeEventTrackActionResolver.cs" />
+    <Compile Include="DarkSoulsII\StateAct\StateActGraph.cs" />
     <Compile Include="IPointerProxy.cs" />
     <Compile Include="MemoryReader.cs" />
     <Compile Include="PointerProxy.cs" />
@@ -213,7 +221,7 @@
     <Compile Include="DarkSoulsII\Managers\Sign\SignEventAreaManager.cs" />
     <Compile Include="DarkSoulsII\Managers\Sign\SignManager.cs" />
     <Compile Include="DarkSoulsII\Managers\Sign\SignSetCtrlManager.cs" />
-    <Compile Include="DarkSoulsII\Managers\StateActManager.cs" />
+    <Compile Include="DarkSoulsII\Managers\StateAct\StateActManager.cs" />
     <Compile Include="DarkSoulsII\Managers\TargetManager.cs" />
     <Compile Include="DarkSoulsII\Map\Item\MapItemListType.cs" />
     <Compile Include="DarkSoulsII\Map\Location\MapGeneralAdviceBloodMsgLocation.cs" />

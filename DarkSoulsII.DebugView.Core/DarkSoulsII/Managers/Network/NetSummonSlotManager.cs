@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using DarkSoulsII.DebugView.Core.DarkSoulsII.Network;
 
 namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Network
@@ -14,11 +15,10 @@ namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Network
 
         public NetSummonSlotManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
-            for (int i = 0; i < 3; i++)
-            {
-                var slot = pointerFactory.Create<NetSummonSlot>(address + 0x0108 + i*0xB0, relative, true).Unbox(pointerFactory, reader);
-                Slots.Add(slot);
-            }
+            Slots = pointerFactory
+                .CreateArrayDereferenced<NetSummonSlot>(address + 0x0108, relative, 4)
+                .Select(p => p.Unbox(pointerFactory, reader))
+                .ToList();
             return this;
         }
     }

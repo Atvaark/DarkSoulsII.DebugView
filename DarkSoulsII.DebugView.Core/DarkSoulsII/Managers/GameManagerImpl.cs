@@ -9,6 +9,7 @@ using DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Event;
 using DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Input;
 using DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Map;
 using DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.Sign;
+using DarkSoulsII.DebugView.Core.DarkSoulsII.Managers.StateAct;
 using DarkSoulsII.DebugView.Core.DarkSoulsII.Savegame;
 
 namespace DarkSoulsII.DebugView.Core.DarkSoulsII.Managers
