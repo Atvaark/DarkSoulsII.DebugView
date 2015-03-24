@@ -1,0 +1,472 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{665EFE61-6F42-44C5-AEDE-5C89B15A6C11}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DarkSoulsII.DebugView.Model</RootNamespace>
+    <AssemblyName>DarkSoulsII.DebugView.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Ai\ChrAi.cs" />
+    <Compile Include="Ai\ChrAiBase.cs" />
+    <Compile Include="Ai\ChrAiMapObjectCtrl.cs" />
+    <Compile Include="Ai\ChrAiNavimeshCtrl.cs" />
+    <Compile Include="Ai\Navigation\LocationFinder.cs" />
+    <Compile Include="Ai\Navigation\NaviGraphCostEstimator.cs" />
+    <Compile Include="Ai\Navigation\NaviGraphGate.cs" />
+    <Compile Include="Ai\Navigation\NaviGraphHashTable.cs" />
+    <Compile Include="Ai\Navigation\NaviGraphParts.cs" />
+    <Compile Include="Ai\Navigation\NaviGraphWorld.cs" />
+    <Compile Include="Ai\Navigation\RouteNavigator.cs" />
+    <Compile Include="Ai\Navigation\RoutePlanner.cs" />
+    <Compile Include="Ai\SearchEzStateCtrl.cs" />
+    <Compile Include="App\Graphics\DrawDevice.cs" />
+    <Compile Include="App\Graphics\Filters\AppBlackOutFilter.cs" />
+    <Compile Include="App\Graphics\Filters\AppDepthOfFieldFilter.cs" />
+    <Compile Include="App\Graphics\Filters\AppFogFilter.cs" />
+    <Compile Include="App\Graphics\Filters\AppLightFilter.cs" />
+    <Compile Include="App\Graphics\Filters\AppVignettingFilter.cs" />
+    <Compile Include="App\Graphics\Filters\AppVolumeFogFilter.cs" />
+    <Compile Include="App\Graphics\Filters\ColorVector4.cs" />
+    <Compile Include="App\Graphics\Filters\GxLensFlareFilter.cs" />
+    <Compile Include="App\Graphics\Filters\GxLensSimulationFilter.cs" />
+    <Compile Include="App\Graphics\Filters\GxToneMapFilter.cs" />
+    <Compile Include="App\Graphics\KatanaDrawDeviceContainer.cs" />
+    <Compile Include="App\Graphics\KatanaDrawSystem.cs" />
+    <Compile Include="App\Graphics\Surface.cs" />
+    <Compile Include="App\KatanaMainApp.cs" />
+    <Compile Include="App\MainApp.cs" />
+    <Compile Include="App\Sound\KatanaSfxSystem.cs" />
+    <Compile Include="Bullet\BulletAttachMotion.cs" />
+    <Compile Include="Bullet\BulletMotionBase.cs" />
+    <Compile Include="Bullet\BulletShotMotion.cs" />
+    <Compile Include="Camera\CameraOperator.cs" />
+    <Compile Include="Camera\CameraOperatorType.cs" />
+    <Compile Include="Camera\Operators\ActionCameraOperator.cs" />
+    <Compile Include="Camera\Operators\DefaultCameraOperator.cs" />
+    <Compile Include="Camera\Operators\DemoCameraOperator.cs" />
+    <Compile Include="Camera\Operators\EventCameraOperator.cs" />
+    <Compile Include="Camera\Operators\ExFollowCameraOperator.cs" />
+    <Compile Include="Camera\Operators\FallDeadCameraOperator.cs" />
+    <Compile Include="Camera\Operators\FreeCameraOperator.cs" />
+    <Compile Include="Camera\Operators\FreeOrthoCameraOperator.cs" />
+    <Compile Include="Camera\Operators\GrapplerCameraOperator.cs" />
+    <Compile Include="Camera\Operators\IngameCameraOperator.cs" />
+    <Compile Include="Camera\Operators\MenuCameraOperator.cs" />
+    <Compile Include="Camera\Operators\NormalCameraOperator.cs" />
+    <Compile Include="Camera\Operators\OrthoCameraOperator.cs" />
+    <Compile Include="Camera\Operators\PerspectiveCameraOperator.cs" />
+    <Compile Include="Camera\Operators\PlayerCameraOperator.cs" />
+    <Compile Include="Camera\Operators\SubjectiveCameraOperator.cs" />
+    <Compile Include="Camera\Operators\TransitionCameraOperator.cs" />
+    <Compile Include="Character\CharacterType.cs" />
+    <Compile Include="Character\ChrAsmCtrl.cs" />
+    <Compile Include="Character\ChrAsmCtrlEquipment.cs" />
+    <Compile Include="Character\ChrBodyScale.cs" />
+    <Compile Include="Character\ChrMotionCtrl.cs" />
+    <Compile Include="Character\ChrSpEffectCtrl.cs" />
+    <Compile Include="Character\Equipment\ChrAsmCtrlEquipmentAmmo.cs" />
+    <Compile Include="Character\Equipment\ChrAsmCtrlEquipmentArmor.cs" />
+    <Compile Include="Character\Equipment\ChrAsmCtrlEquipmentRing.cs" />
+    <Compile Include="Character\Equipment\ChrAsmCtrlEquipmentWeapon.cs" />
+    <Compile Include="Character\Gestures\ChrAsmCtrlGesture.cs" />
+    <Compile Include="Character\Gestures\ChrAsmCtrlGestures.cs" />
+    <Compile Include="Character\Gestures\GestureType.cs" />
+    <Compile Include="Character\PlayerData.cs" />
+    <Compile Include="EnemyGenerator\EnemyGeneratorAreaChrStatus.cs" />
+    <Compile Include="EnemyGenerator\EnemyGeneratorAreaCtrl.cs" />
+    <Compile Include="EnemyGenerator\EnemyGeneratorCtrl.cs" />
+    <Compile Include="EnemyGenerator\EnemyGeneratorDeadCounter.cs" />
+    <Compile Include="EnemyGenerator\EnemyGeneratorPacketCtrl.cs" />
+    <Compile Include="EnemyGenerator\MapDeadCounter.cs" />
+    <Compile Include="Events\MapObjectBonfire.cs" />
+    <Compile Include="GameData\CharacterSlotData.cs" />
+    <Compile Include="GameData\ItemInventoryData.cs" />
+    <Compile Include="GameData\Items\Bag.cs" />
+    <Compile Include="GameData\Items\BagFlags.cs" />
+    <Compile Include="GameData\Items\Coffer.cs" />
+    <Compile Include="GameData\Items\CofferType.cs" />
+    <Compile Include="GameData\Items\Infusion.cs" />
+    <Compile Include="GameData\Items\ItemBagSlotType.cs" />
+    <Compile Include="GameData\Items\ItemDisplayFlags.cs" />
+    <Compile Include="GameData\Items\ItemType.cs" />
+    <Compile Include="GameData\Items\Lists\ItemInventory2BagList.cs" />
+    <Compile Include="GameData\Items\Lists\ItemInventory2CofferList.cs" />
+    <Compile Include="GameData\Items\Lists\ItemInventory2ListBase.cs" />
+    <Compile Include="GameData\Items\Lists\ItemInventory2MiscellaneousList.cs" />
+    <Compile Include="GameData\Items\Lists\ItemInventory2ShopList.cs" />
+    <Compile Include="GameData\Items\Shop.cs" />
+    <Compile Include="GameData\Items\Torch.cs" />
+    <Compile Include="GameData\PlayerClass.cs" />
+    <Compile Include="GameData\SaveSlotData.cs" />
+    <Compile Include="GameData\UserData000.cs" />
+    <Compile Include="GameData\UserItemInventoryData.cs" />
+    <Compile Include="GameObjects\GameEntities\BulletObject.cs" />
+    <Compile Include="GameObjects\GameEntities\BulletObjectBase.cs" />
+    <Compile Include="GameObjects\GameEntities\CharacterCtrl.cs" />
+    <Compile Include="GameObjects\GameEntities\CharacterCtrlBase.cs" />
+    <Compile Include="GameObjects\GameEntities\CharacterGlowEffectType.cs" />
+    <Compile Include="GameObjects\GameEntities\CharacterVisualState.cs" />
+    <Compile Include="GameObjects\GameEntities\Components\GameEntityComponent.cs" />
+    <Compile Include="GameObjects\GameEntities\DemoCharacterCtrl.cs" />
+    <Compile Include="GameObjects\GameEntities\EnemyGeneratorCtrl.cs" />
+    <Compile Include="GameObjects\GameEntities\GameEntity.cs" />
+    <Compile Include="GameObjects\GameEntities\MapEntity.cs" />
+    <Compile Include="GameObjects\GameEntities\PlayerCtrl.cs" />
+    <Compile Include="GameObjects\GameEntities\SignKeyGuideEntity.cs" />
+    <Compile Include="GameObjects\GameObject.cs" />
+    <Compile Include="GameObjects\Target\TargetBulletCtrl.cs" />
+    <Compile Include="GameObjects\Target\TargetCharacterCtrl.cs" />
+    <Compile Include="GameObjects\Target\TargetCtrl.cs" />
+    <Compile Include="GameObjects\Target\TargetCtrlType.cs" />
+    <Compile Include="GameObjects\Target\TargetGeneratorCtrl.cs" />
+    <Compile Include="GameObjects\Target\TargetMapCtrl.cs" />
+    <Compile Include="GameObjects\Target\TargetMapGeneralLocationCtrl.cs" />
+    <Compile Include="Managers\Ai\AiManager.cs" />
+    <Compile Include="Managers\AppTrophyManager.cs" />
+    <Compile Include="Managers\App\AppDecalManager.cs" />
+    <Compile Include="Managers\App\AppResourceManager.cs" />
+    <Compile Include="Managers\Bullet\BulletManager.cs" />
+    <Compile Include="Managers\CameraManager.cs" />
+    <Compile Include="Managers\Character\CharacterManager.cs" />
+    <Compile Include="Managers\Character\ChrTextureManager.cs" />
+    <Compile Include="Managers\Demo\DemoManager.cs" />
+    <Compile Include="Managers\EnemyGeneratorManager.cs" />
+    <Compile Include="Managers\Event\EventBonfireManager.cs" />
+    <Compile Include="Managers\Event\EventFlagManager.cs" />
+    <Compile Include="Managers\Event\EventManager.cs" />
+    <Compile Include="Managers\FaceGenManager.cs" />
+    <Compile Include="Managers\GameDataManager.cs" />
+    <Compile Include="Managers\GameManager.cs" />
+    <Compile Include="Managers\GameManagerImpl.cs" />
+    <Compile Include="Managers\GameManagerState.cs" />
+    <Compile Include="Managers\Input\RumbleManager.cs" />
+    <Compile Include="Managers\Map\MapAreaManager.cs" />
+    <Compile Include="Managers\Map\MapChameleonAreaManager.cs" />
+    <Compile Include="Managers\Map\MapItemPackManager.cs" />
+    <Compile Include="Managers\Map\MapManager.cs" />
+    <Compile Include="Managers\Map\MapStateAct.cs" />
+    <Compile Include="Managers\Map\MapStateActEntry.cs" />
+    <Compile Include="Managers\Map\MapStateActManager.cs" />
+    <Compile Include="Managers\Map\MapTextureManager.cs" />
+    <Compile Include="Managers\Map\MapTextureResolutionManager.cs" />
+    <Compile Include="Managers\Map\MapWindManager.cs" />
+    <Compile Include="Managers\Network\NetEnemyManager.cs" />
+    <Compile Include="Managers\Network\NetLatencyManager.cs" />
+    <Compile Include="Managers\Network\NetParamContainer.cs" />
+    <Compile Include="Managers\Network\NetPlayerWatcher.cs" />
+    <Compile Include="Managers\Network\NetSessionManager.cs" />
+    <Compile Include="Managers\Network\NetSummonSlotAreaManager.cs" />
+    <Compile Include="Managers\Network\NetSummonSlotManager.cs" />
+    <Compile Include="Managers\Network\NetSvrBloodMessageManager.cs" />
+    <Compile Include="Managers\Network\NetSvrBloodstainManager.cs" />
+    <Compile Include="Managers\Network\NetSvrBreakInManager.cs" />
+    <Compile Include="Managers\Network\NetSvrDuelManager.cs" />
+    <Compile Include="Managers\Network\NetSvrGhostManager.cs" />
+    <Compile Include="Managers\Network\NetSvrLoginManager.cs" />
+    <Compile Include="Managers\Network\NetSvrManager.cs" />
+    <Compile Include="Managers\Network\NetSvrPlayerManager.cs" />
+    <Compile Include="Managers\Network\NetSvrPreviewChrManager.cs" />
+    <Compile Include="Managers\Network\NetSvrStateChartManager.cs" />
+    <Compile Include="Managers\Network\NetSvrSummonSignManager.cs" />
+    <Compile Include="Managers\Network\NetSvrVisitorManager.cs" />
+    <Compile Include="Managers\Network\NetSyncDataManager.cs" />
+    <Compile Include="Managers\Network\NetworkManager.cs" />
+    <Compile Include="Managers\PadOwnershipManager.cs" />
+    <Compile Include="Managers\Sign\ActiveSignManager.cs" />
+    <Compile Include="Managers\Sign\SignEventAreaManager.cs" />
+    <Compile Include="Managers\Sign\SignManager.cs" />
+    <Compile Include="Managers\Sign\SignSetCtrlManager.cs" />
+    <Compile Include="Managers\StateAct\StateActElapsedTimeManager.cs" />
+    <Compile Include="Managers\StateAct\StateActGraphManager.cs" />
+    <Compile Include="Managers\StateAct\StateActManager.cs" />
+    <Compile Include="Managers\TargetManager.cs" />
+    <Compile Include="Map\Area\MapAreaCtrlOwner.cs" />
+    <Compile Include="Map\Area\MapChameleonArea.cs" />
+    <Compile Include="Map\Area\MapChameleonAreaData.cs" />
+    <Compile Include="Map\Item\MapItem.cs" />
+    <Compile Include="Map\Item\MapItemListType.cs" />
+    <Compile Include="Map\Item\MapItemPack.cs" />
+    <Compile Include="Map\Item\MapItemPackTable.cs" />
+    <Compile Include="Map\Location\MapGeneralAdviceBloodMsgLocation.cs" />
+    <Compile Include="Map\Location\MapGeneralBloodMsgDisableLocation.cs" />
+    <Compile Include="Map\Location\MapGeneralBloodMsgLocation.cs" />
+    <Compile Include="Map\Location\MapGeneralBulletLocation.cs" />
+    <Compile Include="Map\Location\MapGeneralIntrudeLocation.cs" />
+    <Compile Include="Map\Location\MapGeneralLocation.cs" />
+    <Compile Include="Map\Location\MapGeneralLocationType.cs" />
+    <Compile Include="Map\Location\MapGeneralNavimeshLocation.cs" />
+    <Compile Include="Map\Location\MapGeneralStatueLocation.cs" />
+    <Compile Include="Map\Location\MapGeneralWindLocation.cs" />
+    <Compile Include="Map\Location\Phantom\MapGeneralBackreadSafetyLocation.cs" />
+    <Compile Include="Map\Location\Phantom\MapGeneralBrightLocation.cs" />
+    <Compile Include="Map\Location\Phantom\MapGeneralDamageLocation.cs" />
+    <Compile Include="Map\Location\Phantom\MapGeneralEventJudgmentLocation.cs" />
+    <Compile Include="Map\Location\Phantom\MapGeneralEventTriggerLocation.cs" />
+    <Compile Include="Map\Location\Phantom\MapGeneralGeneratorLocation.cs" />
+    <Compile Include="Map\Location\Phantom\MapGeneralLockOffLocation.cs" />
+    <Compile Include="Map\Location\Phantom\MapGeneralLogicLocation.cs" />
+    <Compile Include="Map\Location\Phantom\MapGeneralLogicNoEntryLocation.cs" />
+    <Compile Include="Map\Location\Phantom\MapGeneralPhantomLocation.cs" />
+    <Compile Include="Map\Location\Phantom\MapGeneralSlideLocation.cs" />
+    <Compile Include="Map\MapWorldList.cs" />
+    <Compile Include="Map\Wind\MapModelWindReactor.cs" />
+    <Compile Include="Map\Wind\MapPointWind.cs" />
+    <Compile Include="Map\Wind\MapTargetDirectionalWind.cs" />
+    <Compile Include="Map\Wind\MapWind.cs" />
+    <Compile Include="Model\AppFlverModelCtrl.cs" />
+    <Compile Include="Model\CharacterModelCtrl.cs" />
+    <Compile Include="Model\FlverModelData.cs" />
+    <Compile Include="Model\FlverModelDataAdapter.cs" />
+    <Compile Include="Model\MdlBone.cs" />
+    <Compile Include="Model\MdlDmy.cs" />
+    <Compile Include="Model\MdlIdxBuf.cs" />
+    <Compile Include="Model\MdlMtx.cs" />
+    <Compile Include="Model\MdlObj.cs" />
+    <Compile Include="Model\MdlPrim.cs" />
+    <Compile Include="Model\MdlSkeleton.cs" />
+    <Compile Include="Model\MdlVtxBuf.cs" />
+    <Compile Include="Model\MdlVtxDecl.cs" />
+    <Compile Include="Model\ModelCtrl.cs" />
+    <Compile Include="Morpheme\EventTrackAction\ChrEventTrackActionAttack.cs" />
+    <Compile Include="Morpheme\EventTrackAction\ChrEventTrackActionAttackStagger.cs" />
+    <Compile Include="Morpheme\EventTrackAction\ChrEventTrackActionBossDamage.cs" />
+    <Compile Include="Morpheme\EventTrackAction\ChrEventTrackActionBossDie.cs" />
+    <Compile Include="Morpheme\EventTrackAction\ChrEventTrackActionBossExtraMotion.cs" />
+    <Compile Include="Morpheme\EventTrackAction\ChrEventTrackActionDamage.cs" />
+    <Compile Include="Morpheme\EventTrackAction\ChrEventTrackActionDoor.cs" />
+    <Compile Include="Morpheme\EventTrackAction\ChrEventTrackActionEventAction.cs" />
+    <Compile Include="Morpheme\EventTrackAction\ChrEventTrackActionFalling.cs" />
+    <Compile Include="Morpheme\EventTrackAction\ChrEventTrackActionFootEffect.cs" />
+    <Compile Include="Morpheme\EventTrackAction\ChrEventTrackActionGravity.cs" />
+    <Compile Include="Morpheme\EventTrackAction\ChrEventTrackActionGuard.cs" />
+    <Compile Include="Morpheme\EventTrackAction\ChrEventTrackActionGuardSequence.cs" />
+    <Compile Include="Morpheme\EventTrackAction\ChrEventTrackActionHit.cs" />
+    <Compile Include="Morpheme\EventTrackAction\ChrEventTrackActionIk.cs" />
+    <Compile Include="Morpheme\EventTrackAction\ChrEventTrackActionItem.cs" />
+    <Compile Include="Morpheme\EventTrackAction\ChrEventTrackActionMagic.cs" />
+    <Compile Include="Morpheme\EventTrackAction\ChrEventTrackActionRope.cs" />
+    <Compile Include="Morpheme\EventTrackAction\ChrEventTrackActionStateControl.cs" />
+    <Compile Include="Morpheme\EventTrackAction\ChrEventTrackActionTimeAct.cs" />
+    <Compile Include="Morpheme\EventTrackAction\ChrEventTrackActionUpperBody.cs" />
+    <Compile Include="Morpheme\EventTrackAction\MorphemeEventTrackAction.cs" />
+    <Compile Include="Morpheme\MorphemeChrCtrl.cs" />
+    <Compile Include="Morpheme\MorphemeEventTrackCtrl.cs" />
+    <Compile Include="Morpheme\MorphemeMotionCtrl.cs" />
+    <Compile Include="Morpheme\MorphemeSkeletonMapper.cs" />
+    <Compile Include="Network\NetPlayerSyncObject.cs" />
+    <Compile Include="Network\NetSummonSlot.cs" />
+    <Compile Include="Network\NetSummonSlotCtrl.cs" />
+    <Compile Include="Network\NetSvrClientInterface.cs" />
+    <Compile Include="Network\NetSvrJobRunner.cs" />
+    <Compile Include="Network\NetSvrMemory.cs" />
+    <Compile Include="Network\NetSvrProperties.cs" />
+    <Compile Include="Network\ServerInfo.cs" />
+    <Compile Include="Resources\FileResourceObject.cs" />
+    <Compile Include="Resources\Memory.cs" />
+    <Compile Include="Resources\Param\Bullet\BulletParam.cs" />
+    <Compile Include="Resources\Param\Character\ArmorHandsUpFParam.cs" />
+    <Compile Include="Resources\Param\Character\ArmorParam.cs" />
+    <Compile Include="Resources\Param\Character\ArmorReinforceParam.cs" />
+    <Compile Include="Resources\Param\Character\ArrowParam.cs" />
+    <Compile Include="Resources\Param\Character\BehaviorParam.cs" />
+    <Compile Include="Resources\Param\Character\BossEnemyGenerateParam.cs" />
+    <Compile Include="Resources\Param\Character\BossParam.cs" />
+    <Compile Include="Resources\Param\Character\BossPartsModelParam.cs" />
+    <Compile Include="Resources\Param\Character\BossPartsParam.cs" />
+    <Compile Include="Resources\Param\Character\ChrColorParam.cs" />
+    <Compile Include="Resources\Param\Character\ChrCommonParam.cs" />
+    <Compile Include="Resources\Param\Character\ChrCullingParam.cs" />
+    <Compile Include="Resources\Param\Character\ChrEditParamBodyPreset.cs" />
+    <Compile Include="Resources\Param\Character\ChrEquipLoadParam.cs" />
+    <Compile Include="Resources\Param\Character\ChrEquipWeaponParam.cs" />
+    <Compile Include="Resources\Param\Character\ChrFullbodySfxParam.cs" />
+    <Compile Include="Resources\Param\Character\ChrGrowthParam.cs" />
+    <Compile Include="Resources\Param\Character\ChrLevelUpSoulsParam.cs" />
+    <Compile Include="Resources\Param\Character\ChrModelParam.cs" />
+    <Compile Include="Resources\Param\Character\ChrMoveParam.cs" />
+    <Compile Include="Resources\Param\Character\ChrMultiplayParam.cs" />
+    <Compile Include="Resources\Param\Character\ChrNetPhantomSoulRateParam.cs" />
+    <Compile Include="Resources\Param\Character\ChrNetworkPhantomParam.cs" />
+    <Compile Include="Resources\Param\Character\ChrParam.cs" />
+    <Compile Include="Resources\Param\Character\ChrPointWindParam.cs" />
+    <Compile Include="Resources\Param\Character\ChrRoundDamageParam.cs" />
+    <Compile Include="Resources\Param\Character\ChrRoundDropSoulParam.cs" />
+    <Compile Include="Resources\Param\Character\ChrWetParam.cs" />
+    <Compile Include="Resources\Param\Character\ComboBehaviorParam.cs" />
+    <Compile Include="Resources\Param\Character\CriminalAndDeceasedParam.cs" />
+    <Compile Include="Resources\Param\Character\CustomAttrCostParam.cs" />
+    <Compile Include="Resources\Param\Character\CustomAttrSpecParam.cs" />
+    <Compile Include="Resources\Param\Character\DeadTypeParam.cs" />
+    <Compile Include="Resources\Param\Character\DualWieldPermissionParam.cs" />
+    <Compile Include="Resources\Param\Character\EnemyAttackMoveParam.cs" />
+    <Compile Include="Resources\Param\Character\EnemyShotSfxParam.cs" />
+    <Compile Include="Resources\Param\Character\EquipmentCullingTargetParam.cs" />
+    <Compile Include="Resources\Param\Character\EquipmentInterfereParam.cs" />
+    <Compile Include="Resources\Param\Character\FallingParam.cs" />
+    <Compile Include="Resources\Param\Character\FootEffectSfxParam.cs" />
+    <Compile Include="Resources\Param\Character\FootEffectWaterSfxParam.cs" />
+    <Compile Include="Resources\Param\Character\GrabParam.cs" />
+    <Compile Include="Resources\Param\Character\GroundMaterialParam.cs" />
+    <Compile Include="Resources\Param\Character\GuardLevelMotionParam.cs" />
+    <Compile Include="Resources\Param\Character\HitBackMatrixParam.cs" />
+    <Compile Include="Resources\Param\Character\HitBackParam.cs" />
+    <Compile Include="Resources\Param\Character\HollowLevelStatsParam.cs" />
+    <Compile Include="Resources\Param\Character\LackOfStatsParam.cs" />
+    <Compile Include="Resources\Param\Character\LockOnCameraOffsetParam.cs" />
+    <Compile Include="Resources\Param\Character\LockOnParam.cs" />
+    <Compile Include="Resources\Param\Character\LockTargetParam.cs" />
+    <Compile Include="Resources\Param\Character\MaterialParam.cs" />
+    <Compile Include="Resources\Param\Character\MenuStatsParam.cs" />
+    <Compile Include="Resources\Param\Character\NpcGenerateParam.cs" />
+    <Compile Include="Resources\Param\Character\NpcPlayerSkinParam.cs" />
+    <Compile Include="Resources\Param\Character\NpcPlayerStatusParam.cs" />
+    <Compile Include="Resources\Param\Character\PhysStatsPerLevelStatParam.cs" />
+    <Compile Include="Resources\Param\Character\PlayerCommonParam.cs" />
+    <Compile Include="Resources\Param\Character\PlayerLightParam.cs" />
+    <Compile Include="Resources\Param\Character\PlayerStatusItemParam.cs" />
+    <Compile Include="Resources\Param\Character\PlayerStatusNormal.cs" />
+    <Compile Include="Resources\Param\Character\ReinforceCostParam.cs" />
+    <Compile Include="Resources\Param\Character\RelatePhysStatToLevelStat.cs" />
+    <Compile Include="Resources\Param\Character\RingParam.cs" />
+    <Compile Include="Resources\Param\Character\SpellParam.cs" />
+    <Compile Include="Resources\Param\Character\SpellSoulConsumeParam.cs" />
+    <Compile Include="Resources\Param\Character\TorchCtrlParam.cs" />
+    <Compile Include="Resources\Param\Character\TorchOffCtrlParam.cs" />
+    <Compile Include="Resources\Param\Character\VowParam.cs" />
+    <Compile Include="Resources\Param\Character\WeaponActionCategoryParam.cs" />
+    <Compile Include="Resources\Param\Character\WeaponAttackMotionParam.cs" />
+    <Compile Include="Resources\Param\Character\WeaponParam.cs" />
+    <Compile Include="Resources\Param\Character\WeaponReinforceParam.cs" />
+    <Compile Include="Resources\Param\Character\WeaponStaminaCostParam.cs" />
+    <Compile Include="Resources\Param\Character\WeaponStatsAffectParam.cs" />
+    <Compile Include="Resources\Param\Character\WeaponTypeParam.cs" />
+    <Compile Include="Resources\Param\Containers\AiParamContainer.cs" />
+    <Compile Include="Resources\Param\Containers\BulletParamContainer.cs" />
+    <Compile Include="Resources\Param\Containers\CameraParamContainer.cs" />
+    <Compile Include="Resources\Param\Containers\CharacterParamContainer.cs" />
+    <Compile Include="Resources\Param\Containers\DamageParamContainer.cs" />
+    <Compile Include="Resources\Param\Containers\DemoParamContainer.cs" />
+    <Compile Include="Resources\Param\Containers\EventParamContainer.cs" />
+    <Compile Include="Resources\Param\Containers\FaceGenParamContainer.cs" />
+    <Compile Include="Resources\Param\Containers\Item2ParamContainer.cs" />
+    <Compile Include="Resources\Param\Containers\MapBonfireParamContainer.cs" />
+    <Compile Include="Resources\Param\Containers\MapParamContainer.cs" />
+    <Compile Include="Resources\Param\Containers\NetParamContainer.cs" />
+    <Compile Include="Resources\Param\Containers\RumbleParamContainer.cs" />
+    <Compile Include="Resources\Param\Param.cs" />
+    <Compile Include="Resources\Param\ParamFileResourceObject.cs" />
+    <Compile Include="Resources\Param\ParamFileResourceObjectForRegulation.cs" />
+    <Compile Include="Resources\Param\Sign\BloodMessageParam.cs" />
+    <Compile Include="Resources\Param\Sign\BloodstainParam.cs" />
+    <Compile Include="Resources\Param\Sign\SummonSignParam.cs" />
+    <Compile Include="Resources\ResourceObject.cs" />
+    <Compile Include="Resources\Text\TextLookUpTable.cs" />
+    <Compile Include="Resources\Text\TextLookUpTableCache.cs" />
+    <Compile Include="Resources\Text\TextLookUpTableCacheEntry.cs" />
+    <Compile Include="Resources\Text\TextLookupTableType.cs" />
+    <Compile Include="Rtti\AbstractRttiResolver.cs" />
+    <Compile Include="Rtti\CameraOperatorResolver.cs" />
+    <Compile Include="Rtti\CharacterCtrlBaseResolver.cs" />
+    <Compile Include="Rtti\GameEntityComponentResolver.cs" />
+    <Compile Include="Rtti\MapGeneralLocationResolver.cs" />
+    <Compile Include="Rtti\MorphemeEventTrackActionResolver.cs" />
+    <Compile Include="Rtti\TargetCtrlResolver.cs" />
+    <Compile Include="Savegame\ContentFormat.cs" />
+    <Compile Include="Savegame\LoadContent.cs" />
+    <Compile Include="Savegame\SaveContent.cs" />
+    <Compile Include="Savegame\SaveData1.cs" />
+    <Compile Include="Savegame\SaveData2.cs" />
+    <Compile Include="Savegame\SaveData3.cs" />
+    <Compile Include="Savegame\SaveData4.cs" />
+    <Compile Include="Savegame\SaveData\SaveDataEnd.cs" />
+    <Compile Include="Savegame\SaveData\SaveDataEnemy.cs" />
+    <Compile Include="Savegame\SaveData\SaveDataEvent.cs" />
+    <Compile Include="Savegame\SaveData\SaveDataGame.cs" />
+    <Compile Include="Savegame\SaveData\SaveDataGenerator.cs" />
+    <Compile Include="Savegame\SaveData\SaveDataGetObjItem.cs" />
+    <Compile Include="Savegame\SaveData\SaveDataItemInventory.cs" />
+    <Compile Include="Savegame\SaveData\SaveDataItemPack.cs" />
+    <Compile Include="Savegame\SaveData\SaveDataList.cs" />
+    <Compile Include="Savegame\SaveData\SaveDataLoadInfo.cs" />
+    <Compile Include="Savegame\SaveData\SaveDataLoadInfo2.cs" />
+    <Compile Include="Savegame\SaveData\SaveDataNetwork.cs" />
+    <Compile Include="Savegame\SaveData\SaveDataObj.cs" />
+    <Compile Include="Savegame\SaveData\SaveDataOption.cs" />
+    <Compile Include="Savegame\SaveData\SaveDataPlayer.cs" />
+    <Compile Include="Savegame\SaveData\SaveDataShopLineup.cs" />
+    <Compile Include="Savegame\SaveLoadSystem.cs" />
+    <Compile Include="Savegame\SaveReason.cs" />
+    <Compile Include="Sign\ActiveSignCtrl.cs" />
+    <Compile Include="Sign\BloodMessageSetCtrl.cs" />
+    <Compile Include="Sign\BloodstainSetCtrl.cs" />
+    <Compile Include="Sign\SignKeyGuideCtrl.cs" />
+    <Compile Include="Sign\SignPreviewCtrl.cs" />
+    <Compile Include="Sign\SignSet.cs" />
+    <Compile Include="Sign\SignSetBase.cs" />
+    <Compile Include="Sign\SignSetCommonCtrl.cs" />
+    <Compile Include="Sign\SummonSignSetCtrl.cs" />
+    <Compile Include="StateAct\NullStateActCtrl.cs" />
+    <Compile Include="StateAct\StateActGraph.cs" />
+    <Compile Include="Steam\Achievement\AppTrophy.cs" />
+    <Compile Include="Steam\Achievement\AppTrophyManagerImplWin.cs" />
+    <Compile Include="Steam\SteamSurveillance.cs" />
+    <Compile Include="Target\TargetIndex.cs" />
+    <Compile Include="Texture\MapTexture.cs" />
+    <Compile Include="Texture\MapTextureResolutionCtrl.cs" />
+    <Compile Include="Texture\MdlTexture.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Standard\Matrix4.cs" />
+    <Compile Include="Standard\Quaternion.cs" />
+    <Compile Include="Standard\StdString.cs" />
+    <Compile Include="Standard\StdVector.cs" />
+    <Compile Include="Standard\StdWstring.cs" />
+    <Compile Include="Standard\Vector3.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DarkSoulsII.DebugView.Core\DarkSoulsII.DebugView.Core.csproj">
+      <Project>{B86932EF-4F6A-4612-A804-336C5C58DA0A}</Project>
+      <Name>DarkSoulsII.DebugView.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
