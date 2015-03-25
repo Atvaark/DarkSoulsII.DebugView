@@ -11,6 +11,7 @@ namespace DarkSoulsII.DebugView.Core
 
         public MemoryReader(byte[] data, int baseAddress)
         {
+            if (data == null) throw new ArgumentNullException("data");
             _baseAddress = baseAddress;
             _data = data;
         }
@@ -115,7 +116,7 @@ namespace DarkSoulsII.DebugView.Core
 
         public char ReadUnicodeChar(int address, bool relative = false)
         {
-            return Encoding.Unicode.GetChars(_data, address, 1)[0];
+            return Encoding.Unicode.GetChars(_data, address, 2)[0];
         }
 
         public string ReadAnsiString(int length, int address, bool relative = false)
@@ -125,15 +126,16 @@ namespace DarkSoulsII.DebugView.Core
 
         public string ReadUnicodeString(int length, int address, bool relative = false)
         {
-            return Encoding.Unicode.GetString(_data, address, length);
+            return Encoding.Unicode.GetString(_data, address, length*2);
         }
 
         public string ReadNullTerminatedAnsiString(int address, bool relative)
         {
             int index = Array.FindIndex(_data, address, b => b == 0);
+
             if (index == -1)
                 index = _data.Length - address;
-            return Encoding.ASCII.GetString(_data, address, index);
+            return Encoding.ASCII.GetString(_data, address, index - address);
         }
 
         public string ReadNullTerminatedUnicodeString(int address, bool relative)
@@ -146,11 +148,11 @@ namespace DarkSoulsII.DebugView.Core
                 {
                     break;
                 }
-                if (startIndex + 1 == nextIndex)
+                if (startIndex % 2 == 0 && startIndex + 1 == nextIndex)
                 {
                     if (startIndex == address)
                         return "";
-                    return Encoding.Unicode.GetString(_data, address, startIndex - address - 1);
+                    return Encoding.Unicode.GetString(_data, address, startIndex - address); // -1?
                 }
                 startIndex = nextIndex;
             }

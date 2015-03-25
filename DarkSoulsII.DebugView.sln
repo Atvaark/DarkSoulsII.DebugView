@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarkSoulsII.DebugView", "Da
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarkSoulsII.DebugView.Model", "DarkSoulsII.DebugView.Model\DarkSoulsII.DebugView.Model.csproj", "{665EFE61-6F42-44C5-AEDE-5C89B15A6C11}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarkSoulsII.DebugView.Core.Test", "DarkSoulsII.DebugView.Core.Test\DarkSoulsII.DebugView.Core.Test.csproj", "{768C4662-ACD4-48DD-9373-03BF294AF70E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{665EFE61-6F42-44C5-AEDE-5C89B15A6C11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{665EFE61-6F42-44C5-AEDE-5C89B15A6C11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{665EFE61-6F42-44C5-AEDE-5C89B15A6C11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{768C4662-ACD4-48DD-9373-03BF294AF70E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{768C4662-ACD4-48DD-9373-03BF294AF70E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{768C4662-ACD4-48DD-9373-03BF294AF70E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{768C4662-ACD4-48DD-9373-03BF294AF70E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
