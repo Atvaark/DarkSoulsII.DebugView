@@ -13,13 +13,11 @@ namespace DarkSoulsII.DebugView.Model.Managers.Event
         public EventBonfireManager Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
             int bonfireCount = reader.ReadInt32(address + 0x0014);
-            Bonfires = GenericPointer.Create(reader, address + 0x0010, relative).Unbox(reader,
-                (r, a) =>
-                {
-                    return pointerFactory
-                        .CreateArrayDereferenced<MapObjectBonfire>(a, false, bonfireCount)
-                        .Select(p => p.Unbox(pointerFactory, reader)).ToList();
-                });
+            int bonfireAddress = reader.ReadInt32(address + 0x0010, relative);
+            Bonfires = pointerFactory
+                .CreateArrayDereferenced<MapObjectBonfire>(bonfireAddress, false, bonfireCount)
+                .Select(p => p.Unbox(pointerFactory, reader))
+                .ToList();
             CurrentTime = reader.ReadSingle(address + 0x002C, relative);
             return this;
         }

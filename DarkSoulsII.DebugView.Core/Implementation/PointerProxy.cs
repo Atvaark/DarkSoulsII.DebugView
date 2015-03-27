@@ -1,6 +1,6 @@
 using System;
 
-namespace DarkSoulsII.DebugView.Core
+namespace DarkSoulsII.DebugView.Core.Implementation
 {
     public class PointerProxy<T> : IPointerProxy<T> where T : class, IReadable<T>, new()
     {

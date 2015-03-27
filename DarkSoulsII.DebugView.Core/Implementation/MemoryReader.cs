@@ -1,21 +1,16 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using DarkSoulsII.DebugView.Core.Exceptions;
 
-namespace DarkSoulsII.DebugView.Core
+namespace DarkSoulsII.DebugView.Core.Implementation
 {
-    public class ProcessMemoryReader : IReader, IDisposable
+    public class MemoryReader : IReader, IDisposable
     {
-        private readonly IntPtr _baseAddress;
-        private readonly IntPtr _processHandle;
+        private readonly IReadMemoryProvider _readMemoryProvider;
 
-        private ProcessMemoryReader(IntPtr processHandle, IntPtr baseAddress)
+        public MemoryReader(IReadMemoryProvider readMemoryProvider)
         {
-            _processHandle = processHandle;
-            _baseAddress = baseAddress;
+            _readMemoryProvider = readMemoryProvider;
         }
 
         public void Dispose()
@@ -28,20 +23,13 @@ namespace DarkSoulsII.DebugView.Core
         {
             if (disposing)
             {
-                NativeMethods.CloseHandle(_processHandle);
+                _readMemoryProvider.Dispose();
             }
         }
 
         public byte[] Read(int size, int address, bool relative = false)
         {
-            byte[] buffer = new byte[size];
-            IntPtr bytesRead;
-            IntPtr absoluteAddress = GetAbsoluteAddress(address, relative);
-            bool success = NativeMethods.ReadProcessMemory(_processHandle, absoluteAddress, buffer, size,
-                out bytesRead);
-            if (success == false)
-                throw new MemoryInaccessibleException();
-            return buffer;
+            return _readMemoryProvider.Read(size, address, relative);
         }
 
         public bool ReadBoolean(int address, bool relative = false)
@@ -197,7 +185,7 @@ namespace DarkSoulsII.DebugView.Core
             }
             return builder.ToString();
         }
-        
+
         public string ReadNullTerminatedAnsiStringChunked(int lookaheadCharCount, int address, bool relative)
         {
             if (lookaheadCharCount == 0)
@@ -243,29 +231,7 @@ namespace DarkSoulsII.DebugView.Core
                 offset += chunkSize;
             }
         }
-
-        public static ProcessMemoryReader Create(string processName)
-        {
-            var process = Process.GetProcessesByName(processName).FirstOrDefault();
-            if (process == null)
-                throw new ProcessNotFoundException();
-            return Create(process);
-        }
-
-        public static ProcessMemoryReader Create(Process process)
-        {
-            IntPtr processHandle = NativeMethods.OpenProcess(NativeMethods.ProcessAccessFlags.VirtualMemoryRead, false,
-                process.Id);
-            if (processHandle == IntPtr.Zero)
-                throw new ProcessAccessDeniedException();
-            return new ProcessMemoryReader(processHandle, process.MainModule.BaseAddress);
-        }
         
-        private IntPtr GetAbsoluteAddress(int address, bool relative)
-        {
-            return relative ? IntPtr.Add(_baseAddress, address) : new IntPtr(address);
-        }
-
         public T ReadStructure<T>(int address, bool relative = false) where T : struct
         {
             byte[] data = Read(Marshal.SizeOf(typeof (T)), address, relative);

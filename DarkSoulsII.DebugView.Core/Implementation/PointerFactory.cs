@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Caching;
 
-namespace DarkSoulsII.DebugView.Core
+namespace DarkSoulsII.DebugView.Core.Implementation
 {
     public class PointerFactory : IPointerFactory
     {

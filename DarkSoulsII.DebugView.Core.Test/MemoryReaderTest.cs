@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Text;
+using DarkSoulsII.DebugView.Core.Implementation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DarkSoulsII.DebugView.Core.Test
@@ -7,32 +9,7 @@ namespace DarkSoulsII.DebugView.Core.Test
     [TestClass]
     public class MemoryReaderTest
     {
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void ConstructurNullCheckTest()
-        {
-            byte[] bufferNull = null;
-            const int baseAddress = 0;
-            var memoryReader = new MemoryReader(bufferNull, baseAddress);
-            Assert.Fail();
-        }
 
-        [TestMethod]
-        public void ConstructurTest()
-        {
-            byte[] bufferEmpty = { };
-            byte[] buffer1 = { 0x00 };
-            byte[] buffer2 = { 0x00, 0x01 };
-            byte[] buffer3 = { 0x00, 0x01, 0x02 };
-            byte[] buffer4 = { 0x00, 0x01, 0x02, 0x04 };
-
-            const int baseAddress = 0;
-            var memoryReader1 = new MemoryReader(bufferEmpty, baseAddress);
-            var memoryReader2 = new MemoryReader(buffer1, baseAddress);
-            var memoryReader3 = new MemoryReader(buffer2, baseAddress);
-            var memoryReader4 = new MemoryReader(buffer3, baseAddress);
-            var memoryReader5 = new MemoryReader(buffer4, baseAddress);
-        }
 
         [TestMethod]
         public void ReadTest()
@@ -44,7 +21,7 @@ namespace DarkSoulsII.DebugView.Core.Test
                 0x08, 0x09, 0x0A, 0x0B,
             };
             const int baseAddress = 0;
-            var memoryReader = new MemoryReader(buffer, baseAddress);
+            var memoryReader = new MemoryReader(new ReadBufferedMemoryProvider(buffer, baseAddress));
 
             byte[] result0Offset0 = memoryReader.Read(0, 0);
             byte[] result1Offset0 = memoryReader.Read(1, 0);
@@ -94,9 +71,9 @@ namespace DarkSoulsII.DebugView.Core.Test
             };
 
             const int baseAddress = 0;
-            var memoryReader1 = new MemoryReader(falseBuffer, baseAddress);
-            var memoryReader2 = new MemoryReader(trueBuffer1, baseAddress);
-            var memoryReader3 = new MemoryReader(trueBuffer2, baseAddress);
+            var memoryReader1 = new MemoryReader(new ReadBufferedMemoryProvider(falseBuffer, baseAddress));
+            var memoryReader2 = new MemoryReader(new ReadBufferedMemoryProvider(trueBuffer1, baseAddress));
+            var memoryReader3 = new MemoryReader(new ReadBufferedMemoryProvider(trueBuffer2, baseAddress));
 
             var result1 = memoryReader1.ReadBoolean(0);
             var result2 = memoryReader2.ReadBoolean(0);
@@ -116,7 +93,7 @@ namespace DarkSoulsII.DebugView.Core.Test
                 0x03, 0x00, 0x04, 0x00, 0x05
             };
             const int baseAddress = 0;
-            var memoryReader = new MemoryReader(buffer, baseAddress);
+            var memoryReader = new MemoryReader(new ReadBufferedMemoryProvider(buffer, baseAddress));
 
             var result0 = memoryReader.ReadBoolean(0);
             var result1 = memoryReader.ReadBoolean(1);
@@ -144,14 +121,14 @@ namespace DarkSoulsII.DebugView.Core.Test
             byte[] buffer1431655765 = BitConverter.GetBytes(1431655765);
 
             const int baseAddress = 0;
-            var memoryReader0 = new MemoryReader(buffer0, baseAddress);
-            var memoryReader1 = new MemoryReader(buffer1, baseAddress);
-            var memoryReader2 = new MemoryReader(buffer2, baseAddress);
-            var memoryReader123 = new MemoryReader(buffer123, baseAddress);
-            var memoryReader255 = new MemoryReader(buffer255, baseAddress);
-            var memoryReader5000 = new MemoryReader(buffer5000, baseAddress);
-            var memoryReader252645135 = new MemoryReader(buffer252645135, baseAddress);
-            var memoryReader1431655765 = new MemoryReader(buffer1431655765, baseAddress);
+            var memoryReader0 = new MemoryReader(new ReadBufferedMemoryProvider(buffer0, baseAddress));
+            var memoryReader1 = new MemoryReader(new ReadBufferedMemoryProvider(buffer1, baseAddress));
+            var memoryReader2 = new MemoryReader(new ReadBufferedMemoryProvider(buffer2, baseAddress));
+            var memoryReader123 = new MemoryReader(new ReadBufferedMemoryProvider(buffer123, baseAddress));
+            var memoryReader255 = new MemoryReader(new ReadBufferedMemoryProvider(buffer255, baseAddress));
+            var memoryReader5000 = new MemoryReader(new ReadBufferedMemoryProvider(buffer5000, baseAddress));
+            var memoryReader252645135 = new MemoryReader(new ReadBufferedMemoryProvider(buffer252645135, baseAddress));
+            var memoryReader1431655765 = new MemoryReader(new ReadBufferedMemoryProvider(buffer1431655765, baseAddress));
 
             var result0 = memoryReader0.ReadInt32(0);
             var result1 = memoryReader1.ReadInt32(0);
@@ -179,7 +156,7 @@ namespace DarkSoulsII.DebugView.Core.Test
             byte[] buffer = Encoding.ASCII.GetBytes("This is a test ansi string\t\n");
             const int baseAddress = 0;
 
-            var memoryReader = new MemoryReader(buffer, baseAddress);
+            var memoryReader = new MemoryReader(new ReadBufferedMemoryProvider(buffer, baseAddress));
 
             var result0 = memoryReader.ReadAnsiChar(0);
             var result1 = memoryReader.ReadAnsiChar(1);
@@ -201,17 +178,17 @@ namespace DarkSoulsII.DebugView.Core.Test
         [TestMethod]
         public void ReadUnicodeCharLatinTest()
         {
-            byte[] buffer1 = Encoding.Unicode.GetBytes("This is a test unicode string\t\n");
+            byte[] buffer = Encoding.Unicode.GetBytes("This is a test unicode string\t\n");
             const int baseAddress = 0;
 
-            var memoryReader = new MemoryReader(buffer1, baseAddress);
+            var memoryReader = new MemoryReader(new ReadBufferedMemoryProvider(buffer, baseAddress));
 
             var memoryReaderresult0 = memoryReader.ReadUnicodeChar(0);
             var memoryReaderresult2 = memoryReader.ReadUnicodeChar(2);
             var memoryReaderresult8 = memoryReader.ReadUnicodeChar(8);
             var memoryReaderresult58 = memoryReader.ReadUnicodeChar(58);
             var memoryReaderresult60 = memoryReader.ReadUnicodeChar(60);
-            
+
             Assert.AreEqual('T', memoryReaderresult0);
             Assert.AreEqual('h', memoryReaderresult2);
             Assert.AreEqual(' ', memoryReaderresult8);
@@ -225,7 +202,7 @@ namespace DarkSoulsII.DebugView.Core.Test
             byte[] buffer = Encoding.Unicode.GetBytes("セーブデータリスト用");
             const int baseAddress = 0;
 
-            var memoryReader = new MemoryReader(buffer, baseAddress);
+            var memoryReader = new MemoryReader(new ReadBufferedMemoryProvider(buffer, baseAddress));
 
             var memoryReaderresult0 = memoryReader.ReadUnicodeChar(0);
             var memoryReaderresult2 = memoryReader.ReadUnicodeChar(2);
@@ -237,14 +214,14 @@ namespace DarkSoulsII.DebugView.Core.Test
             Assert.AreEqual('ブ', memoryReaderresult4);
             Assert.AreEqual('用', memoryReaderresult18);
         }
-        
+
         [TestMethod]
         public void ReadAnsiStringTest()
         {
             byte[] buffer = Encoding.ASCII.GetBytes("This is a test ansi string\t\n");
             const int baseAddress = 0;
 
-            var memoryReader = new MemoryReader(buffer, baseAddress);
+            var memoryReader = new MemoryReader(new ReadBufferedMemoryProvider(buffer, baseAddress));
 
             var result0Offset0 = memoryReader.ReadAnsiString(0, 0);
             var result1Offset0 = memoryReader.ReadAnsiString(1, 0);
@@ -255,7 +232,7 @@ namespace DarkSoulsII.DebugView.Core.Test
             var result1Offset2 = memoryReader.ReadAnsiString(1, 2);
             var result2Offset3 = memoryReader.ReadAnsiString(2, 3);
             var result5Offset4 = memoryReader.ReadAnsiString(5, 4);
-            
+
             Assert.AreEqual("", result0Offset0);
             Assert.AreEqual("T", result1Offset0);
             Assert.AreEqual("Th", result2Offset0);
@@ -270,10 +247,10 @@ namespace DarkSoulsII.DebugView.Core.Test
         [TestMethod]
         public void ReadUnicodeStringLatinTest()
         {
-            byte[] buffer1 = Encoding.Unicode.GetBytes("This is a test unicode string\t\n");
+            byte[] buffer = Encoding.Unicode.GetBytes("This is a test unicode string\t\n");
             const int baseAddress = 0;
 
-            var memoryReader1 = new MemoryReader(buffer1, baseAddress);
+            var memoryReader1 = new MemoryReader(new ReadBufferedMemoryProvider(buffer, baseAddress));
 
             var result0Offset0 = memoryReader1.ReadUnicodeString(0, 0);
             var result1Offset0 = memoryReader1.ReadUnicodeString(1, 0);
@@ -295,14 +272,14 @@ namespace DarkSoulsII.DebugView.Core.Test
             Assert.AreEqual("s ", result2Offset6);
             Assert.AreEqual(" is a", result5Offset8);
         }
-        
+
         [TestMethod]
         public void ReadUnicodeStringJapaneseTest()
         {
             byte[] buffer = Encoding.Unicode.GetBytes("セーブデータリスト用");
             const int baseAddress = 0;
 
-            var memoryReader = new MemoryReader(buffer, baseAddress);
+            var memoryReader = new MemoryReader(new ReadBufferedMemoryProvider(buffer, baseAddress));
             var result0Offset0 = memoryReader.ReadUnicodeString(0, 0);
             var result1Offset0 = memoryReader.ReadUnicodeString(1, 0);
             var result2Offset0 = memoryReader.ReadUnicodeString(2, 0);
@@ -328,7 +305,7 @@ namespace DarkSoulsII.DebugView.Core.Test
             byte[] buffer = Encoding.ASCII.GetBytes("This string is null terminated.\0This one too!\0");
             const int baseAddress = 0;
 
-            var memoryReader = new MemoryReader(buffer, baseAddress);
+            var memoryReader = new MemoryReader(new ReadBufferedMemoryProvider(buffer, baseAddress));
             var result0 = memoryReader.ReadNullTerminatedAnsiString(0, false);
             var result1 = memoryReader.ReadNullTerminatedAnsiString(1, false);
             var result5 = memoryReader.ReadNullTerminatedAnsiString(5, false);
@@ -350,7 +327,7 @@ namespace DarkSoulsII.DebugView.Core.Test
             byte[] buffer = Encoding.Unicode.GetBytes("This string is null terminated.\0This one too!\0");
             const int baseAddress = 0;
 
-            var memoryReader = new MemoryReader(buffer, baseAddress);
+            var memoryReader = new MemoryReader(new ReadBufferedMemoryProvider(buffer, baseAddress));
             var result0 = memoryReader.ReadNullTerminatedUnicodeString(0, false);
             var result1 = memoryReader.ReadNullTerminatedUnicodeString(2, false);
             var result5 = memoryReader.ReadNullTerminatedUnicodeString(10, false);
@@ -369,10 +346,10 @@ namespace DarkSoulsII.DebugView.Core.Test
         [TestMethod]
         public void ReadNullTerminatedUnicodeStringJapaneseTest()
         {
-            byte[] buffer = Encoding.Unicode.GetBytes("セーブ\0データ\0リスト\0用");
+            byte[] buffer = Encoding.Unicode.GetBytes("セーブ\0データ\0リスト\0用\0");
             const int baseAddress = 0;
 
-            var memoryReader = new MemoryReader(buffer, baseAddress);
+            var memoryReader = new MemoryReader(new ReadBufferedMemoryProvider(buffer, baseAddress));
             var result0 = memoryReader.ReadNullTerminatedUnicodeString(0, false);
             var result2 = memoryReader.ReadNullTerminatedUnicodeString(2, false);
             var result4 = memoryReader.ReadNullTerminatedUnicodeString(4, false);
@@ -387,6 +364,96 @@ namespace DarkSoulsII.DebugView.Core.Test
             var result22 = memoryReader.ReadNullTerminatedUnicodeString(22, false);
             var result24 = memoryReader.ReadNullTerminatedUnicodeString(24, false);
             var result26 = memoryReader.ReadNullTerminatedUnicodeString(26, false);
+
+            Assert.AreEqual("セーブ", result0);
+            Assert.AreEqual("ーブ", result2);
+            Assert.AreEqual("ブ", result4);
+            Assert.AreEqual("", result6);
+            Assert.AreEqual("データ", result8);
+            Assert.AreEqual("ータ", result10);
+            Assert.AreEqual("タ", result12);
+            Assert.AreEqual("", result14);
+            Assert.AreEqual("リスト", result16);
+            Assert.AreEqual("スト", result18);
+            Assert.AreEqual("ト", result20);
+            Assert.AreEqual("", result22);
+            Assert.AreEqual("用", result24);
+            Assert.AreEqual("", result26);
+        }
+
+
+        [TestMethod]
+        public void ReadNullTerminatedAnsiStringChunkedLatinTest()
+        {
+            byte[] buffer = Encoding.ASCII.GetBytes("This string is null terminated.\0This one too!\0")
+                .Concat(Enumerable.Repeat((byte)0x00, 16))
+                .ToArray();
+            const int baseAddress = 0;
+
+            var memoryReader = new MemoryReader(new ReadBufferedMemoryProvider(buffer, baseAddress));
+            var result0 = memoryReader.ReadNullTerminatedAnsiStringChunked(16, 0, false);
+            var result1 = memoryReader.ReadNullTerminatedAnsiStringChunked(16, 1, false);
+            var result5 = memoryReader.ReadNullTerminatedAnsiStringChunked(16, 5, false);
+            var result31 = memoryReader.ReadNullTerminatedAnsiStringChunked(16, 31, false);
+            var result32 = memoryReader.ReadNullTerminatedAnsiStringChunked(16, 32, false);
+            var result33 = memoryReader.ReadNullTerminatedAnsiStringChunked(16, 33, false);
+
+            Assert.AreEqual("This string is null terminated.", result0);
+            Assert.AreEqual("his string is null terminated.", result1);
+            Assert.AreEqual("string is null terminated.", result5);
+            Assert.AreEqual("", result31);
+            Assert.AreEqual("This one too!", result32);
+            Assert.AreEqual("his one too!", result33);
+        }
+
+        [TestMethod]
+        public void ReadNullTerminatedUnicodeStringChunkedLatinTest()
+        {
+            byte[] buffer = Encoding.Unicode.GetBytes("This string is null terminated.\0This one too!\0")
+                .Concat(Enumerable.Repeat((byte)0x00, 32))
+                .ToArray();
+
+            const int baseAddress = 0;
+
+            var memoryReader = new MemoryReader(new ReadBufferedMemoryProvider(buffer, baseAddress));
+            var result0 = memoryReader.ReadNullTerminatedUnicodeStringChunked(16, 0, false);
+            var result1 = memoryReader.ReadNullTerminatedUnicodeStringChunked(16, 2, false);
+            var result5 = memoryReader.ReadNullTerminatedUnicodeStringChunked(16, 10, false);
+            var result31 = memoryReader.ReadNullTerminatedUnicodeStringChunked(16, 62, false);
+            var result32 = memoryReader.ReadNullTerminatedUnicodeStringChunked(16, 64, false);
+            var result33 = memoryReader.ReadNullTerminatedUnicodeStringChunked(16, 66, false);
+
+            Assert.AreEqual("This string is null terminated.", result0);
+            Assert.AreEqual("his string is null terminated.", result1);
+            Assert.AreEqual("string is null terminated.", result5);
+            Assert.AreEqual("", result31);
+            Assert.AreEqual("This one too!", result32);
+            Assert.AreEqual("his one too!", result33);
+        }
+
+        [TestMethod]
+        public void ReadNullTerminatedUnicodeStringChunkedJapaneseTest()
+        {
+            byte[] buffer = Encoding.Unicode.GetBytes("セーブ\0データ\0リスト\0用\0")
+                .Concat(Enumerable.Repeat((byte)0x00, 32))
+                .ToArray();
+            const int baseAddress = 0;
+
+            var memoryReader = new MemoryReader(new ReadBufferedMemoryProvider(buffer, baseAddress));
+            var result0 = memoryReader.ReadNullTerminatedUnicodeStringChunked(16, 0, false);
+            var result2 = memoryReader.ReadNullTerminatedUnicodeStringChunked(16, 2, false);
+            var result4 = memoryReader.ReadNullTerminatedUnicodeStringChunked(16, 4, false);
+            var result6 = memoryReader.ReadNullTerminatedUnicodeStringChunked(16, 6, false);
+            var result8 = memoryReader.ReadNullTerminatedUnicodeStringChunked(16, 8, false);
+            var result10 = memoryReader.ReadNullTerminatedUnicodeStringChunked(16, 10, false);
+            var result12 = memoryReader.ReadNullTerminatedUnicodeStringChunked(16, 12, false);
+            var result14 = memoryReader.ReadNullTerminatedUnicodeStringChunked(16, 14, false);
+            var result16 = memoryReader.ReadNullTerminatedUnicodeStringChunked(16, 16, false);
+            var result18 = memoryReader.ReadNullTerminatedUnicodeStringChunked(16, 18, false);
+            var result20 = memoryReader.ReadNullTerminatedUnicodeStringChunked(16, 20, false);
+            var result22 = memoryReader.ReadNullTerminatedUnicodeStringChunked(16, 22, false);
+            var result24 = memoryReader.ReadNullTerminatedUnicodeStringChunked(16, 24, false);
+            var result26 = memoryReader.ReadNullTerminatedUnicodeStringChunked(16, 26, false);
 
             Assert.AreEqual("セーブ", result0);
             Assert.AreEqual("ーブ", result2);

@@ -19,14 +19,10 @@ namespace DarkSoulsII.DebugView.Model.Managers.Sign
         {
             Initialized = reader.ReadBoolean(address + 0x0008, relative);
             int activeSignCount = reader.ReadInt32(address + 0x000C, relative);
-
-            ActiveSigns = GenericPointer.Create(reader, address + 0x0010, relative).Unbox(reader,
-                (r, a) =>
-                {
-                    return pointerFactory
-                        .CreateArrayDereferenced<ActiveSignCtrl>(a, false, activeSignCount)
-                        .Select(p => p.Unbox(pointerFactory, reader)).ToList();
-                });
+            int activeSignControlsAddress = reader.ReadInt32(address + 0x0010, relative);
+            ActiveSigns = pointerFactory.CreateArrayDereferenced<ActiveSignCtrl>(activeSignControlsAddress, false, activeSignCount)
+                    .Select(p => p.Unbox(pointerFactory, reader))
+                    .ToList();
             return this;
         }
     }

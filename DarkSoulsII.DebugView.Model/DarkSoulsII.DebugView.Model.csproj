@@ -447,7 +447,7 @@
     <Compile Include="Sign\SignSetBase.cs" />
     <Compile Include="Sign\SignSetCommonCtrl.cs" />
     <Compile Include="Sign\SummonSignSetCtrl.cs" />
-    <Compile Include="Standard\LinkedList.cs" />
+    <Compile Include="Standard\StdLinkedList.cs" />
     <Compile Include="Standard\LinkedListNode.cs" />
     <Compile Include="StateAct\NullStateActCtrl.cs" />
     <Compile Include="StateAct\StateActGraph.cs" />

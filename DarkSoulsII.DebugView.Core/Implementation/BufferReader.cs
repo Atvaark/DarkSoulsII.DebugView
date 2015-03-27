@@ -1,56 +1,60 @@
 ﻿using System;
 using System.Text;
 
-namespace DarkSoulsII.DebugView.Core
+namespace DarkSoulsII.DebugView.Core.Implementation
 {
-    public class MemoryReader : IReader
+    public class BufferReader : IReader
     {
-        // TODO: Handle baseAddress and relative parameters
         private readonly int _baseAddress;
-        private readonly byte[] _data;
+        private readonly byte[] _buffer;
 
-        public MemoryReader(byte[] data, int baseAddress)
+        public BufferReader(byte[] buffer, int baseAddress)
         {
-            if (data == null) throw new ArgumentNullException("data");
+            if (buffer == null) throw new ArgumentNullException("buffer");
             _baseAddress = baseAddress;
-            _data = data;
+            _buffer = buffer;
+        }
+
+        private int GetAbsoluteAddress(int address, bool relative)
+        {
+            return relative ? _baseAddress + address : address;
         }
 
         public byte[] Read(int size, int address, bool relative = false)
         {
             byte[] result = new byte[size];
-            Buffer.BlockCopy(_data, address, result, 0, size);
+            Buffer.BlockCopy(_buffer, GetAbsoluteAddress(address, relative), result, 0, size);
             return result;
         }
 
         public bool ReadBoolean(int address, bool relative = false)
         {
-            return BitConverter.ToBoolean(_data, address);
+            return BitConverter.ToBoolean(_buffer, address);
         }
 
         public byte ReadByte(int address, bool relative = false)
         {
-            return _data[address];
+            return _buffer[address];
         }
 
         public sbyte ReadSByte(int address, bool relative = false)
         {
-            return (sbyte) _data[address];
+            return (sbyte) _buffer[address];
         }
 
         public short ReadInt16(int address, bool relative = false)
         {
-            return BitConverter.ToInt16(_data, address);
+            return BitConverter.ToInt16(_buffer, address);
         }
 
         public ushort ReadUInt16(int address, bool relative = false)
         {
-            return BitConverter.ToUInt16(_data, address);
+            return BitConverter.ToUInt16(_buffer, address);
         }
 
         public int ReadInt32(int address, bool relative = false)
         {
-            return BitConverter.ToInt32(_data, address);
+            return BitConverter.ToInt32(_buffer, address);
         }
 
         public int[] ReadInt32(int count, int address, bool relative = false)
@@ -59,29 +63,29 @@ namespace DarkSoulsII.DebugView.Core
             int offset = 0;
             for (int i = 0; i < count; i++, offset+=sizeof(int))
             {
-                result[i] = BitConverter.ToInt32(_data, address + offset);
+                result[i] = BitConverter.ToInt32(_buffer, address + offset);
             }
             return result;
         }
 
         public uint ReadUInt32(int address, bool relative = false)
         {
-            return BitConverter.ToUInt32(_data, address);
+            return BitConverter.ToUInt32(_buffer, address);
         }
 
         public long ReadInt64(int address, bool relative = false)
         {
-            return BitConverter.ToInt64(_data, address);
+            return BitConverter.ToInt64(_buffer, address);
         }
 
         public ulong ReadUInt64(int address, bool relative = false)
         {
-            return BitConverter.ToUInt64(_data, address);
+            return BitConverter.ToUInt64(_buffer, address);
         }
 
         public float ReadSingle(int address, bool relative = false)
         {
-            return BitConverter.ToSingle(_data, address);
+            return BitConverter.ToSingle(_buffer, address);
         }
 
         public float[] ReadSingle(int count, int address, bool relative = false)
@@ -90,60 +94,60 @@ namespace DarkSoulsII.DebugView.Core
             int offset = 0;
             for (int i = 0; i < count; i++, offset += sizeof(float))
             {
-                result[i] = BitConverter.ToSingle(_data, address + offset);
+                result[i] = BitConverter.ToSingle(_buffer, address + offset);
             }
             return result;
         }
 
         public double ReadDouble(int address, bool relative = false)
         {
-            return BitConverter.ToDouble(_data, address);
+            return BitConverter.ToDouble(_buffer, address);
         }
 
         public decimal ReadDecimal(int address, bool relative = false)
         {
-            int bits1 = BitConverter.ToInt32(_data, address);
-            int bits2 = BitConverter.ToInt32(_data, address + 4);
-            int bits3 = BitConverter.ToInt32(_data, address + 8);
-            int bits4 = BitConverter.ToInt32(_data, address + 12);
+            int bits1 = BitConverter.ToInt32(_buffer, address);
+            int bits2 = BitConverter.ToInt32(_buffer, address + 4);
+            int bits3 = BitConverter.ToInt32(_buffer, address + 8);
+            int bits4 = BitConverter.ToInt32(_buffer, address + 12);
             return new decimal(new[] { bits1, bits2, bits3, bits4 });
         }
 
         public char ReadAnsiChar(int address, bool relative = false)
         {
-            return (char) _data[address];
+            return (char) _buffer[address];
         }
 
         public char ReadUnicodeChar(int address, bool relative = false)
         {
-            return Encoding.Unicode.GetChars(_data, address, 2)[0];
+            return Encoding.Unicode.GetChars(_buffer, address, 2)[0];
         }
 
         public string ReadAnsiString(int length, int address, bool relative = false)
         {
-            return Encoding.ASCII.GetString(_data, address, length);
+            return Encoding.ASCII.GetString(_buffer, address, length);
         }
 
         public string ReadUnicodeString(int length, int address, bool relative = false)
         {
-            return Encoding.Unicode.GetString(_data, address, length*2);
+            return Encoding.Unicode.GetString(_buffer, address, length*2);
         }
 
         public string ReadNullTerminatedAnsiString(int address, bool relative)
         {
-            int index = Array.FindIndex(_data, address, b => b == 0);
+            int index = Array.FindIndex(_buffer, address, b => b == 0);
 
             if (index == -1)
-                index = _data.Length - address;
-            return Encoding.ASCII.GetString(_data, address, index - address);
+                index = _buffer.Length - address;
+            return Encoding.ASCII.GetString(_buffer, address, index - address);
         }
 
         public string ReadNullTerminatedUnicodeString(int address, bool relative)
         {
-            int startIndex = Array.FindIndex(_data, address, b => b == 0);
+            int startIndex = Array.FindIndex(_buffer, address, b => b == 0);
             while (startIndex >= 0)
             {
-                int nextIndex = Array.FindIndex(_data, startIndex + 1, b => b == 0);
+                int nextIndex = Array.FindIndex(_buffer, startIndex + 1, b => b == 0);
                 if (nextIndex == -1)
                 {
                     break;
@@ -152,12 +156,12 @@ namespace DarkSoulsII.DebugView.Core
                 {
                     if (startIndex == address)
                         return "";
-                    return Encoding.Unicode.GetString(_data, address, startIndex - address); // -1?
+                    return Encoding.Unicode.GetString(_buffer, address, startIndex - address); // -1?
                 }
                 startIndex = nextIndex;
             }
-            startIndex = _data.Length - address;
-            return Encoding.Unicode.GetString(_data, address, startIndex);
+            startIndex = _buffer.Length - address;
+            return Encoding.Unicode.GetString(_buffer, address, startIndex);
 
         }
 

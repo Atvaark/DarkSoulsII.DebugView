@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using DarkSoulsII.DebugView.Core;
+using DarkSoulsII.DebugView.Core.Implementation;
 
 namespace DarkSoulsII.DebugView.Model.Map.Item
 {
@@ -14,7 +15,18 @@ namespace DarkSoulsII.DebugView.Model.Map.Item
 
         public MapItemPack Read(IPointerFactory pointerFactory, IReader reader, int address, bool relative = false)
         {
-            // TODO: Is this an StdVector or a Std(Linked-)List?
+
+            // BUG: Stackoverflow because the final node references the first node
+            //int linkedListAddress = reader.ReadInt32(address + 0x000C, relative);
+            //Items = pointerFactory
+            //    .Create<StdLinkedList<MapItem>>(linkedListAddress + 0x0000, false, true)
+            //    .Unbox(pointerFactory, reader)
+            //    .Items;
+
+
+
+
+            // TODO: Move this code to StdLinked list to avoid stackoverflows.
             Items = GenericPointer.Create(reader, address + 0x000C, relative)
                 .Unbox(reader, (rootNodeReader, rootNodeAddress) =>
                 {

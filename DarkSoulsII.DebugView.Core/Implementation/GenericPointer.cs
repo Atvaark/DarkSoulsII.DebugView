@@ -1,7 +1,7 @@
 ﻿using System;
 using DarkSoulsII.DebugView.Core.Exceptions;
 
-namespace DarkSoulsII.DebugView.Core
+namespace DarkSoulsII.DebugView.Core.Implementation
 {
     public class GenericPointer
     {

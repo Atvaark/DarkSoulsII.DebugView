@@ -12,10 +12,13 @@ namespace DarkSoulsII.DebugView.Model.Resources.Param
         {
             base.Read(pointerFactory, reader, address, relative);
             bool read = reader.ReadBoolean(address + 0x00A0, relative) == false;
-            var Memory = pointerFactory.Create<Memory>(address + 0x008C, relative, true).Unbox(pointerFactory, reader);
-			// TODO: Check if this was converted correctly when the pointer factory was added
-                Param = GenericPointer.Create(address + 0x008C).Unbox(reader,
-                (r, a) => pointerFactory.Create<T>(r.ReadInt32(a + 0x0008), false, true).Unbox(pointerFactory, r));
+            var memory = pointerFactory.Create<Memory>(address + 0x008C, relative, true).Unbox(pointerFactory, reader);
+            // TODO: Check if this was converted correctly when the pointer factory was added
+
+            int paramAddress = reader.ReadInt32(address + 0x008C, relative);
+            Param = pointerFactory
+                .Create<T>(reader.ReadInt32(paramAddress + 0x0008), false, true)
+                .Unbox(pointerFactory, reader); // TODO: Test 
             return this;
         }
     }

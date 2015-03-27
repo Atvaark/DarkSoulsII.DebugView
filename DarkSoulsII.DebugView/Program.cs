@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using DarkSoulsII.DebugView.Core;
+using DarkSoulsII.DebugView.Core.Implementation;
 using DarkSoulsII.DebugView.Model.App;
 using DarkSoulsII.DebugView.Model.Managers;
 using DarkSoulsII.DebugView.Model.Managers.Network;
@@ -17,7 +18,8 @@ namespace DarkSoulsII.DebugView
         private static void Main(string[] args)
         {
             Process process = GetProcess("DarkSoulsII");
-            IReader reader = ProcessMemoryReader.Create(process);
+            IReadMemoryProvider readMemoryProvider = new ReadProcessMemoryProvider(process);
+            IReader reader = new MemoryReader(readMemoryProvider);
             IPointerFactory pointerFactory = new PointerFactory(reader);
             var gameManagerImplPointer = GetPointer<GameManagerImpl>(pointerFactory, reader, 0x011593F4);
             var networkManagerPointer = GetPointer<NetworkManager>(pointerFactory, reader, 0x0115A5B4);

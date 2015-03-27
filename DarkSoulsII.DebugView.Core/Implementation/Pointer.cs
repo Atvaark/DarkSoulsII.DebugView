@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using DarkSoulsII.DebugView.Core.Exceptions;
 
-namespace DarkSoulsII.DebugView.Core
+namespace DarkSoulsII.DebugView.Core.Implementation
 {
     public class Pointer<T> : IPointer<T> where T : class, IReadable<T>, new()
     {

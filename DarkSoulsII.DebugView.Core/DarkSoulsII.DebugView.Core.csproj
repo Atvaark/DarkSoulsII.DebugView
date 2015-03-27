@@ -43,23 +43,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementation\ReadBufferedMemoryProvider.cs" />
     <Compile Include="IPointerProxy.cs" />
-    <Compile Include="MemoryReader.cs" />
-    <Compile Include="PointerProxy.cs" />
-    <Compile Include="PointerFactory.cs" />
-    <Compile Include="GenericPointer.cs" />
+    <Compile Include="Implementation\BufferReader.cs" />
+    <Compile Include="IReadMemoryProvider.cs" />
+    <Compile Include="Implementation\PointerProxy.cs" />
+    <Compile Include="Implementation\PointerFactory.cs" />
+    <Compile Include="Implementation\GenericPointer.cs" />
     <Compile Include="IFixedSize.cs" />
     <Compile Include="IPointer.cs" />
     <Compile Include="IPointerFactory.cs" />
-    <Compile Include="IRttiHelper.cs" />
+    <Compile Include="IRttiResolver.cs" />
     <Compile Include="IReader.cs" />
     <Compile Include="IReadable.cs" />
-    <Compile Include="ProcessMemoryReader.cs" />
+    <Compile Include="Implementation\MemoryReader.cs" />
     <Compile Include="Exceptions\MemoryInaccessibleException.cs" />
     <Compile Include="NativeMethods.cs" />
     <Compile Include="Exceptions\ProcessAccessDeniedException.cs" />
     <Compile Include="Exceptions\ProcessNotFoundException.cs" />
-    <Compile Include="Pointer.cs" />
+    <Compile Include="Implementation\Pointer.cs" />
+    <Compile Include="Implementation\ReadProcessMemoryProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

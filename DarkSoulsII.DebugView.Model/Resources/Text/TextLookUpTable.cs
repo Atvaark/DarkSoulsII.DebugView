@@ -20,10 +20,10 @@ namespace DarkSoulsII.DebugView.Model.Resources.Text
             int stringCount = reader.ReadInt32(address + 0x0010, relative);
 
             // 0x0014 points to itemAddress + ItemEntrySize * count
-            int[] offsets = GenericPointer.Create(reader, address + 0x0014, relative)
-                .Unbox(reader, (r, a) => r.ReadInt32(stringCount, a));
-            string[] strings = new string[stringCount];
+            int offsetsAddress = reader.ReadInt32(address + 0x0014, relative);
+            int[] offsets = reader.ReadInt32(stringCount, offsetsAddress);
 
+            string[] strings = new string[stringCount];
             for (int i = 0; i < stringCount; i++)
             {
                 var stringAddress = address + offsets[i];
