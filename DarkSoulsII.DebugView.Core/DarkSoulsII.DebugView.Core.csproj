@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementation\MemoryReaderStream.cs" />
     <Compile Include="Implementation\ReadBufferedMemoryProvider.cs" />
     <Compile Include="IPointerProxy.cs" />
     <Compile Include="Implementation\BufferReader.cs" />
